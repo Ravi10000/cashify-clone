@@ -22,6 +22,7 @@ var userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    orders: [String]
 });
 
 //Export the model

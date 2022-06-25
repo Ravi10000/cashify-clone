@@ -1,131 +1,82 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
+// const ImageSchema = Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//     },
+//     image:{
+//         data: Buffer,
+//         contentType: String
+//     }
+// })
 
-function screenSizeArrayLimit(val) {
-    return val.length === 2;
-  }
-
-  function aspectRatioArrayLimit(val) {
-    return val.length === 2;
-  }
-
-  
-
+// module.exports = model('image', ImageSchema)
 const productSchema = new Schema({
-    announcedOn: {
-      type: String,
-      require: true,  
-    },
     brand: {
         type: String,
-        required: true,
+        // required: true,
     },
     model: {
         type: String,
-        required: true,
+        // required: true,
     },
     price: {
         type: Number,
         required: true,
     },
-    // imageUrl: String,
     quality: {
         type: String,
-        required: true,
+        // required: true,
     },
-    weight: {
+    ram: {
         type: Number,
-        required: true,
-        min: 100,
-        max: 300,
+        // required: true,
     },
-    colors: {
-        type: [String],
-        required: true,
-    },
-    build: {
-        type: String,
-        required: true,
-    },
-    waterResistance: {
-        type: String,
-        required: true,
-    },
-    SARValue: {
-        type: String,
-        required: true,
-    },
-    dimensions: {
-        type: String,
-        required: true,
-    },
-    screenType: {
-        type: String,
-        required: true,
-    },
-    screenSize: {
-        type: [Number],
-        required: true,
-        validate: [screenSizeArrayLimit, 'only height and width is required!']
-    },
-    pixelDensity: {
+    storage: {
         type: Number,
-        required: true,
+        // required: true,
     },
-    screenProtection: {
-        type: Boolean,
-        required: true,
-    },
-    aspectRatio: {
-        type: [Number],
-        required: true,
-        validate: [aspectRatioArrayLimit, 'only height and width is required!']
-    },
-    peakBrightness: {
-        type: Number,
-        required: true,
-    },
-    screenQuality: {
+    color: {
         type: String,
-        required: true,
+        // required: true,
     },
     os: {
         type: String,
-        required: true,
+        // required: true,
     },
     chipset: {
         type: String,
-        required: true,
+        // required: true,
     },
     cpu: {
         type: String,
-        required: true,
+        // required: true,
+    },
+    "battery capacity":{
+        type: Number,
+        // required: true,
+    },
+    camera: {
+        type: [Number],
+        // required: true,
     },
     gpu: {
         type: String,
-        required: true,
+        // required: true,
     },
-    clockSpeed: {
-        type: Number,
-        min: 0,
-        max: 10,
-        required: true,
-    },
-    architecture: {
-        type: Number,
-        required: true,
+    imageUrl:{
+        type: [String]
     }
-    
-
 })
 
-productSchema.virtual('imageUrl').get(function() {
-    const images = ['front', 'back', 'side']
-    const that = this;
-    return images.map(function(img) {
-        return `images/products/${that.brand}/${that.model}/${img}.webp`
-    })
-})
+// productSchema.virtual('imageUrl').get(function() {
+//     const images = ['front', 'back', 'side']
+//     const that = this;
+//     return images.map(function(img) {
+//         return `images/products/${that.brand}/${that.model}/${img}.webp`
+//     })
+// })
 
 module.exports = model('Product', productSchema)

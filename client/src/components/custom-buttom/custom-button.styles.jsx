@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-    border: none;
+    font-family: poppins;
+    box-sizing: border-box;
+    width: 140px;
     background-color: #32cd85;
     color: #fff;
-    font-size: 18px;
-    border-radius: 2px;
-    width: 150px;
-    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    padding: 10px 13px;
+    cursor: pointer;
+    font-weight: 500;
+    align-self: flex-end;
+    margin-right: 10px;
 
     :hover{
         background-color: #fff;

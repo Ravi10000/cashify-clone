@@ -1,32 +1,30 @@
 // import logo from './logo.svg';
 import './App.css';
-import { useEffect } from 'react';
-import CardItem from './components/card/card.component'
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect'
-import { selectProducts } from './redux/shop/shop.selectors'
-import { fetchProductsStart } from './redux/shop/shop.actions'
-import CardList from './components/card-list/card-list.component';
+import {
+  Switch,
+  Route,
+} from "react-router-dom";
+import Homepage from './pages/homepage/homepage.component';
+import Productpage from './pages/product/product.component';
+import Header from './components/header/header.component';
 
-function App({products, fetchProducts}) {
-  useEffect(()=>{
-    fetchProducts()
-  }, [fetchProducts])
+
+function App() {
+  
   return (
-    <div className="App">
-      {/* {products.length &&
-        products.map(product => <p>{`${product.brand} ${product.model} ` }</p>)
-      } */}
-    {/* <img src={products[0].imageUrl} alt="" /> */}
-      <CardItem/>
-      <CardList/>
+     <div className="App">
+      <Header/>
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route exact path='/product/:id'  component={Productpage}/>
+      </Switch>
     </div>
   );
 }
-const mapStateToProps = createStructuredSelector({
-  products: selectProducts,
-})
-const mapDispatchToProps = dispatch=>({
-  fetchProducts: () => (dispatch(fetchProductsStart()))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+// const mapStateToProps = createStructuredSelector({
+//   products: selectProducts,
+// })
+// const mapDispatchToProps = dispatch=>({
+//   fetchProducts: () => (dispatch(fetchProductsStart()))
+// })
+export default App

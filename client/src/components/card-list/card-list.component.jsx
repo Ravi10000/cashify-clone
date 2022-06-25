@@ -1,4 +1,3 @@
-import { CardListContainer } from "./card-list.styles";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectProducts } from "../../redux/shop/shop.selectors";
@@ -6,20 +5,25 @@ import CardItem from "../card/card.component";
 
 const CardList = ({products})=>{
     return(
-    <CardListContainer>
+    <div className="card-list flex flex-col items-center">
         {
             products?.map(product => 
               { 
-                const {brand, model, price, imageUrl} = product;
+                const {brand, model, price, imageUrl, quality, ram, storage} = product;
+                console.log(brand, model, price, imageUrl)
                 return <CardItem 
                key = {product._id} 
+               id= {product._id}
                title = {`${brand} ${model}`}
                price = {price}
                imageUrl = {imageUrl}
+               quality = {quality}
+               ram={ram}
+               storage={storage}
                />
             })
         }
-    </CardListContainer>
+    </div>
 )
 }
 const mapStateToProps = createStructuredSelector({
