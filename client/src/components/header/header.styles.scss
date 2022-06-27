@@ -1,0 +1,15 @@
+.header{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--secondaryAccent);
+    .logo{
+        font-weight: var(--semibold);
+        .highlight{
+            color: var(--accent);
+        }
+    }
+}

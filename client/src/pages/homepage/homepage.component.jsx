@@ -1,36 +1,55 @@
+// styles import
+import './homepage.styles.scss'
+
+//react imports
 import { useEffect } from "react"
+
+//statefulness imports
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 import { selectProducts } from '../../redux/shop/shop.selectors'
 import { fetchProductsStart } from '../../redux/shop/shop.actions'
+
+//component imports
 import CardList from "../../components/card-list/card-list.component"
+
+//router imports
 import { withRouter } from "react-router-dom";
+
 const Homepage = ({products, fetchProducts})=>{
     useEffect(()=>{
         fetchProducts()
       }, [fetchProducts])
     return(
-    <div className="homepage text-center">
-        <div className="banner width-full relative">
-        <img src="banner.webp" alt="" className="w-screen h-screen"/>
-        <h1 className="title absolute top-1/2 text-6xl font-bold ml-5">
-            <span className="text-primary">Mr.</span>
-            <span className="">Phone</span>
-            <span className="text-primary">X</span>
+    <div className="homepage">
+        <div className="banner">
+            <h1 className="title">
+                <span className="">Mr.</span>
+                Phone
+                <span className="">X</span>
             </h1>
-            <h3 className="subtitle absolute right-5 text-lg font-semibold text-stone-300">Buy your dream smartphone <br/> in cheap prices</h3>
+            <h3 className="subtitle">
+                Buy your dream 
+                <span>smartPhones</span> 
+                <br/> 
+                with our low 
+                <span>prices</span>
+            </h3>
         </div>
-
-            <h2 className=" w-[380px] text-xl inline-block font-bold translate-x-[-55%] mt-5 border-b-4 border-solid border-primary ">List of all available devices for sale</h2>
-
-        <CardList products={products} />
+        <div className="device-list">
+            <h2 className="title">Refurbished Smartphones</h2>
+            <CardList products={products} />
+        </div>
     </div>
 )}
 
+// connecting to store
 const mapStateToProps = createStructuredSelector({
-    products: selectProducts
+    products: selectProducts,
 })
+
 const mapDispatchToProps = dispatch => ({
-    fetchProducts: ()=> dispatch(fetchProductsStart())
+    fetchProducts: ()=> dispatch(fetchProductsStart()),
 })
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Homepage))

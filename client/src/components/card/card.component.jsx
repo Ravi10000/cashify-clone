@@ -10,7 +10,7 @@ const CardItem = ({id, title, price, imageUrl, quality, ram, storage, history, m
                     justify-between 
                     items-center 
                     h-[200px] 
-                    w-[40vw] 
+                    w-[35vw] 
                     mt-10 
                     p-5 
                     shadow-md 
@@ -56,8 +56,6 @@ const CardItem = ({id, title, price, imageUrl, quality, ram, storage, history, m
             ${quality === 'superb' && 'bg-superb'}
             ${quality === 'best' && 'bg-best'}
             ${quality === 'good' && 'bg-good'}
-            
-            font-thin
             `}>
                 <p>
                 {quality}

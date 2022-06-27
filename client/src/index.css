@@ -2,11 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --accent: #00afb9;
+  --bold: 700;
+  --semibold: 600;
+  --medium: 500;
+  --normal: 400;
+  --secondaryAccent: #E2F2FD;
+}
 *{
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 body{
   font-family: Poppins;
+  width: 100vw;
+  overflow-x: hidden;
 }
