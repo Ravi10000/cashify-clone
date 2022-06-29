@@ -1,3 +1,23 @@
 .custom-button{
-    padding: 10px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-weight: var(--semibold);
+    border: 2px solid var(--accent);
+    background-color: var(--accent);
+    color: var(--secondaryAccent);
+
+    &:hover{
+        background-color: var(--secondaryAccent);
+        color: var(--accent);
+    }
+    &.secondary-button{
+        background-color: var(--secondaryAccent);
+        color: var(--accent);
+
+        &:hover{
+            color: var(--secondaryAccent);
+            background-color: var(--accent);
+        }
+    }
+
 }

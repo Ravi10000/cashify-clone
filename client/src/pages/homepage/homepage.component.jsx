@@ -29,15 +29,16 @@ const Homepage = ({products, fetchProducts})=>{
                 <span className="">X</span>
             </h1>
             <h3 className="subtitle">
-                Buy your dream 
-                <span>smartPhones</span> 
+                Buy your  
+                <span>dream smartPhones</span> 
                 <br/> 
-                with our low 
-                <span>prices</span>
+                with our  
+                <span>low prices</span>
             </h3>
         </div>
         <div className="device-list">
-            <h2 className="title">Refurbished Smartphones</h2>
+            <h2 className="title">For Sale</h2>
+            <h2 className="subtitle">Refurbished Smartphones</h2>
             <CardList products={products} />
         </div>
     </div>

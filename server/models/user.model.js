@@ -1,13 +1,8 @@
 const mongoose = require('mongoose'); // Erase if already required
-
+const passportLocalMongoose = require('passport-local-mongoose')
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        unique:true,
-        index:true,
-    },
+    name: String,
     email:{
         type:String,
         required:true,
@@ -18,12 +13,9 @@ var userSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
-    password:{
-        type:String,
-        required:true,
-    },
-    orders: [String]
+    orders: [String],
+    address: String
 });
 
-//Export the model
+userSchema.plugin(passportLocalMongoose)
 module.exports = mongoose.model('User', userSchema);

@@ -1,0 +1,25 @@
+.product-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3{
+        margin: 20px 0;
+        font-size: 1.2rem;
+        font-weight: var(--semibold);
+    }
+    .desc{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        // gap: 10px;
+        
+        p{
+            border-bottom: .5px solid #80808063;
+        }
+        p:nth-child(2n-1){
+            border-right: 1px solid #80808063;
+            font-weight: var(--medium);
+            // padding-left: 10px;
+        }
+    }
+}

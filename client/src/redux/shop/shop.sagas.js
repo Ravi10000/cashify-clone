@@ -9,7 +9,6 @@ export function* fetchProductsAsync(){
     try{
         const res = yield fetch('/api/products');
         const resJson = yield res.json()
-        yield console.log('products: ', resJson)
         yield put(fetchProductsSuccess(resJson))
     }catch(err){
         yield put(fetchProductsFailure(err))

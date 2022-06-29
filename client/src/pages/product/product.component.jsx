@@ -1,3 +1,4 @@
+import './product.styles.scss'
 import { useEffect, useState } from "react"
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
@@ -11,18 +12,16 @@ const Productpage = ({match, history})=>{
     useEffect(()=>{
         //fetch product
         (async function(){
-            const res = await fetch(`/api/product/${id}`)
+            const res = await fetch(`/api/products/${id}`)
             const productJson = await res.json()
             setProduct(productJson)
-            console.log(product);
         })()
-    }, [])
-    // const product = products.filter(product => product._id === id)[0]
+    }, [setProduct, id])
     return(
-        <div className="product w-screen mt-10 capitalize h-screen">
+        <div className="product-page w-screen mt-10 capitalize h-screen">
             <div className="device-brief flex w-full items-center justify-evenly">
             <div className="image-container w-1/3">
-            <img src={product?.imageUrl[0]} alt={`${product?.brand} ${product?.model}`} />
+            <img src={product?.imageUrls[0]} alt={`${product?.brand} ${product?.model}`} />
             </div>
             <div className="info-container w-1/2 ">
                 <h3 className="font-bold text-3xl">
@@ -34,19 +33,36 @@ const Productpage = ({match, history})=>{
                     ₹ {product?.price} only 
                 </p>
                 <p className="units-left font-medium lowercase mb-5">
-                {product?.unitsLeft === 1 
-                ? <span className="text-red-500">last {product?.unitsLeft} unit left at this price</span>
-                : <span className="text-orange-500">{product?.unitsLeft} units left at this price</span>
+                {product?.units === 1 
+                ? <span className="text-red-500">last {product?.units} unit left at this price</span>
+                : <span className="text-orange-500">{product?.units} units left at this price</span>
             }
                 </p>
                 <CustomButton>Buy Now</CustomButton>
             </div>
             </div>
-            <div className="desc grid">
-                {
-
-                }
+            <h3>Description</h3>
+            {
+                product 
+                && <div className="desc">
+                <p>brand</p>
+                <p>{product.brand}</p>
+                <p>model</p>
+                <p>{product.model}</p>
+                <p>ram</p>
+                <p>{product.ram}Gb</p>
+                <p>storage</p>
+                <p>{product.storage}Gb</p>
+                <p>color</p>
+                <p>{product.color}</p>
+                <p>price</p>
+                <p>{product.price} rs</p>
+                <p>quality</p>
+                <p>{product.quality}</p>
+                <p>battery capacity</p>
+                <p>{product["battery capacity"]} mAh</p>
             </div>
+            }
         </div>
 )}
 

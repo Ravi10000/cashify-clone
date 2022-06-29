@@ -1,7 +1,7 @@
 // styles import
 import './header.styles.scss'
 // react imports
-import {useState, useEffect} from 'react'
+// import {useState, useEffect} from 'react'
 
 // components import
 import CustomButton from "../../components/custom-buttom/custom-button.component"
@@ -9,23 +9,11 @@ import CustomButton from "../../components/custom-buttom/custom-button.component
 // router imports
 import { Link } from "react-router-dom"
 
-
-const Header = ()=>{
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    useEffect(()=>{
-        (async function(){
-            const res = await fetch('/user/isLoggedIn')
-            const data = await res.json()
-            setIsLoggedIn(data)
-            console.log(data)
-        })()
-    }, [])
-    const handleClick = async()=>{
-        const res = await fetch('/user/signout')
-        const data = await res.json()
-        setIsLoggedIn(data)
-        console.log('isLoggedIn:', data)
-    }
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { selectCurrentUser } from '../../redux/user/user.selector'
+import { signOutUserStart } from '../../redux/user/user.actions'
+const Header = ({currentUser, signOut})=>{
     return(
     <div className="header">
         <div className="logo">
@@ -34,19 +22,35 @@ const Header = ()=>{
                 <span>Phone</span>
                 <span className='highlight'>X</span></Link>
         </div> 
+        <div className="buttons">
         {
-            isLoggedIn ? <CustomButton onClick={handleClick}>Sign Out</CustomButton>
+            currentUser 
+            ? 
+            <div className="logged-in">
+                <CustomButton onClick={signOut} >Sign Out</CustomButton>
+                <div className="profile-pic-container">
+                <img src="/icons/user-1.png" alt="" />
+                </div>
+            </div>
             :
-        <div className="buttons flex w-2/12 justify-between mr-5">
+            <div className="signin-signup">
         <Link to='/signin'>
             <CustomButton>Sign In</CustomButton>
         </Link>
         <Link to='signup'>
-            <CustomButton bordered>Sign Up</CustomButton>
+            <CustomButton secondary>Sign Up</CustomButton>
         </Link>
         </div>
         }
+        </div>
     </div>
 )}
 
-export default Header
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+    signOut: ()=> dispatch(signOutUserStart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

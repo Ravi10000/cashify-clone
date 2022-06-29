@@ -3,7 +3,7 @@ import CustomInput from "../../components/custom-input/custom-input.component"
 const SignIn = ()=>{
     return(
 <div className="signin w-screen flex justify-center mt-20 relative">
-<form method='POST' action='/user/signin' className="w-1/3 h-[400px] bg-secondary p-10 rounded-md">
+<form method='POST' action='/api/user/signin' className="w-1/3 h-[400px] bg-secondary p-10 rounded-md">
     <div className="user h-[100px] bg-secondary p-5 inline-block rounded-full absolute left-[50%] top-[-5%] translate-x-[-50%]">
     <img src="./icons/user-2.png" alt="" className="h-full"/>
     </div>

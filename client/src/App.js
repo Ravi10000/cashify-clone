@@ -1,18 +1,27 @@
-import './App.css';
+import './App.scss';
+import { useEffect } from 'react';
 import {
   Switch,
   Route,
 } from "react-router-dom";
-import TestButton from './components/test-component/testButton';
+// pages
 import Homepage from './pages/homepage/homepage.component';
 import Productpage from './pages/product/product.component';
-import Header from './components/header/header.component';
 import SignIn from './pages/sign-in/sign-in.component';
 import SignUp from './pages/sign-up/sign-up.component';
+
+// componetnts
+import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 
+// redux connect
+import { connect } from 'react-redux';
+import { fetchUserStart } from './redux/user/user.actions';
 
-function App() {
+function App({fetchUser}) {
+  useEffect(() => {
+    fetchUser()
+  }, [fetchUser])
   
   return (
      <div className="App">
@@ -30,7 +39,7 @@ function App() {
 // const mapStateToProps = createStructuredSelector({
 //   products: selectProducts,
 // })
-// const mapDispatchToProps = dispatch=>({
-//   fetchProducts: () => (dispatch(fetchProductsStart()))
-// })
-export default App
+const mapDispatchToProps = dispatch=>({
+  fetchUser: () => (dispatch(fetchUserStart()))
+})
+export default connect(null, mapDispatchToProps)(App)

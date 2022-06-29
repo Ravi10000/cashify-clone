@@ -38,11 +38,10 @@ async function fixData() {
 
 const product = await Product.findOne({quality: 'good'})
 console.log(product);
-// product.quality = 'superb'
-product.ram = 6
-product.storage = 128
-await product.save()
-console.log('saved')
+product.unitsLeft= 1
+product.color = 'grey'
+await product.save(console.log('saved'))
+console.log(product)
 }
 
 fixData();
