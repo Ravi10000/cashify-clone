@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     height: 200px;
-    width: 95vw;
+    width: 100%;
     margin-bottom: 10px;
     padding: 10px;
     position: relative;
@@ -36,7 +36,7 @@
         .price{
             margin-top: 10px;
             font-weight: var(--semibold);
-            color: rgb(72, 184, 57)
+            color: #48b839
         }
     }
 

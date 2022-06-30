@@ -5,7 +5,10 @@ import {
     fetchUserSuccess,
     fetchUserFailure,
     signOutUserSuccess,
-    signOutUserFailure
+    signOutUserFailure,
+    updateUserSuccess,
+    fetchUserStart,
+    updateUserFailure
 } from './user.actions'
 
 export function* fetchUserAsync(){
@@ -18,7 +21,7 @@ export function* fetchUserAsync(){
         yield put(fetchUserFailure(err))
     }
 }
-export function* fetchUserStart(){
+export function* fetchUser(){
     yield takeLatest(
         USER_ACTION_TYPES.FETCH_USER_START,
         fetchUserAsync
@@ -41,9 +44,27 @@ export function* signOutUser(){
         signOutUserAsync
     )
 }
+
+export function* updateUserAsync({payload}){
+ try {
+    yield axios.put('/api/user', payload)
+    yield put(fetchUserStart())
+ }
+ catch (err) {
+    yield put(updateUserFailure(err))
+ }
+}
+export function* updateUser(){
+    yield takeLatest(
+        USER_ACTION_TYPES.UPDATE_USER_START,
+        updateUserAsync
+    )
+}
+
 export default function* userSagas(){
     yield all([
-        call(fetchUserStart),
+        call(fetchUser),
         call(signOutUser),
+        call(updateUser)
     ])
 }

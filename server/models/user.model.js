@@ -13,6 +13,7 @@ var userSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
+    // profilePic: String,
     orders: [String],
     address: String
 });

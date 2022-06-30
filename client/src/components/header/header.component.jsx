@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
 
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { selectCurrentUser } from '../../redux/user/user.selector'
+import { selectCurrentUser } from '../../redux/user/user.selectors'
 import { signOutUserStart } from '../../redux/user/user.actions'
 const Header = ({currentUser, signOut})=>{
     return(
@@ -20,17 +20,21 @@ const Header = ({currentUser, signOut})=>{
             <Link to='/'>
                 <span className='highlight'>Mr.</span>
                 <span>Phone</span>
-                <span className='highlight'>X</span></Link>
+                <span className='highlight'>X</span>
+            </Link>
+            <div className='underline'></div>
         </div> 
         <div className="buttons">
         {
             currentUser 
             ? 
             <div className="logged-in">
+                <div className="signout-container">
                 <CustomButton onClick={signOut} >Sign Out</CustomButton>
-                <div className="profile-pic-container">
-                <img src="/icons/user-1.png" alt="" />
                 </div>
+                <Link className="profile-pic-container" to='/profile'>
+                <img src="/icons/user-1.png" alt="" />
+                </Link>
             </div>
             :
             <div className="signin-signup">

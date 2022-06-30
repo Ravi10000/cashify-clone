@@ -17,7 +17,7 @@ const CardList = ({products})=>{
                id= {product._id}
                title = {`${brand} ${model}`}
                price = {price}
-               imageUrls = {imageUrls}
+               imageUrl = {imageUrls[0]}
                quality = {quality}
                ram={ram}
                storage={storage}

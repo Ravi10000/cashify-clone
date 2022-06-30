@@ -18,10 +18,25 @@ export const signOutUserStart = (res)=>({
     type: USER_ACTION_TYPES.SIGNOUT_USER_START,
 })
 
-export const signOutUserSuccess = (res)=>({
+export const signOutUserSuccess = ()=>({
     type: USER_ACTION_TYPES.SIGNOUT_USER_SUCCESS,
 })
 
 export const signOutUserFailure = (err)=>({
     type: USER_ACTION_TYPES.SIGNOUT_USER_FAILURE,
+    payload: err
+})
+
+export const updateUserStart = (userInfo)=>({
+    type: USER_ACTION_TYPES.UPDATE_USER_START,
+    payload: userInfo
+})
+export const updateUserSuccess = (user)=>({
+    type: USER_ACTION_TYPES.UPDATE_USER_SUCCESS,
+    payload: user
+})
+
+export const updateUserFailure = (err)=>({
+    type: USER_ACTION_TYPES.UPDATE_USER_FAILURE,
+    payload: err
 })

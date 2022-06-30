@@ -14,8 +14,10 @@ module.exports.fetchProductById = async(req, res)=>{
     try {
         const {id} = req.params
         const product = await Product.findById(id)
-        res.send(product)
+        // console.log(product);
+        await res.send(product)
+        // console.log('product: ', product)
     } catch (error) {
-        res.send({redirectTo: '/'})
+        res.redirect('/')
     }
   }

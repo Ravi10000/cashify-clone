@@ -39,7 +39,9 @@ const Homepage = ({products, fetchProducts})=>{
         <div className="device-list">
             <h2 className="title">For Sale</h2>
             <h2 className="subtitle">Refurbished Smartphones</h2>
+            <div className="card-list-container">
             <CardList products={products} />
+            </div>
         </div>
     </div>
 )}

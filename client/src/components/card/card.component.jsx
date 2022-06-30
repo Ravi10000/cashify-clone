@@ -1,16 +1,14 @@
 import './card.styles.scss'
 import { withRouter } from "react-router-dom";
 
-const CardItem = ({id, title, price, imageUrls, quality, ram, storage, history, match})=> {    
-    console.log('match', match);
-    console.log('history', history);
+const CardItem = ({id, title, price, imageUrl, quality, ram, storage, history})=> {    
     return(
     <div className="card"
          onClick={() => history.push(`/product/${id}`)}>
         <div className="image-container">
             <img 
             alt={title}
-            src={imageUrls && imageUrls[0]}
+            src={imageUrl}
             className='image'
             />
         </div>
