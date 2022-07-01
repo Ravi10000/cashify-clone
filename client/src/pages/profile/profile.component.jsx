@@ -7,27 +7,34 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { Link } from 'react-router-dom';
 
-const ProfilePage = ({currentUser}) => {
+import { signOutUserStart } from '../../redux/user/user.actions';
+
+const ProfilePage = ({currentUser, signOut}) => {
     console.log(currentUser)
     return (
     <div className="profile-page">
         <div className="container">
         <h1>Profile</h1>
         <div className="profile-info">
-            <p>Name</p>
+            <p>Name🙋‍♂️</p>
             <p>{currentUser?.name || 'not set'}</p>
-            <p>Email</p>
+            <p>Email📧</p>
             <p>{currentUser?.email}</p>
-            <p>Phone Number</p>
+            <p>Phone Number📱</p>
             <p>{currentUser?.mobile}</p>
-            <p>Address</p>
+            <p>Address🏠</p>
             <p>{currentUser?.address || 'not set'}</p>
-            <p>Your Orders</p> 
+            <p>Your Orders🧡</p> 
         </div>
-        <div className="edit-button-container">
+        <div className="buttons-container">
+        <div className="edit-container">
             <Link to='/edit-profile'>
-            <CustomButton secondary>Edit Profile</CustomButton>
+            <CustomButton secondary><img src="./icons/edit.png" alt="edit"/> Edit Profile</CustomButton>
             </Link>
+        </div>
+        <div className="signout-container">
+                <CustomButton  onClick={signOut}secondary>Sign Out</CustomButton>
+                </div>
         </div>
         </div>
     </div>
@@ -36,4 +43,7 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser
 })
 
-export default connect(mapStateToProps)(ProfilePage);
+const mapDispatchToProps = dispatch => ({
+    signOut: ()=> dispatch(signOutUserStart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

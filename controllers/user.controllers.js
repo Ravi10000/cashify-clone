@@ -19,9 +19,14 @@ module.exports.signInUser  = (req, res)=>{
     res.redirect('/')
 }
 module.exports.signOutUser = (req, res)=>{
-    req.logout(()=>{
-        res.redirect('/')
-    })
+    try{
+        req.logout(()=>{
+            res.redirect('/')
+        })
+    }catch(err){
+        console.log(err)
+        res.redirect('/signup')
+    }
     // res.send(null)
 }
 

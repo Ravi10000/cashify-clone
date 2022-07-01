@@ -5,7 +5,8 @@ const User = require('../models/user.model')
 const router = express.Router()
 
 router.post('/signup', signUpUser)
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin'}), signInUser)
+// { failureRedirect: '/signin'}
+router.post('/signin', passport.authenticate('local', {failureRedirect: '/signin', failureMessage: true, failureFlash: true}), signInUser)
 router.post('/signout', signOutUser)
 
 router.put('/generate-order', generateOrder)

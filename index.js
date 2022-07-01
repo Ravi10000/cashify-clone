@@ -6,6 +6,7 @@ const cors = require("cors");
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const session = require('express-session')
+const flash = require('connect-flash')
 const MongoDBStore = require('connect-mongodb-session')(session)
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -56,17 +57,15 @@ const sessionConfig = {
 }
 
 app.use(session(sessionConfig))
-
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-
 app.use('/api/user', userRoutes)
 app.use("/api/products", productRoutes);
-
 
 app.listen(5000, () => {
   console.log("listening for requests on port 5000");

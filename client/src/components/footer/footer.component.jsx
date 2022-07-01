@@ -1,6 +1,11 @@
+import './footer.styles.scss'
 const Footer = ()=>(
-    <div className="footer w-full m-0               mt-auto bg-secondary h-[200px]">
-        Footer
-    </div>
+        <footer>
+            <div className="contacts-link-container">
+                <h3>Contact links</h3>
+            <a href="mailto:mrphonexcare@gmail.com">mrphonexcare@gmail.com</a>
+            <a href="tel:+919667273499">+919667273499</a>
+            </div>
+        </footer>
 )
 export default Footer

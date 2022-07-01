@@ -1,5 +1,5 @@
 .signin-page{
-    // height: 80%;
+    height: 70vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,6 @@
 @media (min-width: 480px) {
     .signin-page{
         background-color: white;
-
         .container{
         background-color: var(--secondaryAccent);
         border-radius: 5px;

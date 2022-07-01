@@ -29,11 +29,11 @@ const Header = ({currentUser, signOut})=>{
             currentUser 
             ? 
             <div className="logged-in">
-                <div className="signout-container">
-                <CustomButton onClick={signOut} >Sign Out</CustomButton>
-                </div>
+                {/* <div className="signout-container">
+                <CustomButton onClick={signOut} secondary>Sign Out</CustomButton>
+                </div> */}
                 <Link className="profile-pic-container" to='/profile'>
-                <img src="/icons/user-1.png" alt="" />
+                <img src="/icons/custom-user.png" alt="" />
                 </Link>
             </div>
             :

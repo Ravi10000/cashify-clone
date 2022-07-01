@@ -6,10 +6,9 @@ const CustomInput = ({ name, msg, isShort, handleChange, ...otherProps})=>(
         className={`label group-hover:text-primary ${isShort ? 'uppercase' : 'capitalize'}`}
         >{name}</label>
         <input 
-        required
-        onChange={handleChange}
         name={name} 
         id={name}
+        onChange={handleChange}
         {...otherProps}
         className="custom-input 
         border-2 border-solid border-stone-400 rounded-[2px]
