@@ -18,35 +18,29 @@ const Header = ({currentUser, signOut})=>{
     <div className="header">
         <div className="logo">
             <Link to='/'>
-                <span className='highlight'>Mr.</span>
-                <span>Phone</span>
-                <span className='highlight'>X</span>
+                <img src="./logo-without-bg.png" alt="logo" />
             </Link>
             <div className='underline'></div>
         </div> 
-        <div className="buttons">
         {
             currentUser 
             ? 
-            <div className="logged-in">
-                {/* <div className="signout-container">
-                <CustomButton onClick={signOut} secondary>Sign Out</CustomButton>
-                </div> */}
-                <Link className="profile-pic-container" to='/profile'>
-                <img src="/icons/custom-user.png" alt="" />
+            <div className="profile-pic-container">
+                <Link to='/profile'>
+                <img src="/icons/custom-user.png" alt="user-icon" />
                 </Link>
+                <div className="underline"></div>
             </div>
             :
-            <div className="signin-signup">
+            <div className="signin-container">
         <Link to='/signin'>
             <CustomButton>Sign In</CustomButton>
         </Link>
-        <Link to='signup'>
+        {/* <Link to='signup'>
             <CustomButton secondary>Sign Up</CustomButton>
-        </Link>
+        </Link> */}
         </div>
         }
-        </div>
     </div>
 )}
 

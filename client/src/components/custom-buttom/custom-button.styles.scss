@@ -1,23 +1,23 @@
 .custom-button{
     width: 100%;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 5px;
     font-weight: var(--semibold);
-    border: 2px solid var(--accent);
-    background-color: var(--accent);
-    color: var(--secondaryAccent);
+    color: var(--light-4);
+    background-color: var(--medium-dark);
+    border: 2px solid var(--medium-dark);
 
     &:hover{
-        background-color: var(--secondaryAccent);
-        color: var(--accent);
+        color: var(--medium-dark);
+        background-color: var(--light-4);
     }
     &.secondary-button{
-        background-color: var(--secondaryAccent);
-        color: var(--accent);
+        color: var(--medium-dark);
+        background-color: var(--light-4);
 
         &:hover{
-            color: var(--secondaryAccent);
-            background-color: var(--accent);
+            color: var(--light-4);
+            background-color: var(--medium-dark);
         }
     }
 

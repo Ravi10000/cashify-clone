@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --accent: #00afb9;
+  /* --accent: #00afb9; */
+  --dark: #223963;
+  --medium-dark: #2A4E96;
+  --light: #699EEE;
+  --light-1:#AACAE8;
+  --light-2: #BCD4F5;
+  --light-3: #CADAF5;
+  --light-4: #DFEAFB;
   --bold: 700;
   --semibold: 600;
   --medium: 500;
@@ -16,4 +23,6 @@
 body{
   font-family: Poppins;
   overflow: overlay;
+  cursor: default;
+  /* overflow-x: hidden; */
 }

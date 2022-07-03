@@ -42,6 +42,7 @@ const Homepage = ({products, fetchProducts})=>{
             <div className="card-list-container">
             <CardList products={products} />
             </div>
+            
         </div>
     </div>
 )}

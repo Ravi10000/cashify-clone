@@ -27,30 +27,34 @@
             p:nth-child(2n-1){
                 font-weight: var(--semibold);
             }
-        }
-        .buttons-container{
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 50px;
             .edit-container{
-                img{
-                    display: inline-block;
-                    height: 20px;
-                }
+                width: 100%;
             }
         }
+        // .buttons-container{
+        //     width: 100%;
+        //     display: flex;
+        //     justify-content: center;
+        //     margin-bottom: 50px;
+        //     .edit-container{
+        //         img{
+        //             display: inline-block;
+        //             height: 20px;
+        //         }
+        //     }
+        // }
     }
 }
 
 @media (min-width: 450px){
     .profile-page{
-
         .container{
             width: 50%;
-            
             .profile-info{
                 width: 500px;
+                .edit-container{
+                    width: 80%;
+                }
             }
             
         }

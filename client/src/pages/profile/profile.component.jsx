@@ -24,17 +24,19 @@ const ProfilePage = ({currentUser, signOut}) => {
             <p>{currentUser?.mobile}</p>
             <p>Address🏠</p>
             <p>{currentUser?.address || 'not set'}</p>
-            <p>Your Orders🧡</p> 
-        </div>
-        <div className="buttons-container">
-        <div className="edit-container">
+            <p>Your Orders🧡</p>
+            <p></p> 
+            <div className="edit-container">
             <Link to='/edit-profile'>
-            <CustomButton secondary><img src="./icons/edit.png" alt="edit"/> Edit Profile</CustomButton>
+            <CustomButton secondary>Edit Profile</CustomButton>
             </Link>
         </div>
         <div className="signout-container">
-                <CustomButton  onClick={signOut}secondary>Sign Out</CustomButton>
-                </div>
+                <CustomButton  onClick={signOut}>Sign Out</CustomButton>
+        </div>
+        </div>
+        <div className="buttons-container">
+        
         </div>
         </div>
     </div>

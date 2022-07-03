@@ -11,9 +11,9 @@
     border-radius: 2px;
     border: .5px solid rgba(128, 128, 128, 0.271);
     .image-container{
-        width: 35%;
+        min-width: 150px;
         .image{
-            width: 100%;
+            width: 150px;
         }
     }
     .info-container{
@@ -38,20 +38,31 @@
             font-weight: var(--semibold);
             color: #48b839
         }
+        
+    }
+    &:hover{
+        border-width: 2px;
+        border-color: rgba(128, 128, 128, 0.459);
+        padding: 8px;
     }
 
 }
 
+
 @media (min-width: 480px) {
+    .card{
+        width: 70%;
+    }
+}
+@media (min-width: 800px) {
     .card{
         width: 35vw;
         .info-container{
             padding-left: 40px;
         }
-    &:hover{
-        border-width: 2px;
-        border-color: rgba(128, 128, 128, 0.459);
-        width: calc(35vw + 2px);
-    }
+        &:hover{
+            padding: 10px;
+            width: calc(35vw + 2px);
+        }
     }
 }
