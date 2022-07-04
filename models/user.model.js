@@ -13,8 +13,11 @@ var userSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
-    // profilePic: String,
-    orders: [String],
+    orders: 
+    {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Order'
+    },
     address: String
 });
 

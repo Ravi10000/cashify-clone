@@ -1,5 +1,5 @@
 const User = require('../models/user.model')
-
+const Order = require('../models/order.model')
 module.exports.signUpUser = async(req, res)=>{
     try {
         const {email, password} = req.body
@@ -37,14 +37,10 @@ module.exports.getUser = (req, res)=>{
 module.exports.generateOrder = async(req, res)=>{
     try{ 
         console.log(req.body)
-        const {productid} = req.body
-        // const {email, mobile} = req.user
-        // const user = User.find({email: email, mobile: mobile})
+        const {product} = req.body
         const user = req.user
-        // const user = await User.findByIdAndUpdate(req.user._id, {...userInfo})
-        // user.orders = []
-        user.orders.push(productid)
-        console.log(user)
+        const newOrder = await Order.create({user, product})
+        user.orders.push(newOrder)
         await user.save()
         res.redirect('/')
     }

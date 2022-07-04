@@ -23,8 +23,7 @@ const CheckoutPage = ({history, match, updateUserStart}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const {productid} = match.params;
-       axios.put(`/api/user/generate-order`, {productid})
+       axios.put(`/api/user/generate-order`, {product: checkoutItem})
        console.log('done');
        history.push('/profile')
     }
