@@ -1,5 +1,5 @@
 import './custom-input.styles.scss'
-const CustomInput = ({ bgColor, name, msg, isShort, handleChange, ...otherProps})=>(
+const CustomInput = ({ bgColor, name, msg, isShort, handleChange, validateInput, ...otherProps})=>(
     <div className="custom-input">
         
         <input 
@@ -7,6 +7,7 @@ const CustomInput = ({ bgColor, name, msg, isShort, handleChange, ...otherProps}
         name={name} 
         id={name}
         onChange={handleChange}
+        onBlur={validateInput}
         {...otherProps}
         className="input" autoComplete='off'/>
         <label 

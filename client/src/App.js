@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import {
   Switch,
   Route,
-  Redirect
+  Redirect,
+  withRouter
 } from "react-router-dom";
 // pages
 import Homepage from './pages/homepage/homepage.component';
@@ -24,7 +25,8 @@ import { createStructuredSelector } from 'reselect';
 import { fetchUserStart } from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors'
 
-function App({fetchUser, currentUser}) {
+function App({fetchUser, currentUser, history}) {
+  console.log('history', history)
   useEffect(() => {
     fetchUser()
   }, [fetchUser])
@@ -74,4 +76,4 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch=>({
   fetchUser: () => (dispatch(fetchUserStart()))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

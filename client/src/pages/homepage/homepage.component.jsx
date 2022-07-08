@@ -16,7 +16,8 @@ import CardList from "../../components/card-list/card-list.component"
 //router imports
 import { withRouter } from "react-router-dom";
 
-const Homepage = ({products, fetchProducts})=>{
+const Homepage = ({products, fetchProducts, history})=>{
+    console.log('homepage history', history)
     useEffect(()=>{
         fetchProducts()
       }, [fetchProducts])
@@ -56,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
     fetchProducts: ()=> dispatch(fetchProductsStart()),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Homepage))
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
