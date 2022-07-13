@@ -11,8 +11,9 @@ const MongoDBStore = require('connect-mongodb-session')(session)
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const userRoutes = require('./routes/user.routes')
 const productRoutes = require('./routes/product.routes')
+const userRoutes = require('./routes/user.routes')
+const orderRoutes = require('./routes/order.routes')
 
 const Product = require("./models/product.model");
 const User = require('./models/user.model')
@@ -65,8 +66,9 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use('/api/user', userRoutes)
-app.use("/api/products", productRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.listen(5000, () => {
-  console.log("listening for requests on port 5000");
+  console.log("listening for requests on PORT 5000");
 });

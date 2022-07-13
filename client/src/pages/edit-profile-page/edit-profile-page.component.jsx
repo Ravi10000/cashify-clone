@@ -1,6 +1,7 @@
 import './edit-profile.page.styles.scss'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {useForm} from 'react-hook-form'
 // components
 import CustomButton from '../../components/custom-buttom/custom-button.component'
 import CustomInput from '../../components/custom-input/custom-input.component'
@@ -11,53 +12,66 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { withRouter } from 'react-router-dom';
 import { updateUserStart } from '../../redux/user/user.actions';
 
-const EditProfilePage = ({currentUser, history, updateUserStart}) => {
-    const [userInfo, setUserInfo] = useState({name: currentUser?.name, address: currentUser?.address, "phone number": currentUser?.mobile});
-    
-    const handleSubmit = async(event)=>{
-        event.preventDefault()
-        // const {name, address} = userInfo;
-        updateUserStart(userInfo)
-        history.push('/profile')
-        // const resUser = await axios.put('/api/user', {...userInfo})
-        // const resUserJson = resUser.json()
+const EditProfilePage = ({currentUser, history, updateUser}) => {
+    const {name, address} = currentUser;
+    const [userInfo, setUserInfo] = useState({name, address, "phone number": currentUser.mobile});
+    // useEffect(() => {
+    //     // setUserInfo({...currentUser, "phone number": currentUser.mobile})
+    //     console.log(userInfo)
+    // }, [setUserInfo, currentUser]);
 
-        // if(resUser.status === 200){
-        //     history.push('/')
-        // }
-    }
-    const handleChange = event =>{
-        const {name, value} = event.target;
-        setUserInfo({...userInfo, [name] : value})
-        console.log(name, value)
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({defaultValues: userInfo});
+    
+    const submitForm = async data => {
+        console.log(data)
+        const {name, address, "phone number": mobile} = data;
+        // const res = await axios.put('/api/user', {name, address, mobile});
+        updateUser({name, address, mobile});
+        history.push('/profile');
     }
     return(
     <div className="edit-profile-page">
         <div className="container">
             <h1>Edit Profile</h1>
-        <form onSubmit={handleSubmit} className='profile-info'>
+        <form onSubmit={handleSubmit(submitForm)} className='profile-info'>
                 <CustomInput 
                 name="name" 
                 type="text" 
-                value={userInfo.name} 
                 msg='enter your full name' 
-                handleChange={handleChange}/>
+                register = {{...register('name')}}
+                />
 
                 <CustomInput 
                 name='phone number'
                 type='number'
-                value={userInfo['phone number']}
+                // value={userInfo['phone number']}
                 msg='enter your phone number'
-                onChange={handleChange}
+                register = {{...register('phone number', {
+                    required: "phone number is required",
+                    minLength: {
+                        value: 10,
+                        message: "phone number must be 10 digits"
+                    },
+                    maxLength: {
+                        value: 10,
+                        message: "phone number must be 10 digits"
+                    }
+                })}}
                 />
+                <p className='errors'>{errors?.["phone number"]?.message}</p>
                 {/* <CustomInput name="address" msg="enter your address" value={currentUser?.address} type="text" /> */}
                 <div className="address-container">
                     <label htmlFor="address">Address</label>
                 <textarea 
                 id='address'
                 name='address'
-                onChange={handleChange}
-                >{userInfo?.address}</textarea>
+                {...register('address')}
+                // defaultValue={userInfo?.address}
+                />
                 <p className='msg'>enter complete address with pincode</p>
                 </div>
             <div className="save-button-container">
@@ -71,7 +85,7 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser
 })
 const mapDispatchToProps = dispatch => ({
-    updateUserStart: userInfo => dispatch(updateUserStart(userInfo))
+    updateUser: (user) => dispatch(updateUserStart(user))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditProfilePage));

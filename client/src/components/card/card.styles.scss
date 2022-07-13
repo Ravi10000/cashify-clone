@@ -40,11 +40,6 @@
         }
         
     }
-    &:hover{
-        border-width: 2px;
-        border-color: rgba(128, 128, 128, 0.459);
-        padding: 8px;
-    }
 
 }
 
@@ -59,10 +54,6 @@
         width: 35vw;
         .info-container{
             padding-left: 40px;
-        }
-        &:hover{
-            padding: 10px;
-            width: calc(35vw + 2px);
         }
     }
 }

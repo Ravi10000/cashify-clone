@@ -1,5 +1,6 @@
 import './product.styles.scss'
 import { useEffect, useState } from "react"
+import axios from 'axios'
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
@@ -10,20 +11,28 @@ import {selectCurrentUser} from '../../redux/user/user.selectors'
 const Productpage = ({match, history, currentUser})=>{
     const {id} = match.params
     const [product, setProduct] =useState(null)
+    let isOutOfStock = false
+    if(product?.units === 0) isOutOfStock = true
     useEffect(()=>{
         //fetch product
         (async function(){
-            const res = await fetch(`/api/products/${id}`)
-            const productJson = await res.json()
-            setProduct(productJson)
+            const res = await axios.get(`/api/products/${id}`)
+            setProduct(res.data)
         })()
     }, [setProduct, id])
+    console.log(product)
 
     const handleClick = ()=>{
         if(currentUser){
             (currentUser.name && currentUser.address) 
             ? history.push(`/checkout/${product?._id}`)
-            : history.push('/profile')
+            : history.push({
+                pathname: '/profile',
+                state: {
+                    msg: 'profile incomplete',
+                    OnCompleteRedirect: `/checkout/${product?._id}`
+                }
+            })
         }else{
             history.push('/signin')
         }
@@ -35,30 +44,43 @@ const Productpage = ({match, history, currentUser})=>{
         <div className="product-page">
             <div className="container">
                 <div className="image-container">
-                    <img src={product?.imageUrls[0]} alt={`${product?.brand} ${product?.model}`} />
+                    <img src={product?.images[0]?.url} alt={`${product?.brand} ${product?.model}`} />
                 </div>
                 <div className="info-container">
                     <h3 className="name">
                         {product?.brand} {product?.model} <span>- refurbish {product?.quality}</span>
                         </h3>
                         <p className="ram-storage">{product?.ram}Gb/{product?.storage}Gb</p>
-                        <p>{product?.color}</p>
+                        <p><div style={{display: 'inline-block', backgroundColor: product?.color, width: '20px', height: '20px', borderRadius: '2px', marginBottom: '-5px'}}></div> {product?.color} </p>
                         <p>{product?.quality} Quality</p>
                     <p className="price">
                         ₹ {product?.price} only 
                     </p>
                     <p className="units-left">
-                    {product?.units === 1 
+                    {
+                    isOutOfStock
+                    ? <span style={{color: '#ef233c'}}>Out of stock</span> 
+                    : (product?.units === 1) 
                     ? <span>last {product?.units} unit left at this price</span>
                     : <span>{product?.units} units left at this price</span>
                 }
                     </p>
-                    <div className="button-container">
+                    {
+                        !isOutOfStock &&
+                        <div className="button-container">
                     <CustomButton onClick={handleClick}>Buy Now</CustomButton>
                     </div>
+                    }
                 </div>
                 
             </div>
+            {
+                product?.message && 
+                <div className="message">
+                    <h3>Warning Message: </h3>
+                    <p>{product?.message}</p>
+                </div>
+            }
             <div className="description-container">
             <h3>Description</h3>
             {
@@ -72,14 +94,26 @@ const Productpage = ({match, history, currentUser})=>{
                 <p>{product.ram}Gb</p>
                 <p>storage</p>
                 <p>{product.storage}Gb</p>
+                <p>operating system</p>
+                <p>{product.os}</p>
                 <p>color</p>
-                <p>{product.color}</p>
+                <p><div style={{display: 'inline-block', backgroundColor: product?.color, width: '20px', height: '20px', borderRadius: '2px', marginBottom: '-5px'}}></div> {product.color}</p>
                 <p>price</p>
-                <p>{product.price} rs</p>
+                <p> {product.price} rs</p>
                 <p>quality</p>
-                <p>{product.quality}</p>
+                <p> {product.quality}</p>
                 <p>battery capacity</p>
-                <p>{product["battery capacity"]} mAh</p>
+                <p> {product["battery capacity"]} mAh</p>
+                <p>front camera</p>
+                <p>{product["front camera"]}</p>
+                <p>rear camera</p>
+                <p>{product["back camera"]}</p>
+                <p>chipset</p>
+                <p>{product.chipset}</p>
+                <p>cpu info</p>
+                <p>{product.cpu}</p>
+                <p>gpu info</p>
+                <p>{product.gpu}</p>
             </div>
             }
             </div>

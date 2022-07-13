@@ -8,6 +8,7 @@
         align-items: center;
         width: 80%;
         .profile-info{
+            width: 100%;
             margin-bottom: 25px;
             .address-container{
                 margin: 10px 0;
@@ -34,11 +35,13 @@
                 width: 200px;
                 align-self: flex-start;
             }
+            .errors{
+                color: #ff3f56;
+                font-weight: var(--medium);
+                margin-bottom: 20px;
+            }
         }
-        
-
     }
-
 }
 
 @media (min-width: 480px) {

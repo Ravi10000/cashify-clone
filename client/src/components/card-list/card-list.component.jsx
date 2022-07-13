@@ -10,17 +10,18 @@ const CardList = ({products})=>{
         {
             products?.map(product => 
               { 
-                const {brand, model, price, imageUrls, quality, ram, storage} = product;
-                console.log(brand, model, price, imageUrls)
+                const {brand, model, price, images, quality, ram, storage, units} = product;
+                console.log(brand, model, price, images)
                 return <CardItem 
                key = {product._id} 
                id= {product._id}
                title = {`${brand} ${model}`}
                price = {price}
-               imageUrl = {imageUrls[0]}
+               imageUrl = {images[0].url}
                quality = {quality}
                ram={ram}
                storage={storage}
+               units={units}
                />
             })
         }

@@ -20,7 +20,7 @@
         padding-bottom: 10%;
         // margin-top: 50px;
         margin-bottom: 50px;
-        background-color: var(--light-2);
+        background:  linear-gradient(135deg, rgba(155, 209, 226, 0.528), var(--light-3));
         border-radius: 5px;
         form{
             .form-title{
@@ -39,6 +39,11 @@
                 width: 100%;
             }
         }
+    }
+    .errors{
+        color: #ff3f56;
+        font-weight: var(--medium);
+        margin-bottom: 20px;
     }
 }
 

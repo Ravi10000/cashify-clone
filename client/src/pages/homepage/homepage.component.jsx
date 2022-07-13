@@ -43,7 +43,13 @@ const Homepage = ({products, fetchProducts, history})=>{
             <div className="card-list-container">
             <CardList products={products} />
             </div>
-            
+            <div className="quality-description">
+                <h3>Quality Descriptions</h3>
+                <p><span>Superb: </span>Almost new devices with warrenty of 6 months from our side.</p>
+                <p><span>Best: </span>Devices in great condition with warrenty of 3 months from our side.</p>
+                <p><span>Good: </span>Devices in okay condition with warrenty of 1 and 1/2 months from our side.</p>
+                <p><span>Not Bad: </span>Devices that have some issue with warrenty of 1 month from our side.</p>
+            </div>
         </div>
     </div>
 )}

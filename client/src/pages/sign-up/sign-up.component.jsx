@@ -1,186 +1,118 @@
 import './sign-up.styles.scss';
-import { useState } from 'react';
 import axios from 'axios';
+import {useForm} from 'react-hook-form';
 // component imports
 import CustomButton from "../../components/custom-buttom/custom-button.component"
 import CustomInput from "../../components/custom-input/custom-input.component"
 import { Link, withRouter } from 'react-router-dom';
+import {connect} from 'react-redux'
+import {fetchUserStart} from '../../redux/user/user.actions'
 
-const SignUp = ({history, location, match})=>{
-    // console.log('route', route)
-    console.log('location', location);
-    history.location.state = {success:{
-        message: 'You have successfully signed up'
-    }}
-    console.log('match', match);
-    console.log('history', history);
-    const [formData, setFormData] = useState({
-        email: '', 
-        "phone number": '', 
-        password: '', 
-        "confirm password": ''})
-    const {
-        email, 
-        password, 
-        'phone number': phoneNumber, 
-        'confirm password': confirmPassword
-    } = formData;
-    // const [emailWarning, setEmailWarning] = useState('')
-    // const [phoneWarning, setPhoneWarning] = useState('')
-    // const [passwordWarning, setPasswordWarning] = useState('')
-    // const [confirmPasswordWarning, setConfirmPasswordWarning] = useState('')
-
-    // const handleChange = e => {
-    //     const {name, value} = e.target;
-    //     setFormData({...formData, [name]: value})
-    //     switch (name) {
-    //         case 'email':
-    //             if(!email.includes('@') || !email.includes('.')){
-    //                 setEmailWarning('email must be valid')
-    //             }else{
-    //                 setEmailWarning('')
-    //             }
-    //             break;
-    //         case 'phone number':
-    //             if(phoneNumber.toString().length === 9){
-    //                 setPhoneWarning('')
-    //             }else{
-    //                 setPhoneWarning('phone number must be of 10 digits')
-    //             }
-    //             break
-    //         case 'password':
-    //             if(password.length < 7 || password.length > 15){
-    //                 setPasswordWarning('password must be between 8 and 16 characters')
-    //             }else{
-    //                 setPasswordWarning('')
-    //             }
-    //             break
-    //          case 'confirm password':
-    //             if(password !== confirmPassword){
-    //                 setConfirmPasswordWarning('password and confirm password must match')
-    //             }else{
-    //                 setConfirmPasswordWarning('')
-    //             }
-    //             break
-    //         default:
-    //             break;
-    //     }
-    // }
-
-    // const validateForm = e =>{
-    //     console.log('validate')
-    //     e.preventDefault();
-    //     let isValidForm = true
-    //     const {email, "phone number": phoneNumber, password, "confirm password": confirmPassword} = formData;
-    //     if(!email.includes('@') || !email.includes('.')){
-    //         console.log('invalid email')
-    //         isValidForm = false
-    //         setEmailWarning('email must be valid')
-    //     }
-    //     if(isValidForm){
-    //         console.log('form is valid', formData)
-    //     }else{
-    //         console.log('form is invalid', emailWarning)
-    //     }
-    // }
-// const validateInput = e => {
-//     const {name} = e.target;
-//     console.log(name)
-//     switch (name) {
-//     case 'email':
-//         if(!email.includes('@') || !email.includes('.')){
-//             setEmailWarning('email must be valid')
-//         }else{
-//             setEmailWarning('')
-//         }
-//         break;
-//     case 'phone number':
-//         if(phoneNumber.toString().length === 9){
-//             setPhoneWarning('')
-//         }else{
-//             setPhoneWarning('phone number must be of 10 digits')
-//         }
-//         break
-//     case 'password':
-//         if(password.length < 7 || password.length > 15){
-//             setPasswordWarning('password must be between 8 and 16 characters')
-//         }else{
-//             setPasswordWarning('')
-//         }
-//         break
-//      case 'confirm password':
-//         if(password !== confirmPassword){
-//             setConfirmPasswordWarning('password and confirm password must match')
-//         }else{
-//             setConfirmPasswordWarning('')
-//         }
-//         break
-//     default:
-//         break;
-// }
-// }
-    // const submitForm = () => {
-    //     axios.post('/api/user/signup', formData)       
-    // }
+const SignUp = ({history, fetchUser})=>{
     const bgColor = 'rgba(209, 230, 224, 0.7)';
+    const {register, handleSubmit, watch, formState: {errors}} = useForm();
+
+    console.log(errors)
+    const submitForm = async data =>{
+        const {email, password} = data
+        console.log(email, password, data["phone number"])
+        const res = await axios.post('/api/user/signup', {email, password, mobile: data["phone number"]})
+        // const {user} = res.data
+        // updateUser(user)
+        fetchUser()
+        history.push({
+            pathname: '/profile',
+            state: {
+                type: 'success',
+                message: 'Sign up successful'
+            }
+        })
+    }
+    const password = watch('password');
+
     return(
 <div className="signup-page">
     <h3>Already have an account? <Link to='/signin'><span>Sign-in</span></Link></h3>
 <div className="container">
-    {/* <div className="email-warning">
-        {emailWarning}<br/>
-        {phoneWarning}<br/>
-        {passwordWarning}<br/>
-        {confirmPasswordWarning}
-    </div> */}
-{/* method='POST' action='/api/user/signup' */}
-{/* onSubmit={validateForm} */}
-<form method='POST' action='/api/user/signup'>
+    {/* method='POST' action='/api/user/signup' */}
+<form noValidate onSubmit={handleSubmit(submitForm)}>
     <h1 className="form-title">Sign Up</h1>
         <div className="inputs-container">
             <div className="email-container">
             <CustomInput 
+            register = {{...register('email', {
+                required: "email is required!", 
+                pattern: {
+                value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "invalid email" 
+            }})}}
             bgColor={bgColor}
             name='email' type='text' 
             msg='e.g. handle@gmail.com 📧' 
-            // value={email} 
-            // handleChange={handleChange}
-            // validateInput={validateInput}
             required
             />
+            <p className='errors'>{errors?.email?.message}</p>
             </div>
             <div className="phone-container">
-            <CustomInput 
+           <CustomInput 
+            register = {{...register('phone number', {required: "phone number is required!", minLength: {
+                value: 10,
+                message: "phone number must be 10 digits"
+            },
+            maxLength: {
+                value: 10,
+                message: "phone number must be 10 digits"
+            }
+        })}}
             bgColor={bgColor}
             name='phone number' type='number' 
             msg='10 digit 📱mobile number' 
-            // value={phoneNumber}
-            // handleChange={handleChange}
-            // validateInput={validateInput}
             required
             />
+            <p className='errors'>{errors?.["phone number"]?.message}</p>
             </div>
             <div className="password-container">
             <CustomInput 
+            register = {{...register('password', {
+                required: "password is required!",
+                minLength: {
+                    value: 8,
+                    message: "password must be at least 8 characters"
+            },
+            maxLength: {
+                value: 16,
+                message: "password must be at most 16 characters"
+            }
+            })}}
             bgColor={bgColor}
             name='password' type='password' 
             msg='password should be 8-16 characters 🔒'
-            // value={password} 
-            // handleChange={handleChange}
-            // validateInput={validateInput}
             required
             />
+            <p className='errors'>{errors?.password?.message}</p>
             </div>
             <div className="confirm-password-container">
             <CustomInput 
+            register={{...register('confirm password', {
+                required: "confirm password is required!",
+                minLength: {
+                    value: 8,
+                    message: "password must be at least 8 characters"
+                },
+                maxLength: {
+                    value: 16,
+                    message: "password must be at most 16 characters"
+                },
+                pattern: {
+                value: RegExp(password),
+                message: "password does not match"
+            }})}}
             bgColor={bgColor}
             name='confirm password' type='password' 
             msg='should be same as password🔒' 
-            // value={confirmPassword} 
-            // handleChange={handleChange}
-            // validateInput={validateInput}
             required
             />
+            <p className='errors'>{errors?.["confirm password"]?.message}</p>
             </div>
         </div>
         <div className="signup-button-container">
@@ -191,4 +123,9 @@ const SignUp = ({history, location, match})=>{
 </div>
 )}
 
-export default withRouter(SignUp)
+
+const mapDispatchToProps = dispatch => ({
+    fetchUser: () => dispatch(fetchUserStart())
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(SignUp))

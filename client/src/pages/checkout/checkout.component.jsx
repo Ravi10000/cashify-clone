@@ -6,10 +6,11 @@ import Card from '../../components/card/card.component';
 import CustomButton from '../../components/custom-buttom/custom-button.component';
 
 import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
+// import {createStructuredSelector} from 'reselect';
 import {updateUserStart} from '../../redux/user/user.actions';
+import { setCurrentUser } from '../../redux/user/user.actions';
 
-const CheckoutPage = ({history, match, updateUserStart}) => {
+const CheckoutPage = ({history, match, updateUserStart, setCurrentUser}) => {
     console.log(history, match, match.params)
     const [checkoutItem, setCheckoutItem] = useState(null);
     useEffect(() => {
@@ -23,9 +24,15 @@ const CheckoutPage = ({history, match, updateUserStart}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-       axios.put(`/api/user/generate-order`, {product: checkoutItem})
-       console.log('done');
-       history.push('/profile')
+       const res = await axios.post(`/api/orders/new`, {id: checkoutItem._id})
+       setCurrentUser(res.data)
+       history.push({
+        pathname: '/orders',
+        state: {
+            type: 'success',
+            msg: 'Order placed successfully our executive will contact you shortly'
+        }
+       })
     }
     return(
         <div className="checkout-page">
@@ -38,7 +45,7 @@ const CheckoutPage = ({history, match, updateUserStart}) => {
                     id={checkoutItem._id}
                     title={checkoutItem.brand + " " + checkoutItem.model}
                     price={checkoutItem.price}
-                    imageUrl={checkoutItem.imageUrls[0]}
+                    imageUrl={checkoutItem.images[0]?.url}
                     quality={checkoutItem.quality}
                     ram={checkoutItem.ram}
                     storage={checkoutItem.storage}
@@ -57,7 +64,10 @@ const CheckoutPage = ({history, match, updateUserStart}) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    updateUserStart: (user) => dispatch(updateUserStart(user))
+    updateUserStart: (user) => dispatch(updateUserStart(user)),
+    setCurrentUser: (user) => dispatch(setCurrentUser(user))
+
 })
+
 
 export default connect(null, mapDispatchToProps)(withRouter(CheckoutPage))

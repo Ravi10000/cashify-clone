@@ -1,12 +1,12 @@
 import './custom-input.styles.scss'
-const CustomInput = ({ bgColor, name, msg, isShort, handleChange, validateInput, ...otherProps})=>(
+const CustomInput = ({ bgColor, name, msg, isShort, validateInput, register, ...otherProps})=>(
     <div className="custom-input">
         
         <input 
+        {...register}
         style={bgColor &&{backgroundColor: bgColor}}
         name={name} 
         id={name}
-        onChange={handleChange}
         onBlur={validateInput}
         {...otherProps}
         className="input" autoComplete='off'/>
@@ -14,7 +14,7 @@ const CustomInput = ({ bgColor, name, msg, isShort, handleChange, validateInput,
         htmlFor={name}
         className={`label ${isShort ? 'uppercase' : 'capitalize'}`}
         >{name}</label>
-        <p className="msg">{msg}</p>
+        <p className="msg"></p>
     </div>
 )
 

@@ -47,8 +47,9 @@ export function* signOutUser(){
 
 export function* updateUserAsync({payload}){
  try {
-    yield axios.put('/api/user', payload)
-    yield put(fetchUserStart())
+    const res = yield axios.put('/api/user', payload)
+    const {data} = res
+    yield put(fetchUserSuccess(data))
  }
  catch (err) {
     yield put(updateUserFailure(err))

@@ -14,10 +14,12 @@ import SignUp from './pages/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component'
 import ProfilePage from './pages/profile/profile.component';
 import EditProfilePage from './pages/edit-profile-page/edit-profile-page.component'
+import OrdersPage from './pages/orders/orders.page';
 
 // componetnts
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
+import Popup from './components/popup/popup.component';
 
 // redux connect
 import { connect } from 'react-redux';
@@ -25,8 +27,9 @@ import { createStructuredSelector } from 'reselect';
 import { fetchUserStart } from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors'
 
-function App({fetchUser, currentUser, history}) {
-  console.log('history', history)
+function App({fetchUser, currentUser, history,location}) {
+  console.log('App component history', history)
+  console.log('App component Location', location)
   useEffect(() => {
     fetchUser()
   }, [fetchUser])
@@ -39,6 +42,10 @@ function App({fetchUser, currentUser, history}) {
   // }
   return (
      <div className="App">
+      {
+        location?.state?.msg && 
+        <Popup type={location?.state?.type} msg={location?.state?.msg}/>
+      }
       <Header/>
       <Switch>
         <Route exact path='/product/:id'  component={Productpage}/>
@@ -61,6 +68,7 @@ function App({fetchUser, currentUser, history}) {
           () => currentUser ? <ProfilePage/> : <Redirect to='/signin'/>
         }/>
         <Route path='/edit-profile' component={EditProfilePage}/>
+        <Route path='/orders' component={OrdersPage}/>
         <Route exact path='/' component={Homepage}/>
         <Route exact path='*' render={
           () => <Redirect to='/'/>

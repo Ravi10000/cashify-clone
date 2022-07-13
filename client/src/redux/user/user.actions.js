@@ -40,3 +40,8 @@ export const updateUserFailure = (err)=>({
     type: USER_ACTION_TYPES.UPDATE_USER_FAILURE,
     payload: err
 })
+
+export const setCurrentUser = (user)=>({
+    type: USER_ACTION_TYPES.SET_CURRENT_USER,
+    payload: user
+})

@@ -8,6 +8,7 @@ const UserReducer = (state = INITIAL_STATE, action)=>{
     switch (action.type){
         case USER_ACTION_TYPES.FETCH_USER_SUCCESS:
         case USER_ACTION_TYPES.UPDATE_USER_SUCCESS:
+        case USER_ACTION_TYPES.SET_CURRENT_USER:
             return {
                 ...state,
                 currentUser: action.payload
