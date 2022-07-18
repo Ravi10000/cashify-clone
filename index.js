@@ -1,5 +1,5 @@
-process.env.NODE_ENV !== "production" 
-&& require("dotenv").config();
+// process.env.NODE_ENV !== "production" 
+// && require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -24,9 +24,9 @@ const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/cashify-clone"
 const PORT = process.env.PORT || 5000;
 // || "mongodb://localhost:27017/cashify-clone";
 
-if(process.env.NODE_ENV !== "production") {
-  mongoose.set("debug", true);
-}
+// if(process.env.NODE_ENV !== "production") {
+//   mongoose.set("debug", true);
+// }
 
 mongoose.connect(DB_URL);
 const db = mongoose.connection;
@@ -75,7 +75,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.use(express.static(path.join(__dirname, "client", "build")));
   app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
   });
