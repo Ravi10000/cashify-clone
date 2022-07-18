@@ -1,17 +1,66 @@
-import './footer.styles.scss'
-import { Link } from 'react-router-dom'
-const Footer = ()=>(
-        <footer>
-            <div className="contacts-link-container">
+import "./footer.styles.scss";
+import { Link } from "react-router-dom";
+const Footer = () => (
+  <footer>
+    {/* <div className="contacts-link-container">
                 <h3>Contact links</h3>
             <a href="mailto:mrphonexcare@gmail.com">mrphonexcare@gmail.com</a>
             <a href="tel:+919667273499">+919667273499</a>
             </div>
             <div className="policies">
                 <div className="tos">
-                    <Link>terms of services</Link>
+                    <Link to='/terms-of-services'>terms of services</Link>
                 </div>
+            </div> */}
+    <div className="info">
+      <div className="contact-us">
+        <h3>Contact Us</h3>
+        <p>
+          Call us for help at <a href="tel:+919667273499">+919667273499</a>
+        </p>
+        <p>
+          Email us your queries at <br /><a href="mailto:mrPhonexCare@gmail.com">mrPhonexCare@gmail.com</a>
+        </p>
+      </div>
+      <div className="seperator"></div>
+      <div className="policies-links">
+        <Link to="/tos">
+          <p>terms of services | return policies</p>
+        </Link>
+        <Link to="/about-us">
+          <p>abous us</p>
+        </Link>
+      </div>
+    </div>
+    <div className="seperator h"></div>
+    <div className="social-media-links">
+            <h3>Our Social Media Handles</h3>
+            <div className="handles-container">
+            <a
+          href="https://www.facebook.com/mrphonex.2022"
+          target="_blank"
+          rel="noreferrer"
+        >
+            <div className="handle fb">
+              <img src="/icons/fb.png" alt="facebook_page" />
+              <p> @mrphonex.2022</p>
+            <div className="underline"></div>
             </div>
-        </footer>
-)
-export default Footer
+            </a>
+            <a
+          href="https://www.instagram.com/mrphone_x"
+          target="_blank"
+          rel="noreferrer"
+        >
+            <div className="handle ig">
+              <img src="/icons/ig.png" alt="instagram-profile" />
+              <p> @mrphone_x</p>
+            <div className="underline"></div>
+            </div>
+            </a>
+            </div>
+    </div>
+    <p>©copyright | Mr.PhoneX</p>
+  </footer>
+);
+export default Footer;

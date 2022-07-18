@@ -96,6 +96,10 @@
             justify-content: space-between;
             .image-container{
                 width: 40%;
+                img{
+                    width: 100%;
+                    margin-left: 50px;
+                }
             }
             .info-container{
                 width: 50%;

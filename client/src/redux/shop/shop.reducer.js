@@ -1,15 +1,22 @@
 import SHOP_ACTION_TYPES from "./shop.types";
 
 const INITIAL_STATE = {
-    products : []
+    products : [],
+    productsCount : 0
 };
 
 const ShopReducer = (state = INITIAL_STATE, action)=>{
     switch (action.type){
-        case SHOP_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
+        case SHOP_ACTION_TYPES.INITIALIZE_PRODUCTS:
+            return{
+                ...state,
+                products: action.payload.products,
+                productsCount: action.payload.productsCount
+            }
+        case SHOP_ACTION_TYPES.SET_PRODUCTS:
             return {
                 ...state,
-                products: action.payload
+                products: action.payload,
             }
         default: return state
     }

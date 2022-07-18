@@ -2,13 +2,11 @@ import {put, all, call, takeLatest } from 'redux-saga/effects';
 import USER_ACTION_TYPES from './user.types';
 import axios from 'axios';
 import {
-    fetchUserSuccess,
-    fetchUserFailure,
     signOutUserSuccess,
+    setCurrentUser,
+    fetchUserFailure,
     signOutUserFailure,
-    updateUserSuccess,
-    fetchUserStart,
-    updateUserFailure
+    updateUserFailure,
 } from './user.actions'
 
 export function* fetchUserAsync(){
@@ -16,7 +14,7 @@ export function* fetchUserAsync(){
         const res = yield fetch('/api/user');
         const resJson = yield res.json()
         yield console.log('user: ', resJson)
-        yield put(fetchUserSuccess(resJson))
+        yield put(setCurrentUser(resJson))
     }catch(err){
         yield put(fetchUserFailure(err))
     }
@@ -49,7 +47,7 @@ export function* updateUserAsync({payload}){
  try {
     const res = yield axios.put('/api/user', payload)
     const {data} = res
-    yield put(fetchUserSuccess(data))
+    yield put(setCurrentUser(data))
  }
  catch (err) {
     yield put(updateUserFailure(err))

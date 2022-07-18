@@ -1,5 +1,10 @@
 import SHOP_ACTION_TYPES from "./shop.types";
 
+export const setProducts = (products) => ({
+    type: SHOP_ACTION_TYPES.SET_PRODUCTS,
+    payload: products
+});
+
 export const fetchProductsStart = ()=>({
     type: SHOP_ACTION_TYPES.FETCH_PRODUCTS_START
 })

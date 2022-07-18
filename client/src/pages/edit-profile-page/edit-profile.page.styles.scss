@@ -1,57 +1,69 @@
-.edit-profile-page{
+.edit-profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .container{
+    width: 80%;
+    .profile-pic{
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(217, 216, 216, 0.303), var(--light-3));
+        border-radius: 50%;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        width: 80%;
-        .profile-info{
-            width: 100%;
-            margin-bottom: 25px;
-            .address-container{
-                margin: 10px 0;
-                textarea{
-                    height: 200px;
-                    width: 100%;
-                    border: 2px solid #808080b1;
-                    border-radius: 2px;
-                    outline: none;
-                    padding: 10px;
-                    &:hover{
-                        border-color: var(--accent)
-                    }
-                    &:focus{
-                        border-color: var(--accent)
-                    }
-                }
-                .msg{
-                    color: rgb(120, 113, 108);
-                    font-size: .9rem;
-                }
-            }
-            .save-button-container{
-                width: 200px;
-                align-self: flex-start;
-            }
-            .errors{
-                color: #ff3f56;
-                font-weight: var(--medium);
-                margin-bottom: 20px;
-            }
+        img{
+            width: 50%;
         }
     }
+    form{
+      width: 100%;
+      margin-bottom: 25px;
+      .address-container {
+        margin: 10px 0;
+        textarea {
+          height: 200px;
+          width: 100%;
+          border: 2px solid #808080b1;
+          border-radius: 2px;
+          outline: none;
+          padding: 10px;
+          &:hover {
+            border-color: var(--accent);
+          }
+          &:focus {
+            border-color: var(--accent);
+          }
+        }
+        .msg {
+          color: rgb(120, 113, 108);
+          font-size: 0.9rem;
+        }
+      }
+      .save-button-container {
+        width: 200px;
+        align-self: flex-start;
+      }
+      .errors {
+        color: #ff3f56;
+        font-weight: var(--medium);
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
 
 @media (min-width: 480px) {
-    .edit-profile-page{
-        .container{
-            width: 50%;
-            padding: 50px;
-            .profile-info{
-                width: 100%
-            }
-        }
+  .edit-profile-page {
+    .container {
+      width: 50%;
+      padding: 50px;
+      .profile-info {
+        width: 100%;
+      }
     }
+  }
 }

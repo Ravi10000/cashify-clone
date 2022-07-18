@@ -1,59 +1,60 @@
-.card{
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 0.5px solid rgba(128, 128, 128, 0.271);
+  .image-container {
+    min-width: 150px;
+    .image {
+      width: 150px;
+    }
+  }
+  .info-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 200px;
-    width: 100%;
-    margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%;
+    height: 100%;
     padding: 10px;
-    position: relative;
-    cursor: pointer;
-    border-radius: 2px;
-    border: .5px solid rgba(128, 128, 128, 0.271);
-    .image-container{
-        min-width: 150px;
-        .image{
-            width: 150px;
-        }
+    text-transform: capitalize;
+    .name {
+      font-size: 1.1rem;
+      font-weight: var(--semibold);
     }
-    .info-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 65%;
-        height: 100%;
-        padding: 10px;
-        text-transform: capitalize;
-        .name{
-            font-size: 1.1rem;
-            font-weight: var(--semibold);
-        }
-        .memory{
-            font-weight: var(--semibold);
-            font-size: .9rem;
-            margin-bottom: 5px;
-        }
-        .price{
-            margin-top: 10px;
-            font-weight: var(--semibold);
-            color: #48b839
-        }
-        
+    .memory {
+      font-weight: var(--semibold);
+      font-size: 0.9rem;
+      margin-bottom: 5px;
     }
-
+    .price {
+      margin-top: 10px;
+      font-weight: var(--semibold);
+      color: #48b839;
+    }
+  }
+  &:hover {
+    border-radius: 0;
+    outline: 1px solid grey;
+  }
 }
-
 
 @media (min-width: 480px) {
-    .card{
-        width: 70%;
-    }
+  .card {
+    width: 70%;
+  }
 }
 @media (min-width: 800px) {
-    .card{
-        width: 35vw;
-        .info-container{
-            padding-left: 40px;
-        }
+  .card {
+    width: 35vw;
+    .info-container {
+      padding-left: 40px;
     }
+  }
 }

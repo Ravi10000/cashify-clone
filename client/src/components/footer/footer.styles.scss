@@ -1,41 +1,163 @@
-footer{
-    // height: 300px;
-    width: 100%;
-    background-color: var(--dark);
+footer {
+  width: 100%;
+  margin-top: auto;
+  background: linear-gradient(
+    95.93deg,
+    #699eee 5.75%,
+    #2a4e96 42.84%,
+    #223963 67.22%
+  );
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  justify-self: flex-end;
+  padding: 20px;
+
+  .info {
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-    // border-radius: 15px 15px 0px 0px;
-    .contacts-link-container{
-        width: 50%;
-        padding: 25px;
-        align-self: flex-start;
+    justify-content: space-around;
+
+    .contact-us {
+      h3 {
+        font-weight: var(--semibold);
+        font-size: 1.2rem;
+        color: var(--light-1);
+      }
+      a {
+        &:hover {
+          color: #00b894;
+        }
+      }
+    }
+    .policies-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      P {
+        padding-top: 10px;
+        &:hover {
+          color: #00b894;
+        }
+      }
+    }
+  }
+  .seperator {
+    margin: 20px 0;
+    height: 3px;
+    width: 100px;
+    border-radius: 2px;
+    background-color: #699eee;
+  }
+
+  .social-media-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    h3 {
+      font-weight: var(--semibold);
+      font-size: 1.2rem;
+      color: var(--light-1);
+    }
+    .handles-container {
+      .handle {
+        position: relative;
         display: flex;
-        flex-direction: column;
-        h3{
-            color: var(--light);
-            font-size: 1.2rem;
-            font-weight: var(--semibold);
-            margin-bottom: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        img {
+          transition: all 0.2s ease-out;
+          height: 35px;
+          margin-right: 10px;
         }
-        a{
-            padding-left: 5px;
-            padding-bottom: 5px;
-            font-size: 1.1rem;
-            color: var(--light-4);
-            text-decoration: underline;
+        p {
+          display: inline-block;
         }
+      }
     }
-    .tos{
-        align-self: flex-start;
-        justify-self: flex-start;
-        color: red;
-    }
+  }
 }
 
-@media (min-width: 450px) {
-    footer{
-        height: 25vh;
+@media (hover: hover) {
+  footer {
+    .social-media-links {
+      .handles-container {
+        .handle {
+          .underline {
+            position: absolute;
+            height: 3px;
+            border-radius: 2px;
+            width: 0%;
+            bottom: -15px;
+            transition: all 0.2s ease-in-out;
+            background: linear-gradient(
+              270deg,
+              #d6249f 29.01%,
+              #fd5949 68.75%,
+              #f7d0a8 100%
+            );
+          }
+          &:hover {
+            img {
+              transform: scale(1.2);
+            }
+            .underline {
+              width: 105%;
+            }
+          }
+        }
+        .handle.fb {
+          .underline {
+            background: linear-gradient(
+              270deg,
+              #1976d2 29.01%,
+              rgba(67, 140, 212, 0.78125) 68.75%,
+              rgba(0, 122, 242, 0.63) 100%
+            );
+          }
+        }
+      }
     }
+  }
+}
+
+@media (min-width: 800px) {
+  footer {
+    .info {
+      flex-direction: row;
+      margin-bottom: 20px;
+      .contact-us {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .policies-links {
+        align-items: flex-start;
+      }
+    }
+
+    .handles-container {
+      display: flex;
+      .handle.fb {
+        padding-right: 50px;
+      }
+    }
+    .seperator {
+      margin: 0 20px;
+      height: 40px;
+      width: 3px;
+      border-radius: 2px;
+      background-color: #699eee;
+    }
+    .seperator.h {
+      margin: 20px 0;
+      height: 3px;
+      width: 50px;
+    }
+  }
 }

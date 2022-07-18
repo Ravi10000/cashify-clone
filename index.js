@@ -21,7 +21,7 @@ const User = require('./models/user.model')
 const app = express();
 const DB_URL = process.env.DB_URL 
 // || "mongodb://localhost:27017/cashify-clone";
-
+mongoose.set('debug', true)
 mongoose.connect(DB_URL);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));

@@ -2,9 +2,8 @@
 import { useState, useEffect } from 'react'
 import './custom-button.styles.scss'
 
-const CustomButton = ({children, myStyles, secondary, handleClick,...otherProps})=>{
+const CustomButton = ({children, myStyles, secondary, handleClick, isLoading, ...otherProps})=>{
     const [styles, setStyles] = useState({})
-    // const [isLoding, toogleLoading] = useState(false)
     useEffect(()=>{
         myStyles 
         && setStyles({
@@ -33,20 +32,27 @@ const CustomButton = ({children, myStyles, secondary, handleClick,...otherProps}
             borderStyle: 'solid'
         })
     }
+    const loaderStyles = !myStyles ? {
+        display: isLoading && 'inline-block'
+    } : {
+        display: isLoading && 'inline-block',
+        borderColor: myStyles.color ? myStyles.color : '#223963',
+        borderTopColor: myStyles.backgroundColor ? myStyles.backgroundColor : '#fff'
+    }
     return(
     <button 
     onMouseOver={onHover}
     onMouseOut={onOut}
     style={styles}
-    onClick={handleClick && handleClick}
-    //     () =>{
-    //     handleClick && handleClick()
-    //     toogleLoading(isLoding => !isLoding)
-    // } }
+    onClick={
+        //handleClick && handleClick}
+        () =>{
+        handleClick && handleClick()
+    } }
     className={`custom-button ${secondary && 'secondary-button'}`} 
     {...otherProps}>
         {children} 
-        {/* <div className="loader" style={{display: isLoding && 'inline-block'}}></div> */}
+        <div className="loader" style={loaderStyles}></div>
         </button>
 )}
 

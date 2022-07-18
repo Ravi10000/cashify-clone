@@ -1,35 +1,27 @@
-import './card-list.styles.scss';
+// styles
+import "./card-list.styles.scss";
+
+// packages
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+// selectors
 import { selectProducts } from "../../redux/shop/shop.selectors";
+
+// components
 import CardItem from "../card/card.component";
 
-const CardList = ({products})=>{
-    return(
+const CardList = ({ products }) => {
+  return (
     <div className="card-list">
-        {
-            products?.map(product => 
-              { 
-                const {brand, model, price, images, quality, ram, storage, units} = product;
-                console.log(brand, model, price, images)
-                return <CardItem 
-               key = {product._id} 
-               id= {product._id}
-               title = {`${brand} ${model}`}
-               price = {price}
-               imageUrl = {images[0].url}
-               quality = {quality}
-               ram={ram}
-               storage={storage}
-               units={units}
-               />
-            })
-        }
+      {products?.map((product) => (
+        <CardItem key={product._id} product={product} />
+      ))}
     </div>
-)
-}
+  );
+};
 const mapStateToProps = createStructuredSelector({
-    products: selectProducts,
-})
+  products: selectProducts,
+});
 
-export default connect(mapStateToProps)(CardList)
+export default connect(mapStateToProps)(CardList);

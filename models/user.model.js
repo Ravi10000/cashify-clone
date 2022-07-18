@@ -3,12 +3,12 @@ const passportLocalMongoose = require('passport-local-mongoose')
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
     name: String,
-    email:{
-        type:String,
-        required:true,
+    username: {
+        type: String,
+        required: true,
         unique:true,
     },
-    mobile:{
+    "phone number":{
         type:String,
         required:true,
         unique:true,

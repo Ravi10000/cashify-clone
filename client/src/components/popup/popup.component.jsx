@@ -1,25 +1,33 @@
 import './popup.styles.scss'
 import {useState, useEffect} from 'react'
 
-const Popup = ({msg, type})=>{
+import { connect } from 'react-redux'
+
+import { clearFlash } from '../../redux/flash/flash.actions'
+const Popup = ({message, type, clearFlash})=>{
     const [hidePopup, togglePopup] = useState(false)
 
   useEffect(()=>{
     setTimeout(function() {
-      togglePopup(hidePopup => !hidePopup)
+      togglePopup(true)
+      clearFlash()
          }, 5000);
        },
-   [])
+   [clearFlash])
     return(
-        <div className={`popup ${type}`} style={{display: hidePopup && 'none'}}>
+        <div className={`popup ${type}`} style={{display: hidePopup && 'none'}} onClick={()=>{togglePopup(true)}}>
             {
-                  msg && 
+                  message && 
             <div className="popup-msg">
-                   <p>{msg}</p>
+                   <p>{message}</p>
             </div>
                 }
         </div>
     )
 }
 
-export default Popup
+const mapDispatchToProps = dispatch => ({
+  clearFlash : () => dispatch(clearFlash())
+})
+
+export default connect(null, mapDispatchToProps)(Popup)

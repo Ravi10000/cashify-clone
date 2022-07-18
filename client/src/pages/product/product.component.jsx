@@ -4,13 +4,18 @@ import axios from 'axios'
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
-import CustomButton from "../../components/custom-buttom/custom-button.component"
-import { selectProducts } from "../../redux/shop/shop.selectors"
 import {selectCurrentUser} from '../../redux/user/user.selectors'
+import { selectProducts } from "../../redux/shop/shop.selectors"
+import CustomButton from "../../components/custom-buttom/custom-button.component"
+import ImagesCarousel from '../../components/carousel/carousel.component'
+import Loader from '../../components/loader/loader.component'
 // import { useParams } from "react-router-dom"
 const Productpage = ({match, history, currentUser})=>{
     const {id} = match.params
     const [product, setProduct] =useState(null)
+    const [isFetching, setIsFetching] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+
     let isOutOfStock = false
     if(product?.units === 0) isOutOfStock = true
     useEffect(()=>{
@@ -18,33 +23,44 @@ const Productpage = ({match, history, currentUser})=>{
         (async function(){
             const res = await axios.get(`/api/products/${id}`)
             setProduct(res.data)
+            setIsFetching(false)
         })()
     }, [setProduct, id])
     console.log(product)
 
     const handleClick = ()=>{
-        if(currentUser){
-            (currentUser.name && currentUser.address) 
-            ? history.push(`/checkout/${product?._id}`)
-            : history.push({
-                pathname: '/profile',
-                state: {
-                    msg: 'profile incomplete',
-                    OnCompleteRedirect: `/checkout/${product?._id}`
-                }
-            })
-        }else{
+        setIsLoading(true)
+        if(!currentUser){
             history.push('/signin')
+            return
         }
-        // axios.post('/api/user/generateorder', {
-        //     productId: product?._id
-        // })
-    }
+        (currentUser.name && currentUser.address) 
+        ? history.push(`/checkout/${product?._id}`)
+        : history.push({
+            pathname: '/edit-profile',
+            state: {
+                msg: 'INCOMPLETE PROFILE! | Please fill your name and address before checkout',
+                OnCompleteRedirect: `/checkout/${product?._id}`
+            }
+        })
+    }  
+    const loaderStyles = isFetching
+    ? { display: "flex", justifyContent: "center", alignItems: "center" }
+    : {};
     return(
-        <div className="product-page">
-            <div className="container">
+        <div className="product-page" style={loaderStyles}>
+            {
+                isFetching ?
+                <Loader/>
+                :
+                <>
+                <div className="container">
                 <div className="image-container">
-                    <img src={product?.images[0]?.url} alt={`${product?.brand} ${product?.model}`} />
+                {product?.images.length > 1
+                    ?
+                    <ImagesCarousel images={product?.images}/>
+                    : <img src={product?.images[0].url} alt="product"/>
+                }
                 </div>
                 <div className="info-container">
                     <h3 className="name">
@@ -68,7 +84,7 @@ const Productpage = ({match, history, currentUser})=>{
                     {
                         !isOutOfStock &&
                         <div className="button-container">
-                    <CustomButton onClick={handleClick}>Buy Now</CustomButton>
+                    <CustomButton onClick={handleClick} isLoading={isLoading && true}>Buy Now</CustomButton>
                     </div>
                     }
                 </div>
@@ -117,6 +133,8 @@ const Productpage = ({match, history, currentUser})=>{
             </div>
             }
             </div>
+</>
+            }
         </div>
 )}
 

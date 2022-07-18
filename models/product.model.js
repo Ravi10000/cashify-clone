@@ -65,7 +65,7 @@ const productSchema = new Schema({
     imageUrls:{
         type: [String],
         required: true
-    }
-})
+    },
+}, { timestamps: true });
 
 module.exports = model('Product', productSchema)

@@ -6,32 +6,36 @@
         position: relative;
         min-width: 100vw;
         min-height: 100vh;
-        // background-image: url('../../../public/banner2.webp');
         background-image: url('../../../public/banner-phones.webp');
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 0px 0px 15px 15px;
         .title{
+            opacity: 0;
             position: absolute;
             top: 30%;
             left: 10%;
             transform: translatey(-50%);
-            font-family: 'Righteous';
-            font-size: 3rem;
-            // font-weight: bold;
+            // font-weight: var(--semibold);
+            font-family: 'Righteous', cursive;  
+
+            font-size: 4rem;
+            animation: slideTitle .75s .25s ease-in-out forwards;
             span{
                 color: var(--medium-dark)
             }
         }
         .subtitle{
+            opacity: 0;
             position: absolute;
+            font-weight: var(--normal);
             top: 35%;
             left: 10%;
-            font-weight: var(--semibold);
             font-size: 1.5rem;
             letter-spacing: 2px;
             color: #535353;
             line-height: 2;
+            animation: appear .5s 1s ease-out forwards;
             span{
                 color: var(--medium-dark);
                 background: #ffffffcc;
@@ -76,7 +80,9 @@
             font-weight: var(--semibold);
         }
         p{
+            font-size: 0.9rem;
             span{
+                font-size: 1rem;
                 font-weight: var(--semibold);
                 margin-right: 10px;
             }
@@ -86,15 +92,13 @@
 
 @media (min-width: 768px) {
     .homepage{
+        // height:auto;
         .banner{
-            // background-image: url('../../../public/banner-phones.webp');
-            // background-repeat: no-repeat;
-            // background-size: cover;
             .title{
                 top: 50%;
                 left: 10%;
                 transform: translate(20%, -50%);
-                font-size: 4rem;
+                font-size: 5rem;
             }
             .subtitle{
                 top: 55%;
@@ -102,4 +106,31 @@
             }
         }
 }
+}
+
+@keyframes slideTitle {
+    0%{
+        opacity: 0;
+        transform: translate(-200px, -50%);
+    }
+    70%{
+        opacity: .7;
+        transform: translate(40px, -50%);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px, -50%);
+
+    }
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        transform: scale(.7);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
 }

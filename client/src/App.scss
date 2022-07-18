@@ -1,7 +1,9 @@
 $accent-color: #2A4E96;
 .App{
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    // height: 100vh;
     .footer{
         align-self: flex-end;
         justify-self: flex-end;

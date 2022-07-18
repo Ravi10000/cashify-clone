@@ -2,6 +2,10 @@
  @tailwind base;
 /* @tailwind components;
 @tailwind utilities; */ 
+@font-face {
+  font-family: canon;
+  src: url('../public/fonts/canon.ttf');
+}
 
 :root {
   /* --accent: #00afb9; */
@@ -16,7 +20,7 @@
   --semibold: 600;
   --medium: 500;
   --normal: 400;
-  --secondaryAccent: #E2F2FD;
+  --thin: 300;
 }
 *{
   box-sizing: border-box;

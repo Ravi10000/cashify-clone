@@ -1,39 +1,47 @@
 .custom-button{
     width: 100%;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 3px;
     font-weight: var(--semibold);
     color: var(--light-4);
     background-color: var(--medium-dark);
     border: 2px solid var(--medium-dark);
+    transition: all .15s ease-out;
 
-    &:hover{
-        color: var(--medium-dark);
-        background-color: var(--light-4);
-    }
     &.secondary-button{
         color: var(--medium-dark);
         background-color: var(--light-4);
+    }
+    .loader{
+        display: none;
+        height: 20px;
+        width: 20px;
+        margin-bottom: -5px;
+        margin-left: 5px;
+        border-radius: 50%;
+        border: 3px solid var(--medium-dark);
+        border-top-color: #fff;
+        animation: spin .75s linear infinite;
+    }
 
+}
+
+@media (hover: hover){
+    .custom-button{
         &:hover{
+            color: var(--medium-dark);
+            background-color: var(--light-4);
+        }
+        &.secondary-button{
+            &:hover{
             color: var(--light-4);
             background-color: var(--medium-dark);
         }
+        }
     }
-    // .loader{
-    //     display: none;
-    //     height: 20px;
-    //     width: 20px;
-    //     margin-bottom: -5px;
-    //     border-radius: 50%;
-    //     border: 3px solid var(--medium-dark);
-    //     border-top-color: #fff;
-    //     animation: spin 1s linear infinite;
-    // }
-
 }
-// @keyframes spin {
-//     to {
-//       transform: rotate(360deg);
-//     }
-// }
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}

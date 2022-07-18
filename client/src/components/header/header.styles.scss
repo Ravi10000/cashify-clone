@@ -1,114 +1,127 @@
-.header{
-    height: 70px;
-    width: 100%;
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 1px;
+  z-index: 10;
+  padding: 10px 10px;
+  background-color: #b9cafe;
+  align-items: center;
+
+  .logo.link {
+    img {
+      height: 50px;
+    }
+  }
+  .links {
     display: flex;
-    justify-content: space-between;
-    position: sticky;
-    top: 1px;
-    z-index: 10;
-    padding: 10px 15px;
-    // margin-bottom: 25px;
-    background-color: #B9CAFE;
+    justify-content: space-around;
+    height: 100%;
+    // margin-right: 15px;
+  }
+  .fetchingUser {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    // border-radius: 0px 0px 5px 5px;
-    .logo{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 50px;
-        transition: all .2s ease-in-out;
-        position: relative;
-        img{
-            height: 50px;
-        }
-        .underline{
-            position: absolute;
-            bottom: 0;
-            width: 0px;
-            border-radius: 2px;
-            transition: all .25s ease-out;
-        }
-        &:hover{
-            transform: scale(1.1);
-            .underline{
-                background-color: var(--medium-dark);
-                height: 3px;
-                width: 100%;
-            }
-        }
-        
+    height: 100%;
+    width: 70px;
+    .loader {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 4px solid var(--medium-dark);
+      border-top-color: var(--light-3);
+      animation: spin 0.75s linear infinite;
     }
-    .profile-pic-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 35px;
-        position: relative;
-        transition: all .2s ease-in-out;
-        img{
-            height: 30px;
-        }
-        .underline{
-            width: 0px;
-            border-radius: 2px;
-            transition: all .25s ease-out;
-            position: absolute;
-            bottom: -7px;
-        }
-        &:hover{
-            transform: scale(1.1);
-            .underline{
-                background-color: var(--medium-dark);
-                height: 3px;
-                width: 100%;
-            }
-        }
+  }
+  .link {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    img {
+      height: 30px;
     }
-    
+  }
 }
 
-@media (min-width: 800px){
-    .header{
-        padding: 10px 25px;
-        .buttons{
-            width: 30%;
-            
-        }
-    }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-@media (min-width: 1024px) {
-    .header{
-        .buttons{
-            // width: 25%;
+@media (hover: hover) {
+  .header {
+    .link {
+      .underline {
+        width: 0px;
+        border-radius: 2px;
+        transition: all 0.25s ease-out;
+        position: absolute;
+        bottom: -7px;
+      }
+      &:hover {
+        transform: scale(1.1);
+        .underline {
+          background: linear-gradient(
+            270deg,
+            #1976d2 29.01%,
+            var(--light) 68.75%,
+            var(--medium-dark) 100%
+          );
+          height: 3px;
+          width: 100%;
         }
+      }
     }
+  }
+  .ig.link {
+    &:hover {
+      .underline {
+        background: linear-gradient(
+          270deg,
+          #d6249f 29.01%,
+          #fd5949 68.75%,
+          #f7d0a8 100%
+        );
+      }
+    }
+  }
+  .fb.link {
+    &:hover {
+      .underline {
+        background: linear-gradient(
+          270deg,
+          #1976d2 29.01%,
+          rgba(67, 140, 212, 0.78125) 68.75%,
+          rgba(0, 122, 242, 0.63) 100%
+        );
+      }
+    }
+  }
+}
+@media (min-width: 800px) {
+  .header {
+    padding-left: 0px;
+    padding-right: 25px;
+    .buttons {
+      // width: 30%;
+    }
+  }
 }
 
-.buttons{
-    // display: flex;
-    // width: 60%;
-    // height: 100%;
-    // justify-content: space-around;
-    // align-items: center;
-    background-color: red;
-    .profile-pic-container{
-            // width: 50px;
-            img{
-                height: 30px;
-                transition: all .2s ease-out;
-                &:hover{
-                        transform: scale(1.2);
-                }
-            }
-        // }
-        // background-color: red;
-    }
-    .signin-signup{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-}
+// @media (min-width: 1024px) {
+//   .header {
+//     .buttons {
+//       // width: 25%;
+//     }
+//   }
+// }

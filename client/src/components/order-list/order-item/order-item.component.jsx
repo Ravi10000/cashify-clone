@@ -6,9 +6,9 @@ const OrderItem = ({order}) => {
     const title = product.brand + " " + product.model
     let statusColor = '#ffb703'
     if(order.status === 'delivered'){
-        statusColor = '#25a18e'
+        statusColor = '#25a180'
     }
-    if(order.status === 'declined'){
+    if(order.status === 'cancelled'){
         statusColor = '#e63946'
     }
     return (
@@ -44,7 +44,7 @@ const OrderItem = ({order}) => {
                     <Link to={`/product/${product._id}`}>
                         <p>Go To Product Page</p>
                         </Link>
-                    <a href="tel:+919667273499">
+                        <a href="tel:+919667273499">
                     <p>Call for Support: <span>+919667273499</span></p>
                     </a>
                 </div>
