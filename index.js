@@ -70,16 +70,20 @@ app.use("/api/user", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("loading...");
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "/client/build")));
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("loading...");
+//   });
+// }
+
+app.get('/', (req, res)=>{
+  res.send("Mr.phonex.com")
+})
 
 app.listen(PORT, () => {
   console.log(`listening for requests on PORT ${PORT}`);
