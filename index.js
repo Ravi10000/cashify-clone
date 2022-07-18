@@ -35,8 +35,8 @@ db.once("open", () => {
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static("public"));
-app.use("/images", express.static(__dirname + "/images"));
+// app.use(express.static("public"));
+// app.use("/images", express.static(__dirname + "/images"));
 
 // const sessionConfig = {
 //   secret: 'idontknowanysecrets',
@@ -72,7 +72,7 @@ app.use("/api/orders", orderRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
   });
 } else {
