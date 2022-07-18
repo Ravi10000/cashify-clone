@@ -1,5 +1,6 @@
-// process.env.NODE_ENV === 'development' && 
+process.env.NODE_ENV === 'development' && 
 require('dotenv').config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -19,7 +20,8 @@ const Product = require("./models/product.model");
 const User = require('./models/user.model')
 
 const app = express();
-const DB_URL = process.env.DB_URL 
+const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/cashify-clone";
+const PORT = process.env.PORT || 6000
 // || "mongodb://localhost:27017/cashify-clone";
 mongoose.set('debug', true)
 mongoose.connect(DB_URL);
@@ -43,7 +45,6 @@ app.use("/images", express.static(__dirname + "/images"));
 // }
 const store = new MongoDBStore({
   uri: DB_URL,
-  // 'mongodb://localhost:27017/cashify-clone',
   collection: 'sessions'
 });
 
@@ -69,6 +70,9 @@ app.use('/api/user', userRoutes)
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
-app.listen(5000, () => {
-  console.log("listening for requests on PORT 5000");
+process.env.NODE_ENV === 'production' &&
+app.use(express.static("client/build"));
+
+app.listen(PORT, () => {
+  console.log(`listening for requests on PORT 5000 ${PORT}`);
 });
