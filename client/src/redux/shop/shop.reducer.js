@@ -10,10 +10,10 @@ const ShopReducer = (state = INITIAL_STATE, action)=>{
         case SHOP_ACTION_TYPES.INITIALIZE_PRODUCTS:
             return{
                 ...state,
-                products: action.payload.products,
-                productsCount: action.payload.productsCount
+                products : action.payload.products,
+                productsCount : action.payload.productsCount
             }
-        case SHOP_ACTION_TYPES.SET_PRODUCTS:
+        case SHOP_ACTION_TYPES.UPDATE_PRODUCTS:
             return {
                 ...state,
                 products: action.payload,

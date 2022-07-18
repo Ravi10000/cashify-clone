@@ -2,7 +2,7 @@
 import "./homepage.styles.scss";
 
 //react hooks
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // packages
 import axios from "axios";
@@ -10,38 +10,47 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 // actions
-import { setProducts } from "../../redux/shop/shop.actions";
+import { initializeProducts, updateProducts } from "../../redux/shop/shop.actions";
 import { setFlash } from "../../redux/flash/flash.actions";
 
 // selectors
-import { selectProducts } from "../../redux/shop/shop.selectors";
-import { selectFlash } from "../../redux/flash/flash.selectors";
+import { selectProducts, selectProductsCount } from "../../redux/shop/shop.selectors";
+
 //components
 import CardList from "../../components/card-list/card-list.component";
 
-const Homepage = ({ setFlash, flash, products, setProducts }) => {
-  useEffect(() => {
-    (async function () {
-      try {
-        const res = await axios.get("/api/products");
-        if(res.data.error){
-          setFlash({
-            type: "error",
-            message: "Something went wrong while fetching products",
-          });
-          return
-        }
-        setProducts(res.data.products);
-      } catch (error) {
-        console.log(error);
-        setFlash({
-          type: "error",
-          message: "Something went wrong while fetching products",
-        });
-      }
-    })();
-  }, [setProducts, setFlash]);
+const Homepage = ({ products, productsCount, setFlash, initializeProducts, updateProducts }) => {
 
+  useEffect(()=>{
+    (async function(){
+      try{
+        const response = await axios.get(`/api/products?limit=${6}`)
+      if(response.data.error){
+        console.log(response.data.error)
+        setFlash({
+          type: 'error',
+          message: response.data.error.message
+        })
+        return
+      }
+    //   setSkip(5)
+      console.log(response.data)
+      initializeProducts(response.data)
+      }catch(error){
+        console.log(error)
+        setFlash({
+          type: 'error',
+          message: error.message
+        })
+      }
+    })()
+    return ()=>{
+        initializeProducts({products: [], productsCount: 0})
+    }
+  }, [setFlash, initializeProducts])
+
+  
+  
   return (
     <div className="homepage">
       <div className="banner">
@@ -62,7 +71,7 @@ const Homepage = ({ setFlash, flash, products, setProducts }) => {
         <h2 className="title">For Sale</h2>
         <h2 className="subtitle">Refurbished Smartphones</h2>
         <div className="card-list-container">
-          <CardList products={products} />
+            <CardList/>
         </div>
         <div className="quality-description">
           <h3>Quality Descriptions</h3>
@@ -91,11 +100,12 @@ const Homepage = ({ setFlash, flash, products, setProducts }) => {
 // connecting to store
 const mapStateToProps = createStructuredSelector({
   products: selectProducts,
-  flash: selectFlash,
+  productsCount: selectProductsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setProducts: (products) => dispatch(setProducts(products)),
+  updateProducts: (products) => dispatch(updateProducts(products)),
+  initializeProducts: (productsInfo) => dispatch(initializeProducts(productsInfo)),
   setFlash: (flash) => dispatch(setFlash(flash)),
 });
 

@@ -24,33 +24,41 @@ import { createStructuredSelector } from "reselect";
 
 // actions
 import { signIn } from "./redux/user/user.actions";
-import { setProducts } from "./redux/shop/shop.actions";
-
 
 // selectors
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { selectFlash } from "./redux/flash/flash.selectors";
+import { setFlash } from "./redux/flash/flash.actions";
 
-function App({ setProducts, flash, signIn, currentUser, history, location }) {
+function App({ setFlash, flash, signIn, currentUser}) {
   const [isFetchingUser, setFetchingUser] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
         // fetch user and products from api
-        const userResponse = await axios.get("/api/user");
-        const productsResponse = await axios.get("/api/products");
+        const res = await axios.get("/api/user");
         
-        // signin user and products in redux
-        signIn(userResponse.data.user);
-        setProducts(productsResponse.data.products);
-
         setFetchingUser(false);
-      } catch (err) {
-        console.log(err.message);
+        if(res.data.error){
+          console.log(res.data.error)
+          setFlash({
+            type: "error",
+            message: res.error.message
+          })
+          return
+        }
+        // signin user and products in redux
+        signIn(res.data.user);
+      } catch (error) {
+        console.log(error.message);
+        setFlash({
+          type: "error",
+          message: error.message
+        })
       }
     })();
-  }, [signIn]);
+  }, [signIn, setFlash]);
   return (
     <div className="App">
       {flash && <Popup type={flash.type} message={flash.message} />}
@@ -85,6 +93,6 @@ const mapStateToProps = createStructuredSelector({
 });
 const mapDispatchToProps = (dispatch) => ({
   signIn: (user) => dispatch(signIn(user)),
-  setProducts: (products) => dispatch(setProducts(products)),
+  setFlash: (flash) => dispatch(setFlash(flash)),
 });
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

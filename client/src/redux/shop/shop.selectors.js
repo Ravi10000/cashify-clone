@@ -6,3 +6,8 @@ export const selectProducts = createSelector(
     [selectShop],
     shop => shop.products
 )
+
+export const selectProductsCount = createSelector(
+    [selectShop],
+    shop => shop.productsCount
+)

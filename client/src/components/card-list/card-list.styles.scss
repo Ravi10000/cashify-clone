@@ -3,6 +3,20 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    .loader-card-list{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        border: 5px solid var(--medium-dark);
+        border-top-color: var(--light-4);
+        animation: spin-card-list-loader .3s infinite ease-out;
+    }
+}
+@keyframes spin-card-list-loader {
+    from{}
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 @media (min-width: 800px) {
