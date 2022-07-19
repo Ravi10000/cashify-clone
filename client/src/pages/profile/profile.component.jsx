@@ -43,8 +43,8 @@ const ProfilePage = ({flash, currentUser, signOut, history}) => {
                 <img src="/icons/custom-user.png" alt="" />
             </div>
                 <p className='name'>{currentUser?.name || '--not set--'}</p>
-            <p>{currentUser?.email}</p>
-                        <p>{currentUser?.mobile}</p>
+            <p>{currentUser?.username}</p>
+                        <p>{currentUser?.["phone number"]}</p>
         <div className="address-container">
             <p className='address-title'>Address</p>
             <p>{currentUser?.address || '--not set--'}</p>
