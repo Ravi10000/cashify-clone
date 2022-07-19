@@ -42,7 +42,7 @@ const Footer = () => (
           rel="noreferrer"
         >
             <div className="handle fb">
-              <img src="/icons/fb.png" alt="facebook_page" />
+              <img src="/icons/fb.png" alt="facebook page" />
               <p> @mrphonex.2022</p>
             <div className="underline"></div>
             </div>
@@ -53,8 +53,19 @@ const Footer = () => (
           rel="noreferrer"
         >
             <div className="handle ig">
-              <img src="/icons/ig.png" alt="instagram-profile" />
+              <img src="/icons/ig.png" alt="instagram profile" />
               <p> @mrphone_x</p>
+            <div className="underline"></div>
+            </div>
+            </a>
+            <a
+          href="https://wa.me/+919667273499"
+          target="_blank"
+          rel="noreferrer"
+        >
+            <div className="handle wa">
+              <img src="/icons/wa.png" alt="whats app" />
+              <p>+919667273499</p>
             <div className="underline"></div>
             </div>
             </a>

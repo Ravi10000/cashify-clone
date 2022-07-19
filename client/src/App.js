@@ -12,6 +12,7 @@ import ProfilePage from "./pages/profile/profile.component";
 import EditProfilePage from "./pages/edit-profile-page/edit-profile-page.component";
 import OrdersPage from "./pages/orders/orders.page";
 import AboutPage from './pages/about/about.page';
+import TOSPage from './pages/tos/tos.page';
 
 // componetnts
 import Header from "./components/header/header.component";
@@ -64,6 +65,7 @@ function App({ setFlash, flash, signIn, currentUser}) {
       {flash && <Popup type={flash.type} message={flash.message} />}
       <Header isFetchingUser={isFetchingUser} />
       <Switch>
+        <Route exact path="/tos" component={TOSPage}/>
         <Route exact path="/about-us" component={AboutPage} />
         <Route exact path="/product/:id" component={Productpage} />
         <Route exact path="/checkout/:productid" component={CheckoutPage} />

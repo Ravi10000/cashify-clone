@@ -1,0 +1,33 @@
+.tos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 25px;
+    .container{
+        h1{
+            font-size: 1.2rem;
+            font-weight: var(--medium);
+            margin-bottom: 25px;
+        }
+        p{
+            font-size: 1rem;
+            color: rgb(75, 74, 74);
+            span{
+                color: var(--medium-dark);
+            }
+            a{
+                font-weight: var(--medium);
+            }
+            .imp{
+                color: #ef233c;
+            }
+            hr{
+                height: 3px;
+                // background-color:var(--light);
+                margin: 20px 20px;
+                border-top: 2px dashed black;
+            }
+        }
+    }
+}

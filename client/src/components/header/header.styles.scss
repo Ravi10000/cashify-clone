@@ -11,15 +11,23 @@
   align-items: center;
 
   .logo.link {
+    width: 150px;
     img {
       height: 50px;
+    }
+    span{
+      margin-left: 2px;
+      font-family: 'Righteous';
+      color: #646464;
+      .color{
+        color: var(--medium-dark)
+      }
     }
   }
   .links {
     display: flex;
     justify-content: space-around;
     height: 100%;
-    // margin-right: 15px;
   }
   .fetchingUser {
     display: flex;
@@ -107,6 +115,18 @@
       }
     }
   }
+  .wa.link {
+    &:hover{
+      .underline {
+        background: linear-gradient(
+          89.96deg,
+          #00eb78 2.76%,
+          #00d264 76.49%,
+          #00b950 98.91%
+        );
+      }
+    }
+}
 }
 @media (min-width: 800px) {
   .header {

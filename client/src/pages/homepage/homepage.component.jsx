@@ -63,7 +63,7 @@ const Homepage = ({ products, productsCount, setFlash, initializeProducts, updat
         </h1>
         <div className="subtitle">
           <p>Buy your</p>
-          <p className="subtitle-highlight">dream smartPhones</p>
+          <p className="subtitle-highlight">dream smartphones</p>
           <p>with our</p>
           <p className="subtitle-highlight">affordable prices</p>
         </div> 

@@ -64,6 +64,9 @@ footer {
       color: var(--light-1);
     }
     .handles-container {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
       .handle {
         position: relative;
         display: flex;
@@ -87,6 +90,7 @@ footer {
   footer {
     .social-media-links {
       .handles-container {
+        flex-direction: row;
         .handle {
           .underline {
             position: absolute;
@@ -103,9 +107,6 @@ footer {
             );
           }
           &:hover {
-            img {
-              transform: scale(1.2);
-            }
             .underline {
               width: 105%;
             }
@@ -118,6 +119,16 @@ footer {
               #1976d2 29.01%,
               rgba(67, 140, 212, 0.78125) 68.75%,
               rgba(0, 122, 242, 0.63) 100%
+            );
+          }
+        }
+        .handle.wa {
+          .underline {
+            background: linear-gradient(
+              89.96deg,
+              #00eb78 2.76%,
+              #00d264 76.49%,
+              #00b950 98.91%
             );
           }
         }
@@ -143,8 +154,9 @@ footer {
 
     .handles-container {
       display: flex;
+      width: 550px;
+      justify-content: space-between;
       .handle.fb {
-        padding-right: 50px;
       }
     }
     .seperator {
