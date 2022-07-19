@@ -27,6 +27,6 @@ module.exports.generateOrder = async(req, res)=>{
 
 module.exports.getOrdersByIds = async(req, res)=>{
     const {orderIds} = req.body
-    const orders = await Order.find({_id: {$in: orderIds}}).populate('product')
+    const orders = await Order.find({_id: {$in: orderIds}}).populate('product', "_id images brand model ram storage quality color")
     res.send({orders})
 }

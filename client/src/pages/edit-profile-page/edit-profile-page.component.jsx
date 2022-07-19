@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 // components
 import CustomButton from "../../components/custom-buttom/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
+import CustomTextarea from "../../components/custom-textarea/custom-textarea.component";
 
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -72,18 +73,20 @@ const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
         <div className="profile-pic">
           <img src="/icons/custom-user.png" alt="" />
         </div>
-        <form onSubmit={handleSubmit(submitForm)}>
+        <form onSubmit={handleSubmit(submitForm)} noValidate>
+          <div className="name input-box">
           <CustomInput
             name="name"
             type="text"
-            msg="enter your full name"
             register={{ ...register("name") }}
           />
+          </div>
 
+          <div className="phone input-box">
           <CustomInput
             name="phone number"
             type="number"
-            msg="enter your phone number"
+            required
             register={{
               ...register("phone number", {
                 required: "phone number is required",
@@ -99,10 +102,10 @@ const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
             }}
           />
           <p className="errors">{errors?.["phone number"]?.message}</p>
-          <div className="address-container">
-            <label htmlFor="address">Address</label>
-            <textarea id="address" name="address" {...register("address")} />
-            <p className="msg">enter complete address with pincode</p>
+          </div>
+          <div className="address input-box">
+            <CustomTextarea id="address" name="address" label="Address" register={{...register("address")}} />
+            {/* <p className="msg">enter complete address with pincode</p> */}
           </div>
           <div className="save-button-container">
             <CustomButton isLoading={isLoading}>Save Profile</CustomButton>

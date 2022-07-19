@@ -1,0 +1,33 @@
+.custom-textarea{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 15px;
+    textarea{
+        resize: none;
+        padding: 10px;
+        height: 150px;
+        width: 100%;
+        border-radius: 3px;
+        background-color: var(--light-4);
+        &:focus{
+            outline: 2px solid var(--medium-dark)
+        }
+    }
+    label{
+        margin-bottom: 5px;
+        font-weight: var(--medium);
+        transition: all .25s ease-in-out;
+    }
+}
+
+@media (hover:hover){
+    .custom-textarea{
+        // outline: 2px solid red;
+        textarea{
+            // outline: 2px solid blue;
+            &:hover{
+                outline: 2px solid var(--medium-dark)
+            }
+        }
+    }
+}

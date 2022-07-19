@@ -57,10 +57,11 @@ const noIconLabelStyles = !isIconAvailable ? {left: '10px'} : {}
           <img src={iconUrl} alt="icon" />
         </div>
       )}
-      <p className="msg">{msg}</p>
+      <p className="msg"></p>
       {type === "password" && (
         <div className="show-hide" onClick={toogleShow}>
           <img
+          style={{opacity: show ? 1 : .5}}
             src={show ? "/icons/eye.png" : "/icons/eye-closed.png"}
             alt="show"
           />
