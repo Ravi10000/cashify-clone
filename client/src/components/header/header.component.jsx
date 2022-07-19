@@ -19,7 +19,10 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
       <Link to="/">
         <div className="logo link">
           <img src="/logo-without-bg.png" alt="logo" />
-          <span><span className="color">Mr.</span>phone<span className="color">X</span></span>
+          <span>
+            <span className="color">Mr.</span>phone
+            <span className="color">X</span>
+          </span>
           <div className="underline"></div>
         </div>
       </Link>
@@ -44,11 +47,7 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
             <div className="underline"></div>
           </div>
         </a>
-        <a
-          href="https://wa.me/+919667273499"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://wa.me/+919667273499" target="_blank" rel="noreferrer">
           <div className="wa link">
             <img src="/icons/wa.png" alt="whats app" />
             <div className="underline"></div>

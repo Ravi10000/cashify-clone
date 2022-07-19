@@ -11,11 +11,14 @@
   align-items: center;
 
   .logo.link {
-    width: 150px;
+    display: flex;
+    flex-direction: column;
     img {
       height: 50px;
     }
     span{
+      margin-top: -5px;
+      font-size: .5rem;
       margin-left: 2px;
       font-family: 'Righteous';
       color: #646464;
@@ -130,6 +133,14 @@
 }
 @media (min-width: 800px) {
   .header {
+    .logo.link {
+      flex-direction: row;
+      width: 150px;
+      span{
+      margin-top: 0px;
+        font-size: 1rem;
+      }
+    }
     padding-left: 0px;
     padding-right: 25px;
     .buttons {
