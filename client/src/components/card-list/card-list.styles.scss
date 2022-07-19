@@ -3,13 +3,14 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    // overflow: hidden;
     .loader-card-list{
         height: 40px;
         width: 40px;
         border-radius: 50%;
         border: 5px solid var(--medium-dark);
         border-top-color: var(--light-4);
-        animation: spin-card-list-loader .3s infinite ease-out;
+        animation: spin-card-list-loader .5s infinite ease-out;
     }
 }
 @keyframes spin-card-list-loader {
@@ -26,5 +27,8 @@
         grid-template-columns: 1fr 1fr;
         row-gap: 10px;
         justify-items: center;
+    }
+    .loader-card-list{
+       grid-row: 1 span 2;
     }
 }

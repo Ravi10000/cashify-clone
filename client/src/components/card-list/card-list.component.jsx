@@ -52,6 +52,7 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
     {products.length && (
         <InfiniteScroll 
         className="card-list"
+        style={{overflow: 'hidden'}}
         dataLength={products.length}
         hasMore={hasMore}
         next={fetchMoreProducts}
