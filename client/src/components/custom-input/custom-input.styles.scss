@@ -1,88 +1,148 @@
-.custom-input{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-top: 25px;
-    .input{
-        font-size: 1.5rem;
-        background-color: var(--light-4);
-        padding: 10px 10px;
-        outline: none;
-        caret-color: var(--medium-dark);
-        border-radius: 5px 5px 0 0;
-        &:focus{
-            +.label{
-                font-size: 1rem;
-                color: var(--medium-dark);
-                font-weight: var(--medium);
-                letter-spacing: .5px;
-                top: -25px;                
-            }
-            ~.msg{
-                &::before{
-                    width: 100%;
-                }
-
-            }
-        }
-        &:valid{
-                +.label{
-                    font-size: 1rem;
-                    color: var(--medium-dark);
-                    font-weight: var(--medium);
-                    letter-spacing: .5px;
-                    top: -25px;
-                }
-        }
-    }
-    .label{
-        pointer-events: none;
-        color: grey;
-        position: absolute;
-        top: 13px;
+.custom-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+//   margin-top: 25px;
+  .input {
+    font-size: 1.5rem;
+    background-color: var(--light-4);
+    padding: 10px 40px 10px 40px;
+    outline: none;
+    caret-color: var(--medium-dark);
+    border-radius: 5px 5px 0 0;
+    &:focus {
+      + .label {
+        transition: all 0.2s ease-in-out;
+        font-size: 1rem;
+        color: var(--medium-dark);
+        font-weight: var(--medium);
+        letter-spacing: 0.5px;
+        top: -25px;
         left: 10px;
-        font-weight: var(--thin);
-        font-size: 1.2rem;
-        transition: all .2s ease-in-out;
-        text-transform: capitalize;
-    }
-    .msg{
-        font-size: .8rem;
-        color: grey;
-        // margin-bottom: 20px;
-        &::before{
-            content: "";
-            transition: all .4s ease-in-out;
-            width: 0%;
-            position: absolute;
-            left: 0;
-            transform: translatey(-2px);
-            border-bottom: 2px solid var(--medium-dark);
+      }
+      ~ .msg {
+        &::before {
+          width: 100%;
         }
-    }
-    &:hover{
-        .label{
-            color: var(--medium-dark);
-            font-weight: var(--medium);
-            letter-spacing: .5px;
+      }
+      ~ .input-icon {
+        img {
+          opacity: 1;
         }
+      }
     }
+    &:valid {
+      + .label {
+        transition: all 0.2s ease-in-out;
+        font-size: 1rem;
+        color: var(--medium-dark);
+        font-weight: var(--medium);
+        letter-spacing: 0.5px;
+        top: -25px;
+        left: 10px;
+      }
+      ~ .input-icon {
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .label {
+    pointer-events: none;
+    color: grey;
+    position: absolute;
+    top: 13px;
+    left: 45px;
+    font-weight: var(--thin);
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+  .msg {
+    font-size: 0.8rem;
+    color: grey;
+    // margin-bottom: 20px;
+    &::before {
+      content: "";
+      transition: all 0.4s ease-in-out;
+      width: 0%;
+      position: absolute;
+      transform: translatey(-2px);
+      border-bottom: 2px solid var(--medium-dark);
+    }
+  }
+  &:hover {
+    .label {
+      color: black;
+    }
+    .input-icon {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+  .input-icon {
+    position: absolute;
+    left: 10px;
+    top: 12.5px;
+    img {
+      width: 25px;
+      opacity: 0.5;
+    }
+  }
+  .show-hide {
+    position: absolute;
+    right: 10px;
+    top: 12.5px;
+    img {
+      cursor: pointer;
+      height: 30px;
+      opacity: 0.5;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .custom-input {
+    .show-hide {
+      &:hover {
+        img {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 800px) {
-    .custom-input{
-        .input{
-        font-size: 1.2rem;
-        // background-color: #ffffff74;
-        &:focus{
-            +.label{
-                top: -25px;
-            }
+  .custom-input {
+    .input {
+      font-size: 1.2rem;
+      &:focus {
+        + .label {
+          top: -25px;
         }
-        }
-        .label{
-            font-size: 1.2rem;
-            top: 10px;
-        }
+      }
     }
+    .label {
+      font-size: 1.2rem;
+      top: 10px;
+    }
+    .input-icon {
+      left: 10px;
+      top: 10px;
+    }
+    .show-hide {
+      top: 10px;
+    }
+  }
 }

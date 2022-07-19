@@ -54,11 +54,10 @@ const SignIn = ({ flash, history, signIn }) => {
         <form noValidate onSubmit={handleSubmit(submitForm)}>
           <h1 className="form-title">Sign-in</h1>
           <div className="inputs-container">
-            <div className="username-input-container">
+            <div className="username input-box">
               <CustomInput
                 name="email"
-                type="text"
-                msg="e.g. mail@gmail.com 📧"
+                type="email"
                 register={{
                   ...register("email", {
                     required: "email is required!",
@@ -73,7 +72,7 @@ const SignIn = ({ flash, history, signIn }) => {
               />
               <p className="errors">{errors?.email?.message}</p>
             </div>
-            <div className="password-input-container">
+            <div className="password input-box">
               <CustomInput
                 register={{
                   ...register("password", {
@@ -84,7 +83,6 @@ const SignIn = ({ flash, history, signIn }) => {
                 }}
                 name="password"
                 type="password"
-                msg="enter your 🔒secure password here"
                 required
               />
               <p className="errors">{errors?.password?.message}</p>

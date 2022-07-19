@@ -79,7 +79,7 @@ const SignUp = ({ history, updateUser, flash }) => {
         <form noValidate onSubmit={handleSubmit(submitForm)}>
           <h1 className="form-title">Sign-up</h1>
           <div className="inputs-container">
-            <div className="email-container">
+            <div className="email input-box">
               <CustomInput
                 register={{
                   ...register("email", {
@@ -93,12 +93,12 @@ const SignUp = ({ history, updateUser, flash }) => {
                 }}
                 bgColor={bgColor}
                 name="email"
-                type="text"
+                type="email"
                 required
               />
               <p className="errors">{errors?.email?.message}</p>
             </div>
-            <div className="phone-container">
+            <div className="phone input-box">
               <CustomInput
                 register={{
                   ...register("phone number", {
@@ -116,7 +116,7 @@ const SignUp = ({ history, updateUser, flash }) => {
               />
               <p className="errors">{errors?.["phone number"]?.message}</p>
             </div>
-            <div className="password-container">
+            <div className="password input-box">
               <CustomInput
                 register={{
                   ...register("password", {
@@ -138,7 +138,7 @@ const SignUp = ({ history, updateUser, flash }) => {
               />
               <p className="errors">{errors?.password?.message}</p>
             </div>
-            <div className="confirm-password-container">
+            <div className="confirm-password input-box">
               <CustomInput
                 register={{
                   ...register("confirm password", {
@@ -165,7 +165,7 @@ const SignUp = ({ history, updateUser, flash }) => {
               <p className="errors">{errors?.["confirm password"]?.message}</p>
             </div>
           </div>
-          <div className="signup-button-container">
+          <div className="signup-button input-box">
             <CustomButton
             isLoading={isLoading}
               myStyles={{ color: "#97DAC8", backgroundColor: "#194656" }}

@@ -25,10 +25,10 @@
       font-size: 1.5rem;
       margin-bottom: 35px;
     }
-    .inputs-container {
+    .inputs-container{
       margin-bottom: 50px;
-      div {
-        margin-bottom: 40px;
+      .input-box{
+        margin-top: 40px;
       }
     }
     .signup-button-container {
@@ -37,7 +37,7 @@
     .errors {
       color: #ff3f56;
       font-weight: var(--thin);
-      margin-bottom: 20px;
+      margin: 0;
     }
   }
 }

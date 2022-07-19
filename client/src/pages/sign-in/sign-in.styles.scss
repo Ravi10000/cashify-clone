@@ -25,20 +25,22 @@
       rgba(155, 209, 226, 0.528),
       var(--light-3)
     );
-    .form-title {
-      color: var(--dark);
-      font-weight: var(--semibold);
-      font-size: 1.5rem;
-      margin-bottom: 35px;
-    }
-    .inputs-container {
-      margin-bottom: 30px;
-      div:nth-child(2) {
-        margin-top: 40px;
+    form{
+      .form-title {
+        color: var(--dark);
+        font-weight: var(--semibold);
+        font-size: 1.5rem;
+        margin-bottom: 35px;
       }
-    }
-    .signin-button-container {
-      width: 100%;
+      .inputs-container{
+        margin-bottom: 50px;
+        .input-box{
+          margin-top: 40px;
+        }
+      }
+      .signin-button-container {
+        width: 100%;
+      }
     }
   }
   .errors {
