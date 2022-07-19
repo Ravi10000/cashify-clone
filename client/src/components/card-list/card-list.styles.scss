@@ -26,9 +26,27 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         row-gap: 10px;
-        justify-items: center;
+        padding-bottom: 50px;
+        place-items: center;
+        position: relative;
+        // justify-items: center;
     }
     .loader-card-list{
-       grid-row: 1 span 2;
+    //    grid-row: 1 span 2;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-right: 20px;
+    // transform: translateX(-50%);
+    animation: spin-desktop-loader .5s infinite ease-in;
+}
+}
+
+@keyframes spin-desktop-loader{
+    from{
+        // transform: translateX(-50%);
+    }
+    to{
+        transform: rotate(360deg);
     }
 }

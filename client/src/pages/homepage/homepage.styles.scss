@@ -35,11 +35,14 @@
             letter-spacing: 2px;
             color: #535353;
             line-height: 2;
-            animation: appear .5s 1s ease-out forwards;
-            span{
+            animation: appearSubtitle .5s 1s ease-in-out forwards;
+            p{
+                padding: 0px 5px;
+            }
+            .subtitle-highlight{
                 color: var(--medium-dark);
-                background: #ffffffcc;
-                padding: 5px;
+                background: var(--light-4);
+                // padding: 5px;
                 border-radius: 3px;
                 margin-left: 5px;
             }
@@ -92,6 +95,14 @@
 
 @media (min-width: 768px) {
     .homepage{
+        .subtitle{
+            display: flex;
+            width: 500px;
+            flex-wrap: wrap;
+            .subtitle-highlight{
+                margin-bottom: 5px;
+            }
+        }
         // height:auto;
         .banner{
             .title{
@@ -124,12 +135,15 @@
     }
 }
 
-@keyframes appear {
-    from{
+@keyframes appearSubtitle {
+    0%{
         opacity: 0;
         transform: scale(.7);
     }
-    to{
+    70%{
+        transform: scale(1.2);
+    }
+    100%{
         opacity: 1;
         transform: scale(1);
     }

@@ -17,6 +17,7 @@ import { setFlash } from "../../redux/flash/flash.actions";
 import { selectProducts, selectProductsCount } from "../../redux/shop/shop.selectors";
 
 //components
+import {HashLink} from 'react-router-hash-link'
 import CardList from "../../components/card-list/card-list.component";
 
 const Homepage = ({ products, productsCount, setFlash, initializeProducts, updateProducts }) => {
@@ -54,21 +55,22 @@ const Homepage = ({ products, productsCount, setFlash, initializeProducts, updat
   return (
     <div className="homepage">
       <div className="banner">
+        <HashLink smooth={true} to="#for-sale">
         <h1 className="title">
           <span className="">Mr.</span>
           Phone
           <span className="">X</span>
         </h1>
-        <h3 className="subtitle">
-          Buy your
-          <span>dream smartPhones</span>
-          <br />
-          with our
-          <span>low prices</span>
-        </h3>
+        <div className="subtitle">
+          <p>Buy your</p>
+          <p className="subtitle-highlight">dream smartPhones</p>
+          <p>with our</p>
+          <p className="subtitle-highlight">affordable prices</p>
+        </div> 
+        </HashLink>
       </div>
       <div className="device-list">
-        <h2 className="title">For Sale</h2>
+        <h2 className="title" id="for-sale">For Sale</h2>
         <h2 className="subtitle">Refurbished Smartphones</h2>
         <div className="card-list-container">
             <CardList/>
