@@ -1,4 +1,6 @@
 import "./card.styles.scss";
+
+// packages
 import { withRouter } from "react-router-dom";
 
 const CardItem = ({ product, history }) => {

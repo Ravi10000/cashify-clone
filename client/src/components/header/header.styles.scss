@@ -4,12 +4,11 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: 1px;
   z-index: 10;
+  top: 0;
   padding: 10px 10px;
-  background-color: #b9cafe;
+  background: linear-gradient(89.95deg, #98B2FF -3.22%, #AEC3FF 28.48%, #B3C7FF 38.16%, #BACDFF 49.34%, #B1C6FE 66.1%, #95B2FF 99.95%);
   align-items: center;
-
   .logo.link {
     display: flex;
     flex-direction: column;

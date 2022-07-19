@@ -1,52 +1,52 @@
-.card-list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    // overflow: hidden;
-    .loader-card-list{
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        border: 5px solid var(--medium-dark);
-        border-top-color: var(--light-4);
-        animation: spin-card-list-loader .5s infinite ease-out;
-    }
+.card-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+  .loader-card-list {
+    position: absolute;
+    bottom: -50px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 5px solid var(--medium-dark);
+    border-top-color: var(--light-4);
+    animation: spin-card-list-loader 0.5s infinite ease-out;
+  }
+  .center-text {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .more {
+    color: var(--medium-dark);
+    font-weight: var(--medium);
+    cursor: pointer;
+  }
 }
 @keyframes spin-card-list-loader {
-    from{}
-    to{
-        transform: rotate(360deg);
-    }
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 800px) {
-    .card-list{
-        margin: 0 50px 25px 50px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 10px;
-        padding-bottom: 50px;
-        place-items: center;
-        position: relative;
-        // justify-items: center;
+  .card-list {
+    margin: 0 50px 25px 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    padding-bottom: 50px;
+    place-items: center;
+    .loader-card-list {
+      bottom: -5px;
     }
-    .loader-card-list{
-    //    grid-row: 1 span 2;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    margin-right: 20px;
-    // transform: translateX(-50%);
-    animation: spin-desktop-loader .5s infinite ease-in;
-}
-}
-
-@keyframes spin-desktop-loader{
-    from{
-        // transform: translateX(-50%);
+    .center-text{
+        bottom: 15px;
     }
-    to{
-        transform: rotate(360deg);
-    }
+  }
 }

@@ -1,40 +1,73 @@
+import "./checkout.styles.scss";
+
+// hooks
 import { useState, useEffect } from "react";
+
+// packages
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import "./checkout.styles.scss";
+import { connect } from "react-redux";
+
+// components
 import Card from "../../components/card/card.component";
 import CustomButton from "../../components/custom-buttom/custom-button.component";
 
-import { connect } from "react-redux";
-// import {createStructuredSelector} from 'reselect';
+// redux actions
 import { updateUser } from "../../redux/user/user.actions";
 import { setFlash } from "../../redux/flash/flash.actions";
 
 const CheckoutPage = ({ flash, history, match, updateUser }) => {
   const [checkoutItem, setCheckoutItem] = useState(null);
-  const [isLoading, setIsLoading] = useState(false)
+
+  // to show loading animation while sending chekcout request
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     (async function () {
-      const { productid } = match.params;
-      const { data } = await axios.get(`/api/products/${productid}`);
-      setCheckoutItem(data);
+      try {
+        const { productid } = match.params;
+        const { data } = await axios.get(`/api/products/${productid}`);
+        if (data.error) {
+          console.log(data.error)
+          flash({
+            type: "error",
+            message: data.error.message,
+          });
+          return;
+        }
+        setCheckoutItem(data.product);
+      } catch (error) {
+        console.log(error);
+        flash({
+          type: "error",
+          message: error.message,
+        });
+      }
     })();
-  }, [match.params, setCheckoutItem]);
+  }, [match.params, setCheckoutItem, flash]);
 
   const handleSubmit = async (e) => {
     try {
-        setIsLoading(true)
+      setIsLoading(true);
       e.preventDefault();
-      const res = await axios.post(`/api/orders/new`, { id: checkoutItem._id });
-      updateUser(res.data.user);
+      const {data} = await axios.post(`/api/orders/new`, { id: checkoutItem._id });
+      if (data.error) {
+        console.log(data.error)
+        flash({
+          type: "error",
+          message: data.error.message,
+        });
+        return;
+      }
+      updateUser(data.user);
       flash({
         type: "success",
         message:
-          "Order placed successfully our executive will contact you shortly. Thanks for choosing our service.",
+          "Order request received our executive will contact you shortly. Thanks for choosing our service.",
       });
       history.push("/orders");
     } catch (error) {
-        setIsLoading(false)
+      setIsLoading(false);
       console.log(error.message);
       flash({
         type: "error",
@@ -49,7 +82,6 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
         {checkoutItem && (
           <div className="card-container">
             <Card product={checkoutItem} />
-            {/* title, price, imageUrls, quality, ram, storage, history */}
           </div>
         )}
 
@@ -57,7 +89,9 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
           Total: <span>₹ {checkoutItem?.price}</span>
         </p>
         <div className="button-container">
-          <CustomButton onClick={handleSubmit} isLoading={isLoading}>Place Order</CustomButton>
+          <CustomButton onClick={handleSubmit} isLoading={isLoading}>
+            Place Order
+          </CustomButton>
         </div>
       </div>
     </div>
@@ -66,7 +100,7 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   updateUser: (user) => dispatch(updateUser(user)),
-//   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  //   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
   flash: (flash) => dispatch(setFlash(flash)),
 });
 

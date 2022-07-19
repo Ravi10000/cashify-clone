@@ -1,8 +1,14 @@
-const express = require('express');
+const express = require("express");
 
-const {index, fetchProductById} = require('../controllers/product.controllers');
+// controllers
+const {
+  index,
+  fetchProductById,
+} = require("../controllers/product.controllers");
+
 const router = express.Router();
 
-router.get('/:id', fetchProductById)
-router.get('/', index)
+router.get("/:id", fetchProductById);
+router.get("/", index);
+
 module.exports = router;
