@@ -164,6 +164,9 @@ const SignUp = ({ history, updateUser, flash }) => {
               />
               <p className="errors">{errors?.["confirm password"]?.message}</p>
             </div>
+            <div className="text input-box">
+              <CustomInput name="text" required/>
+            </div>
           </div>
           <div className="signup-button input-box">
             <CustomButton

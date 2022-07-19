@@ -1,51 +1,72 @@
-import './custom-input.styles.scss'
-import {useState, useEffect} from 'react'
-const CustomInput = ({ bgColor, name, msg, isShort, type, validateInput, register, ...otherProps})=>{
-const [show, setShow] = useState(true)
-const [inputType, setType] = useState(null)
+import "./custom-input.styles.scss";
+import { useState, useEffect } from "react";
+const CustomInput = ({
+  bgColor,
+  name,
+  msg,
+  isShort,
+  type,
+  validateInput,
+  register,
+  ...otherProps
+}) => {
+  const [show, setShow] = useState(true);
+  const [inputType, setType] = useState(null);
+  const [iconUrl, setUrl] = useState("");
+  const [isIconAvailable, setAvailability] = useState(true);
+  // let iconUrl =
+  //   let isIconAvailable = ;
 
-let inputIconUrl = `/icons/${type}.png`
+  console.log(type, iconUrl);
+  useEffect(() => {
+    setAvailability(["email", "number", "password"].includes(type));
+    setUrl(`/icons/${type}.png`);
+    setType(type);
+  }, [type]);
 
-console.log(type, inputIconUrl)
-useEffect(()=>{
-setType(type)
-}, [type])
+  function toogleShow(e) {
+    setShow((show) => !show);
+    setType((type) => (type === "password" ? "text" : "password"));
+  }
+const withoutIconStyles =  !isIconAvailable ? {padding: '10px'} : {}
+const customBackground = bgColor ? {backgroundColor: bgColor} : {};
+const noIconLabelStyles = !isIconAvailable ? {left: '10px'} : {}
 
-function toogleShow(e){
-    setShow(show => !show)
-    setType(type => type === 'password' ? 'text': 'password' )
-}
-
-
-
-return(
+  return (
     <div className="custom-input">
-        <input 
-        type={inputType ? inputType : 'text'}
+      <input
+        type={inputType ? inputType : "text"}
         {...register}
-        style={bgColor &&{backgroundColor: bgColor}}
-        name={name} 
+        style={{...customBackground, ...withoutIconStyles}}
+        name={name}
         id={name}
         onBlur={validateInput}
         {...otherProps}
-        className="input" autoComplete='off'/>
-        <label 
+        className="input"
+        autoComplete="off"
+      />
+      <label
+      style={{...noIconLabelStyles}}
         htmlFor={name}
-        className={`label ${isShort ? 'uppercase' : 'capitalize'}`}
-        >{name}</label>
-        {
-            <div className='input-icon'>
-            <img src={inputIconUrl} alt="" />
-            </div>
-            }
-        <p className="msg">{msg}</p>
-        {
-            type === 'password' 
-            && <div className='show-hide' onClick={toogleShow}>
-            <img src={show ? "/icons/eye.png" : "/icons/eye-closed.png"} alt="show" />
+        className={`label ${isShort ? "uppercase" : "capitalize"}`}
+      >
+        {name}
+      </label>
+      {isIconAvailable && (
+        <div className="input-icon">
+          <img src={iconUrl} alt="icon" />
         </div>
-        }
+      )}
+      <p className="msg">{msg}</p>
+      {type === "password" && (
+        <div className="show-hide" onClick={toogleShow}>
+          <img
+            src={show ? "/icons/eye.png" : "/icons/eye-closed.png"}
+            alt="show"
+          />
+        </div>
+      )}
     </div>
-)
-    }
-export default CustomInput
+  );
+};
+export default CustomInput;

@@ -14,7 +14,8 @@
       + .label {
         transition: all 0.2s ease-in-out;
         font-size: 1rem;
-        color: var(--medium-dark);
+        // color: var(--medium-dark);
+        color: #000;
         font-weight: var(--medium);
         letter-spacing: 0.5px;
         top: -25px;
@@ -35,7 +36,8 @@
       + .label {
         transition: all 0.2s ease-in-out;
         font-size: 1rem;
-        color: var(--medium-dark);
+        // color: var(--medium-dark);
+        color: #000;
         font-weight: var(--medium);
         letter-spacing: 0.5px;
         top: -25px;
@@ -75,7 +77,8 @@
       width: 0%;
       position: absolute;
       transform: translatey(-2px);
-      border-bottom: 2px solid var(--medium-dark);
+    //   var(--medium-dark)
+      border-bottom: 2px solid #000;
     }
   }
   &:hover {
