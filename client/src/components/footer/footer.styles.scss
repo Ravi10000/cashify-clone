@@ -20,7 +20,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-
+    margin-bottom: 20px;
     .contact-us {
       h3 {
         font-weight: var(--semibold);
@@ -38,7 +38,6 @@ footer {
       flex-direction: column;
       align-items: center;
       P {
-        padding-top: 10px;
         &:hover {
           color: #00b894;
         }
@@ -46,11 +45,14 @@ footer {
     }
   }
   .seperator {
-    margin: 20px 0;
-    height: 3px;
-    width: 100px;
+    margin: 10px 0;
+    height: 2px;
+    width: 70px;
     border-radius: 2px;
     background-color: #699eee;
+  }
+  .seperator.h{
+    display: none;
   }
 
   .social-media-links {
@@ -155,6 +157,9 @@ footer {
       }
       .policies-links {
         align-items: flex-start;
+        p{
+          padding-top: 10px;
+        }
       }
     }
 
@@ -171,9 +176,10 @@ footer {
       background-color: #699eee;
     }
     .seperator.h {
-      margin: 20px 0;
-      height: 3px;
-      width: 50px;
+      display: none;
+      // margin: 10px 0;
+      // height: 2px;
+      // width: 50px;
     }
   }
 }

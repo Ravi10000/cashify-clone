@@ -20,7 +20,7 @@
                 font-weight: var(--medium);
             }
             .imp{
-                color: #ef233c;
+                color: #ef6723;
             }
             hr{
                 height: 3px;
@@ -29,5 +29,11 @@
                 border-top: 2px dashed black;
             }
         }
+    }
+}
+
+@media (min-width: 800px) {
+    .tos{
+        padding: 50px 100px;
     }
 }
