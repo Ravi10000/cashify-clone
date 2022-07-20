@@ -11,8 +11,8 @@
     width: 40px;
     border-radius: 50%;
     border: 5px solid var(--medium-dark);
-    border-top-color: var(--light-4);
-    animation: spin-card-list-loader 0.5s infinite ease-out;
+    border-top-color: transparent;
+    animation: spin-card-list-loader 0.75s infinite ease-out;
   }
   .center-text {
     position: absolute;
@@ -24,6 +24,19 @@
     color: var(--medium-dark);
     font-weight: var(--medium);
     cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1.5px;
+      border-radius: 5px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background: var(--medium-dark);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
   }
 }
 @keyframes spin-card-list-loader {
@@ -31,6 +44,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (hover: hover) {
+  .more {
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
   }
 }
 
@@ -45,8 +69,8 @@
     .loader-card-list {
       bottom: -5px;
     }
-    .center-text{
-        bottom: 15px;
+    .center-text {
+      bottom: 15px;
     }
   }
 }

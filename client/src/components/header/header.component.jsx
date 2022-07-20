@@ -23,12 +23,12 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
             <span className="color">Mr.</span>phone
             <span className="color">X</span>
           </span>
-          <div className="underline"></div>
+          {/* <div className="underline"></div> */}
         </div>
       </Link>
       <div className="links">
         <a
-          href="https://www.facebook.com/gourav.pandey.562"
+          href="https://www.facebook.com/mrphonex.2022"
           target="_blank"
           rel="noreferrer"
         >
@@ -44,20 +44,20 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
         >
           <div className="ig link">
             <img src="/icons/ig.png" alt="instagram" />
-            <div className="underline"></div>
+            {/* <div className="underline"></div> */}
           </div>
         </a>
         <a href="https://wa.me/+919667273499" target="_blank" rel="noreferrer">
           <div className="wa link">
             <img src="/icons/wa.png" alt="whats app" />
-            <div className="underline"></div>
+            {/* <div className="underline"></div> */}
           </div>
         </a>
         {currentUser ? (
           <Link to="/profile">
             <div className="profile-pic link">
               <img src="/icons/custom-user.png" alt="user-icon" />
-              <div className="underline"></div>
+              {/* <div className="underline"></div> */}
             </div>
           </Link>
         ) : isFetchingUser ? (

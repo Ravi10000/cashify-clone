@@ -4,7 +4,7 @@ const Product = require("../models/product.model");
 module.exports.index = async (req, res) => {
   try {
     const skip = req.query.skip ? parseInt(req.query.skip) : 0;
-    const limit = req.query.limit ? parseInt(req.query.limit) : 5;
+    const limit = req.query.limit ? parseInt(req.query.limit) : 6;
     const products = await Product.find({})
       .skip(skip)
       .limit(limit)
