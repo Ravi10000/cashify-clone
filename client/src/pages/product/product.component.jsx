@@ -65,7 +65,9 @@ const Productpage = ({ match, history, currentUser, flash }) => {
       history.push("/signin");
       return;
     }
-    if (!currentUser.name || !currentUser.adderss) {
+    console.log({currentUser})
+    const {name, address} = currentUser;
+    if (!name || !address) {
       flash({
         type: "info",
         message:

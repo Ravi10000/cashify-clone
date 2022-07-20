@@ -6,7 +6,7 @@ const UserReducer = (state = INITIAL_STATE, action)=>{
         case USER_ACTION_TYPES.SET_CURRENT_USER:
         case USER_ACTION_TYPES.SIGN_IN_USER:
         case USER_ACTION_TYPES.UPDATE_USER:
-            return action.payload || null
+            return action.payload
         case USER_ACTION_TYPES.SIGN_OUT_USER:
             return null
         default: return state
