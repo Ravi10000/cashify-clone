@@ -16,7 +16,7 @@
   }
   .center-text {
     position: absolute;
-    bottom: -25px;
+    bottom: -50px;
     left: 50%;
     transform: translate(-50%);
   }
@@ -27,7 +27,7 @@
     &::after {
       content: "";
       position: absolute;
-      height: 1.5px;
+      height: 2px;
       border-radius: 5px;
       width: 100%;
       bottom: 0;
@@ -35,7 +35,9 @@
       background: var(--medium-dark);
       transform: scaleX(0);
       transform-origin: bottom right;
+      border: 1px dot red;
       transition: transform 0.3s ease-out;
+      // animation: side-load 1s infinite ease-out;
     }
   }
 }
@@ -44,6 +46,22 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes side-load{
+  0%{
+  }
+  50%{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  60%{
+    transform: scaleX(1);
+  }
+  100%{
+    transform-origin: bottom right;
+    transform: scaleX(0);
   }
 }
 
