@@ -32,7 +32,7 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="fb link">
+          <div className="fb link right">
             <img src="/icons/fb.png" alt="facebook" />
             <div className="underline"></div>
           </div>
@@ -42,20 +42,20 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="ig link">
+          <div className="ig link right">
             <img src="/icons/ig.png" alt="instagram" />
             {/* <div className="underline"></div> */}
           </div>
         </a>
         <a href="https://wa.me/+919667273499" target="_blank" rel="noreferrer">
-          <div className="wa link">
+          <div className="wa link right">
             <img src="/icons/wa.png" alt="whats app" />
             {/* <div className="underline"></div> */}
           </div>
         </a>
         {currentUser ? (
           <Link to="/profile">
-            <div className="profile-pic link">
+            <div className="profile-pic link right">
               <img src="/icons/custom-user.png" alt="user-icon" />
               {/* <div className="underline"></div> */}
             </div>
@@ -67,7 +67,7 @@ const Header = ({ currentUser, signOut, isFetchingUser }) => {
         ) : (
           <div className="signin-container">
             <Link to="/signin">
-              <CustomButton>Sign In</CustomButton>
+              <CustomButton>sign-in</CustomButton>
             </Link>
           </div>
         )}

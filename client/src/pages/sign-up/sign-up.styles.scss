@@ -1,6 +1,8 @@
 .signup-page {
+  background: url("../../../public/signup-bg.webp");
+  background-size: cover;
   width: 100%;
-  height: 800px;
+  // height: 725px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +57,7 @@
     h3{
       span{
         &:hover{
-          color: red;
+          color: #00b894;
           letter-spacing: 1px;
         }
       }
@@ -65,8 +67,6 @@
 
 @media (min-width: 800px) {
   .signup-page {
-    background: url("../../../public/signup-bg.webp");
-    background-size: cover;
     background-position-x: 200px;
     background-repeat: no-repeat;
     h3 {
@@ -75,7 +75,6 @@
       align-self: flex-start;
     }
     .container {
-      background: #60a99b74;
       align-self: flex-start;
       width: 35%;
       margin-left: 10%;

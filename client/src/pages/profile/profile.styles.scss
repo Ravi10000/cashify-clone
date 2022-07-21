@@ -1,102 +1,107 @@
-.profile-page{
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 75vh;
+  margin-bottom: 25px;
+  background-image: url("../../../public/profile-bg.webp");
+  background-size: cover;
+  // background-color: whitesmoke;
+  .container {
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 75vh;
-    margin-bottom: 25px;
-    .container{
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: linear-gradient(135deg, rgba(30,30,36,0) 0%, rgba(255, 255, 255, 0.75) 50%);
-        padding: 20px;
-        border-radius: 3px;
-        .profile-image-container{
-            margin-top: 25px;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(132, 131, 131, 0.303), var(--light-3));
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img{
-                width: 50%;
-            }
-        }
-        // h1{
-        //     font-size: 2rem;
-        //     font-weight: var(--semibold);
-        //     margin: 25px 0;
-        //     align-self: flex-start;
-        // }
-        p{
-            font-weight: var(--medium);
-        }
-        .name{
-            margin-top: 10px;
-            text-transform: capitalize;
-            font-size: 1.5rem;
-            font-weight: var(--semibold);
-            color: var(--medium-dark);
-        }
-        .address-container{
-            margin-top: 25px;
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            .address-title{
-                color: var(--medium-dark);
-                font-size: 1.5rem;
-                font-weight: var(--semibold);
-            }
-        }
-        .orders-link{
-            margin-top: 10px;
-            display: flex;
-            background-color: var(--light-2);
-            justify-content: center;
-            padding: 10px 20px;
-            border-radius: 3px;
-            img{
-                display: inline-block;
-                width: 25px;
-            }
-            p{
-                margin-left: 5px;
-                display: inline-block;
-            }
-            &:hover{
-                outline: 2px solid var(--light);
-                background: transparent;
-            }
-        }
-        .buttons-container{
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
+    background: linear-gradient(
+      135deg,
+      rgba(30, 30, 36, 0) 0%,
+      rgba(255, 255, 255, 0.75) 50%
+    );
+    padding: 20px;
+    border-radius: 50px;
+    .profile-image-container {
+      margin-top: 25px;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(
+        135deg,
+        rgba(75, 192, 255, 0.303),
+        var(--light-3)
+      );
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 50%;
+      }
     }
+    p {
+      font-weight: var(--medium);
+    }
+    .name {
+      margin-top: 10px;
+      text-transform: capitalize;
+      font-size: 1.5rem;
+      font-weight: var(--semibold);
+      color: var(--medium-dark);
+    }
+    .address-container {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      .address-title {
+        color: var(--medium-dark);
+        font-size: 1.5rem;
+        font-weight: var(--semibold);
+      }
+    }
+    .orders-link {
+      margin-top: 10px;
+      display: flex;
+      background-color: var(--light-2);
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 3px;
+      img {
+        display: inline-block;
+        width: 25px;
+      }
+      p {
+        margin-left: 5px;
+        display: inline-block;
+      }
+      &:hover {
+        outline: 2px solid var(--light);
+        background: transparent;
+      }
+    }
+    .buttons-container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
 }
 
-@media (min-width: 450px){
-    .profile-page{
-        background-image: url('../../../public/profile-bg.webp');
-        background-size: cover;
-        .container{
-            width: 50%;
-            .profile-info{
-                // width: 500px;
-                .edit-container{
-                    width: 80%;
-                }
-            }
-            .buttons-container{
-            padding: 0 10%;
-            }
+@media (min-width: 450px) {
+  .profile-page {
+    background-image: url("../../../public/profile-bg.webp");
+    background-size: cover;
+    .container {
+      width: 50%;
+      padding-bottom: 25px;
+      .profile-info {
+        // width: 500px;
+        .edit-container {
+          width: 80%;
         }
+      }
+      .buttons-container {
+        padding: 0 10%;
+      }
     }
-    }
-    
+  }
+}

@@ -25,6 +25,8 @@ import TOSPage from "./pages/tos/tos.page";
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 import Popup from "./components/popup/popup.component";
+import ProtectedRoute from "./components/protected-route/protected-route";
+import ProtectedIfAuthenticated from "./components/protected-authenticate/protected-authenticate";
 
 // actions
 import { signIn } from "./redux/user/user.actions";
@@ -73,20 +75,20 @@ function App({ setFlash, flash, signIn, currentUser }) {
         <Route exact path="/tos" component={TOSPage} />
         <Route exact path="/about-us" component={AboutPage} />
         <Route exact path="/product/:id" component={Productpage} />
-        <Route exact path="/checkout/:productid" component={CheckoutPage} />
-        <Route
+        <ProtectedIfAuthenticated
           excat
           path="/signin"
-          render={() => (currentUser ? <Redirect to="/" /> : <SignIn />)}
+          component={SignIn}
         />
-        <Route
+        <ProtectedIfAuthenticated
           excat
           path="/signup"
-          render={() => (currentUser ? <Redirect to="/" /> : <SignUp />)}
+          component={SignUp}
         />
-        <Route excat path="/profile" component={ProfilePage} />
-        <Route path="/edit-profile" component={EditProfilePage} />
-        <Route path="/orders" component={OrdersPage} />
+        <ProtectedRoute exact path="/checkout/:productid" component={CheckoutPage} />
+        <ProtectedRoute excat path="/profile" component={ProfilePage} />
+        <ProtectedRoute path="/edit-profile" component={EditProfilePage} />
+        <ProtectedRoute path="/orders" component={OrdersPage} />
         <Route exact path="/" component={Homepage} />
         <Route exact path="*" render={() => <Redirect to="/" />} />
       </Switch>

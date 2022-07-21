@@ -1,5 +1,5 @@
 import "./edit-profile.page.styles.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 // components
@@ -15,19 +15,27 @@ import { updateUser } from "../../redux/user/user.actions";
 import { setFlash } from "../../redux/flash/flash.actions";
 
 const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
-  const { name, address } = currentUser;
-  const [userInfo] = useState({
-    name,
-    address,
-    "phone number": currentUser["phone number"],
-  });
+  // const { name, address } = currentUser;
+  const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({ defaultValues: userInfo });
+
+useEffect(()=>{
+  console.log('useEffect', currentUser)
+  const user = {
+    name: currentUser?.name,
+    address: currentUser?.address,
+    "phone number": currentUser?.["phone number"]
+  }
+  setUserInfo(user);
+  reset(user)
+},[currentUser, reset])
 
   const submitForm = async (data) => {
     try {
@@ -57,7 +65,7 @@ const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
         message: 'profile updated'
       })
       //   redirect to profile page
-      history.push("/profile");
+      history.goBack();
     } catch (error) {
       console.log(error.message);
       setIsLoading(false)
@@ -76,6 +84,7 @@ const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
         <form onSubmit={handleSubmit(submitForm)} noValidate>
           <div className="name input-box">
           <CustomInput
+            label="full name"
             name="name"
             type="text"
             register={{ ...register("name") }}

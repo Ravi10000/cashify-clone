@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const CustomInput = ({
   bgColor,
   name,
+  label,
   msg,
   isShort,
   type,
@@ -50,7 +51,7 @@ const noIconLabelStyles = !isIconAvailable ? {left: '10px'} : {}
         htmlFor={name}
         className={`label ${isShort ? "uppercase" : "capitalize"}`}
       >
-        {name}
+        {label ? label : name}
       </label>
       {isIconAvailable && (
         <div className="input-icon">

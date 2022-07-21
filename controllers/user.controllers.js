@@ -33,7 +33,7 @@ module.exports.signInUser = (req, res) => {
 module.exports.signOutUser = (req, res) => {
   try {
     req.logout(() => {
-      res.status(200).send({ message: "signed out" });
+      res.status(200).send({user: req.user});
     });
   } catch (error) {
     res.send({ error });

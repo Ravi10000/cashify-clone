@@ -31,7 +31,7 @@ const SignIn = ({ flash, history, signIn }) => {
         type: "success",
         message: "You are signed in successfully",
       });
-        history.push("/profile");
+        history.goBack();
     } catch (err) {
       console.log(err.message);
       setIsLoading(false);

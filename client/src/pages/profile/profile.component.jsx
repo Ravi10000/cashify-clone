@@ -13,12 +13,20 @@ import { signOut } from '../../redux/user/user.actions';
 import { setFlash } from '../../redux/flash/flash.actions';
 
 const ProfilePage = ({flash, currentUser, signOut, history}) => {
-
     const [isLoading, setIsLoading] = useState(false); 
     const signOutAndSetLoading = async() => {
         try{
             setIsLoading(true)
-        await axios.post('/api/user/signout');
+        const {data} =await axios.post('/api/user/signout');
+        setIsLoading(false)
+        if(data.error){
+            console.error(data.error)
+            flash({
+                type: 'error',
+                message: 'something went wrong please try again'
+            })
+            return
+        }
         signOut()
         flash({
             type: 'success',
@@ -26,8 +34,8 @@ const ProfilePage = ({flash, currentUser, signOut, history}) => {
         })
         history.push('/')
         }
-        catch(err){
-            console.log(err)
+        catch(error){
+            console.error(error)
             setIsLoading(false)
             flash({
                 type: 'error',
