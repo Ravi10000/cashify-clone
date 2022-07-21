@@ -4,7 +4,7 @@ import "./header.styles.scss";
 // import {useState, useEffect} from 'react'
 
 // components import
-import CustomButton from "../../components/custom-buttom/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 
 // router imports
 import { Link } from "react-router-dom";

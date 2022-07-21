@@ -7,63 +7,63 @@ const CustomInput = ({
   msg,
   isShort,
   type,
-  validateInput,
   register,
   ...otherProps
 }) => {
-  const [show, setShow] = useState(true);
-  const [inputType, setType] = useState(null);
-  const [iconUrl, setUrl] = useState("");
-  const [isIconAvailable, setAvailability] = useState(true);
-
-  const availableIcons = ["email", "number", "password"]
+  const [showPassword, setShowPassword] = useState(true);
+  const [inputType, setInputType] = useState(null);
+  const [inputIconUrl, setInputIconUrl] = useState("");
+  const [isIconAvailable, setIconAvailability] = useState(true);
 
   useEffect(() => {
-    setAvailability(availableIcons.includes(type));
-    setUrl(`/icons/${type}.png`);
-    setType(type);
+    const availableIcons = ["email", "number", "password"];
+    setIconAvailability(availableIcons.includes(type));
+    setInputIconUrl(`/icons/${type}.png`);
+    setInputType(type);
   }, [type]);
 
-  function toogleShow(e) {
-    setShow((show) => !show);
-    setType((type) => (type === "password" ? "text" : "password"));
+  function toogleShow() {
+    setShowPassword((show) => !show);
+    setInputType((type) => (type === "password" ? "text" : "password"));
   }
-const withoutIconStyles =  !isIconAvailable ? {padding: '10px'} : {}
-const customBackground = bgColor ? {backgroundColor: bgColor} : {};
-const noIconLabelStyles = !isIconAvailable ? {left: '10px'} : {}
+
+  // these styles applies on input based
+  const withoutIconStyles = !isIconAvailable ? { padding: "10px" } : {};
+  const customBackground = bgColor ? { backgroundColor: bgColor } : {};
+
+  // these styles applies on label
+  const noIconLabelStyles = !isIconAvailable ? { left: "10px" } : {};
 
   return (
     <div className="custom-input">
       <input
-        type={inputType ? inputType : "text"}
+        className="input"
+        type={inputType || "text"}
         {...register}
-        style={{...customBackground, ...withoutIconStyles}}
+        style={{ ...customBackground, ...withoutIconStyles }}
         name={name}
         id={name}
-        onBlur={validateInput}
         {...otherProps}
-        className="input"
-        autoComplete="off"
       />
       <label
-      style={{...noIconLabelStyles}}
+        style={{ ...noIconLabelStyles }}
         htmlFor={name}
-        className={`label ${isShort ? "uppercase" : "capitalize"}`}
+        className={`label ${isShort && 'uppercase'}`}
       >
-        {label ? label : name}
+        {label || name}
       </label>
       {isIconAvailable && (
         <div className="input-icon">
-          <img src={iconUrl} alt="icon" />
+          <img src={inputIconUrl} alt="icon" />
         </div>
       )}
-      <p className="msg"></p>
+      <p className="msg">{msg}</p>
       {type === "password" && (
         <div className="show-hide" onClick={toogleShow}>
           <img
-          style={{opacity: show ? 1 : .5}}
-            src={show ? "/icons/eye.png" : "/icons/eye-closed.png"}
-            alt="show"
+            style={{ opacity: showPassword ? 1 : 0.5 }}
+            src={showPassword ? "/icons/eye.png" : "/icons/eye-closed.png"}
+            alt="show-hide"
           />
         </div>
       )}

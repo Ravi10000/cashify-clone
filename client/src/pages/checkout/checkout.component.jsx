@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 // components
 import Card from "../../components/card/card.component";
-import CustomButton from "../../components/custom-buttom/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 
 // redux actions
 import { updateUser } from "../../redux/user/user.actions";

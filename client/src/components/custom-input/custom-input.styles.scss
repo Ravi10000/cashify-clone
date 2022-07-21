@@ -14,7 +14,6 @@
       + .label {
         transition: all 0.2s ease-in-out;
         font-size: 1rem;
-        // color: var(--medium-dark);
         color: #000;
         font-weight: var(--medium);
         letter-spacing: 0.5px;
@@ -36,7 +35,6 @@
       + .label {
         transition: all 0.2s ease-in-out;
         font-size: 1rem;
-        // color: var(--medium-dark);
         color: #000;
         font-weight: var(--medium);
         letter-spacing: 0.5px;
@@ -66,6 +64,9 @@
     font-weight: var(--thin);
     font-size: 1.2rem;
     text-transform: capitalize;
+  }
+  .label.uppercase {
+    text-transform: uppercase;
   }
   .msg {
     font-size: 0.8rem;

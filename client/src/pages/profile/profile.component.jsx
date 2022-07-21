@@ -1,6 +1,6 @@
 import './profile.styles.scss';
 // components
-import CustomButton from '../../components/custom-buttom/custom-button.component'
+import CustomButton from '../../components/custom-button/custom-button.component'
 import { useState } from 'react';
 import axios from 'axios';
 

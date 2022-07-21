@@ -11,7 +11,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 // components
-import CustomButton from "../../components/custom-buttom/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
 
 // redux actions

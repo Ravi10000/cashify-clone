@@ -1,5 +1,7 @@
 import "./order-item.styles.scss";
 import { Link } from "react-router-dom";
+import { AnimationOnScroll } from "react-animation-on-scroll";
+
 
 const OrderItem = ({ order }) => {
   const { product } = order;
@@ -12,7 +14,8 @@ const OrderItem = ({ order }) => {
     statusColor = "#e63946";
   }
   return (
-    <div className="order-item">
+    <AnimationOnScroll animateIn="bounce-in" duration={.25} animateOut="">
+      <div className="order-item">
       <div className="order-info">
         <div className="image-container">
           <img src={product.images[0].url} alt={title} />
@@ -83,6 +86,7 @@ const OrderItem = ({ order }) => {
         </div>
       </div>
     </div>
+    </AnimationOnScroll>
   );
 };
 

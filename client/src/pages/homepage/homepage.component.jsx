@@ -2,7 +2,7 @@
 import "./homepage.styles.scss";
 
 //react hooks
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // packages
 import axios from "axios";

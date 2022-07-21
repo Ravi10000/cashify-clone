@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 // components
-import CustomButton from "../../components/custom-buttom/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
 import CustomTextarea from "../../components/custom-textarea/custom-textarea.component";
 

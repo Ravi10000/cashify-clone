@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 // components
-import CustomButton from "../../components/custom-buttom/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 import ImagesCarousel from "../../components/carousel/carousel.component";
 import Loader from "../../components/loader/loader.component";
 
