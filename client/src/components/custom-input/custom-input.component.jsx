@@ -15,12 +15,11 @@ const CustomInput = ({
   const [inputType, setType] = useState(null);
   const [iconUrl, setUrl] = useState("");
   const [isIconAvailable, setAvailability] = useState(true);
-  // let iconUrl =
-  //   let isIconAvailable = ;
 
-  console.log(type, iconUrl);
+  const availableIcons = ["email", "number", "password"]
+
   useEffect(() => {
-    setAvailability(["email", "number", "password"].includes(type));
+    setAvailability(availableIcons.includes(type));
     setUrl(`/icons/${type}.png`);
     setType(type);
   }, [type]);

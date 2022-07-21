@@ -32,6 +32,7 @@
       font-weight: var(--normal);
       display: flex;
       flex-wrap: wrap;
+      width: 300px;
       top: 35%;
       left: 10%;
       font-size: 1.5rem;
@@ -118,7 +119,7 @@
     .banner {
       background-position: 0;
       background-repeat: repeat-x;
-      background-size: 130% 110%;
+      background-size: 130% 100%;
       .title {
         top: 50%;
         left: 10%;
