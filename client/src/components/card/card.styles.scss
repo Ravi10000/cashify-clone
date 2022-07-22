@@ -55,10 +55,10 @@
 }
 @keyframes bounce-in{
   0%{
-    transform: translateY(25px) scale(.5);
+    transform: scale(.9);
   }
   100%{
-    transform: translateY(0px) scale(1);
+    transform: scale(1);
   }
 }
 

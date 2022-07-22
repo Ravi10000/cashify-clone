@@ -1,13 +1,14 @@
 import './loader.styles.scss'
 
-// const loaderStyles = isFetching
-// ? { display: "flex", justifyContent: "center", alignItems: "center" }
-// : {};
-
-const Loader = () =>
-    <div className="loader-container">
-        <div className="loader"></div>
-    </div>
+const Loader = ({height})=>{
+    const loaderStyles = height ? {"height": height} : {};
+    return(
+        <div className="loader-container" style={{...loaderStyles}}>
+            <div className="common-loader"></div>
+        </div>
+    )
+}
+        
 
 export default Loader
 

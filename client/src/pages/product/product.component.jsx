@@ -13,6 +13,7 @@ import { createStructuredSelector } from "reselect";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import ImagesCarousel from "../../components/carousel/carousel.component";
 import Loader from "../../components/loader/loader.component";
+import Table from '../../components/Table/table.component'
 
 // actions
 import { setFlash } from "../../redux/flash/flash.actions";
@@ -79,14 +80,12 @@ const Productpage = ({ match, history, currentUser, flash }) => {
     history.push(`/checkout/${product?._id}`);
   };
 
-  const loaderStyles = isFetching
-    ? { display: "flex", justifyContent: "center", alignItems: "center" }
-    : {};
-
   return (
-    <div className="product-page" style={loaderStyles}>
+    <div className="product-page">
       {isFetching ? (
-        <Loader />
+        <div className="product-loader-container">
+          <Loader />
+        </div>
       ) : (
         <>
           <div className="container">
@@ -147,52 +146,40 @@ const Productpage = ({ match, history, currentUser, flash }) => {
               <p>{product?.message}</p>
             </div>
           )}
-          <div className="description-container">
-            <h3>Description</h3>
-            {product && (
-              <div className="desc">
-                <p>brand</p>
-                <p>{product.brand}</p>
-                <p>model</p>
-                <p>{product.model}</p>
-                <p>ram</p>
-                <p>{product.ram}Gb</p>
-                <p>storage</p>
-                <p>{product.storage}Gb</p>
-                <p>operating system</p>
-                <p>{product.os}</p>
-                <p>color</p>
-                <p>
-                  <div
-                    style={{
-                      display: "inline-block",
-                      backgroundColor: product?.color,
-                      width: "20px",
-                      height: "20px",
-                      borderRadius: "2px",
-                      marginBottom: "-5px",
-                    }}
-                  ></div>{" "}
-                  {product.color}
-                </p>
-                <p>price</p>
-                <p> {product.price} rs</p>
-                <p>quality</p>
-                <p> {product.quality}</p>
-                <p>battery capacity</p>
-                <p> {product["battery capacity"]} mAh</p>
-                <p>front camera</p>
-                <p>{product["front camera"]}</p>
-                <p>rear camera</p>
-                <p>{product["back camera"]}</p>
-                <p>chipset</p>
-                <p>{product.chipset}</p>
-                <p>cpu info</p>
-                <p>{product.cpu}</p>
-                <p>gpu info</p>
-                <p>{product.gpu}</p>
-              </div>
-            )}
+          <div className="description">
+            <Table
+              title="Description"
+              keys={[
+                "Brand",
+                "Model",
+                "Color",
+                "RAM",
+                "Storage",
+                "Price",
+                "Operating System",
+                "Battery Capacity",
+                "Front Camera",
+                "Rear Camera",
+                "Chipset",
+                "CPU Info",
+                "GPU Info",
+              ]}
+              values={[
+                product?.brand,
+                product?.model,
+                product?.color,
+                `${product?.ram} gb`,
+                `${product?.storage} gb`,
+                `rs ${product?.price}`,
+                product?.os,
+                `${product?.["battery capacity"]} mAh`,
+                `${product?.["front camera"]} megapixels`,
+                `${product?.["back camera"]} megapixels`,
+                product?.chipset,
+                product?.cpu,
+                product?.gpu,
+              ]}
+            />
           </div>
         </>
       )}
