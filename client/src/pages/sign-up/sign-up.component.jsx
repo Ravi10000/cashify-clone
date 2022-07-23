@@ -13,6 +13,8 @@ import { connect } from "react-redux";
 // components
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+
 
 // redux actions
 import { updateUser } from "../../redux/user/user.actions";
@@ -69,6 +71,7 @@ const SignUp = ({ history, updateUser, flash }) => {
 
   return (
     <div className="signup-page">
+      <ScrollToTop />
       <h3>
         Already have an account?{" "}
         <Link to="/signin">

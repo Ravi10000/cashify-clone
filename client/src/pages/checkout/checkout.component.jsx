@@ -11,6 +11,8 @@ import { connect } from "react-redux";
 // components
 import Card from "../../components/card/card.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+
 
 // redux actions
 import { updateUser } from "../../redux/user/user.actions";
@@ -77,6 +79,7 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
   };
   return (
     <div className="checkout-page">
+      <ScrollToTop />
       <div className="container">
         <h1>Checkout</h1>
         {checkoutItem && (

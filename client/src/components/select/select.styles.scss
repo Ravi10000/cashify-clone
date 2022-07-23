@@ -1,0 +1,49 @@
+$height: 50px;
+
+ul {
+  .option {
+    display: none;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--light-4);
+    color: grey;
+    &:hover {
+      background-color: var(--light-3);
+    }
+  }
+  li {
+    color: #fff;
+    font-weight: var(--medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: $height;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    p {
+      display: inline-block;
+    }
+  }
+  .filter {
+    background-color: var(--dark);
+    border-radius: 5px;
+    flex-direction: row;
+    .filter-icon {
+      width: 20px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        to right,
+        var(--dark) 0%,
+        var(--medium-dark) 100%
+      );
+    }
+  }
+  .clear-filter {
+    &:hover {
+      background-color: rgb(238, 149, 149);
+    }
+  }
+}

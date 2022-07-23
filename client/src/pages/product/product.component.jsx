@@ -14,6 +14,8 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import ImagesCarousel from "../../components/carousel/carousel.component";
 import Loader from "../../components/loader/loader.component";
 import Table from '../../components/Table/table.component'
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+
 
 // actions
 import { setFlash } from "../../redux/flash/flash.actions";
@@ -82,6 +84,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
 
   return (
     <div className="product-page">
+      <ScrollToTop />
       {isFetching ? (
         <div className="product-loader-container">
           <Loader />

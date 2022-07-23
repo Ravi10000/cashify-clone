@@ -13,6 +13,8 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { withRouter } from "react-router-dom";
 import { updateUser } from "../../redux/user/user.actions";
 import { setFlash } from "../../redux/flash/flash.actions";
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+
 
 const EditProfilePage = ({ flash, currentUser, history, updateUser }) => {
   // const { name, address } = currentUser;
@@ -50,6 +52,10 @@ useEffect(()=>{
       // redirect to profile page if no updates
       const isEmpty = Object.keys(userUpdates).length === 0;
       if (isEmpty) {
+        flash({
+          type: 'info',
+          message: "Nothing to update"
+        })
         history.push("/profile");
         return;
       }
@@ -62,7 +68,7 @@ useEffect(()=>{
       // show profile updated flash message
       flash({
         type: 'success',
-        message: 'profile updated'
+        message: 'profile updated successfully'
       })
       //   redirect to profile page
       history.goBack();
@@ -77,6 +83,7 @@ useEffect(()=>{
   };
   return (
     <div className="edit-profile-page">
+      <ScrollToTop />
       <div className="container">
         <div className="profile-pic">
           <img src="/icons/custom-user.png" alt="" />

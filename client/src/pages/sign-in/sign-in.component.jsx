@@ -7,7 +7,7 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import CustomInput from "../../components/custom-input/custom-input.component";
 import { signIn } from "../../redux/user/user.actions";
 import { connect } from "react-redux";
-
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
 
 import { setFlash } from "../../redux/flash/flash.actions";
 
@@ -44,6 +44,7 @@ const SignIn = ({ flash, history, signIn }) => {
 
   return (
     <div className="signin-page">
+      <ScrollToTop />
       <h3>
         Don't have an account?{" "}
         <Link to="/signup">

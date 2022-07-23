@@ -1,8 +1,10 @@
 import "./tos.styles.scss";
-
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
 const TOSPage = () => {
   return (
     <div className="tos">
+      <ScrollToTop />
+
       <div className="container">
         <h1>Terms of Services | Returns Policy</h1>
         <div className="tos-container">

@@ -57,7 +57,6 @@ function App({ setFlash, flash, signIn, currentUser }) {
 
         // signin user and products in redux
         signIn(data.user);
-
       } catch (error) {
         console.log(error.message);
         setFlash({
@@ -70,22 +69,20 @@ function App({ setFlash, flash, signIn, currentUser }) {
   return (
     <div className="App">
       {flash && <Popup type={flash.type} message={flash.message} />}
+
       <Header isFetchingUser={isFetchingUser} />
+      
       <Switch>
         <Route exact path="/tos" component={TOSPage} />
         <Route exact path="/about-us" component={AboutPage} />
         <Route exact path="/product/:id" component={Productpage} />
-        <ProtectedIfAuthenticated
-          excat
-          path="/signin"
-          component={SignIn}
+        <ProtectedIfAuthenticated excat path="/signin" component={SignIn} />
+        <ProtectedIfAuthenticated excat path="/signup" component={SignUp} />
+        <ProtectedRoute
+          exact
+          path="/checkout/:productid"
+          component={CheckoutPage}
         />
-        <ProtectedIfAuthenticated
-          excat
-          path="/signup"
-          component={SignUp}
-        />
-        <ProtectedRoute exact path="/checkout/:productid" component={CheckoutPage} />
         <ProtectedRoute excat path="/profile" component={ProfilePage} />
         <ProtectedRoute path="/edit-profile" component={EditProfilePage} />
         <ProtectedRoute path="/orders" component={OrdersPage} />

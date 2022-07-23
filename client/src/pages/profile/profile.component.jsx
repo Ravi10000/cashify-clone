@@ -9,6 +9,8 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { Link, withRouter } from 'react-router-dom';
 
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+
 import { signOut } from '../../redux/user/user.actions';
 import { setFlash } from '../../redux/flash/flash.actions';
 
@@ -46,6 +48,7 @@ const ProfilePage = ({flash, currentUser, signOut, history}) => {
         }  
     return (
     <div className="profile-page">
+        <ScrollToTop />
         <div className="container">
             <div className="profile-image-container">
                 <img src="/icons/custom-user.png" alt="" />

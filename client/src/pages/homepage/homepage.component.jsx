@@ -25,6 +25,9 @@ import {
 //components
 import { HashLink } from "react-router-hash-link";
 import CardList from "../../components/card-list/card-list.component";
+import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
+import Search from "../../components/search/search.component";
+import Select from "../../components/select/select.component";
 
 const Homepage = ({
   products,
@@ -63,6 +66,7 @@ const Homepage = ({
 
   return (
     <div className="homepage">
+      <ScrollToTop />
       <div className="banner">
         <HashLink smooth={true} to="#for-sale">
           <h1 className="title">
@@ -77,6 +81,10 @@ const Homepage = ({
             <p className="subtitle-highlight">affordable prices</p>
           </div>
         </HashLink>
+      </div>
+      <div className="search-container">
+        {/* <Select/> */}
+        <Search />
       </div>
       <div className="device-list">
         <h2 className="title" id="for-sale">
