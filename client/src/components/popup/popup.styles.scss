@@ -7,10 +7,10 @@
   overflow: hidden;
   cursor: pointer;
   .popup-msg {
-    background-color: #fec7cd;
+    background-color: var(--danger-bg);
     padding: 12px 25px;
     border-radius: 3px;
-    color: #ef233c;
+    color: var(--danger);
     max-width: 300px;
     font-weight: var(--medium);
     position: relative;
@@ -20,14 +20,14 @@
 }
 .popup.success {
   .popup-msg {
-    background-color: #d8fde9;
-    color: #00b894;
+    background-color: var(--success-bg);
+    color: var(--success);
   }
 }
 .popup.info {
   .popup-msg {
-    background-color: #fdfdd8;
-    color: #b8a300;
+    background-color: var(--info-bg);
+    color: var(--info);
   }
 }
 

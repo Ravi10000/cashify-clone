@@ -12,16 +12,16 @@
         color: var(--medium-dark);
         background-color: var(--light-4);
     }
-    .loader{
-        display: none;
+    .button-loader{
         height: 20px;
         width: 20px;
         margin-bottom: -5px;
         margin-left: 5px;
         border-radius: 50%;
         border: 3px solid var(--medium-dark);
-        border-top-color: transparent;
+        border-top-color: #fff;
         animation: spin .75s linear infinite;
+        display: none;
     }
 
 }

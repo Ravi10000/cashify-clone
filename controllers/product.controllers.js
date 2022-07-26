@@ -20,6 +20,21 @@ module.exports.index = async (req, res) => {
     res.send({ error });
   }
 };
+module.exports.searchAndSend = async (req, res) => {
+  try {
+    const { search, filter } = req.query;
+    // console.log({ query });
+    const products = await Product.find({[filter]: search})
+    console.log({products})
+    // if(!query){
+       
+    // }
+    res.send({ search, filter });
+  } catch (error) {
+    console.log({ error });
+    res.send({ error });
+  }
+};
 
 // fetch product by id from database and send it to client
 module.exports.fetchProductById = async (req, res) => {

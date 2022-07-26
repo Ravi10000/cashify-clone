@@ -1,15 +1,6 @@
 $height: 50px;
 
 ul {
-  .option {
-    display: none;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--light-4);
-    color: grey;
-    &:hover {
-      background-color: var(--light-3);
-    }
-  }
   li {
     color: #fff;
     font-weight: var(--medium);
@@ -20,29 +11,52 @@ ul {
     height: $height;
     border-radius: 5px;
     margin-bottom: 2px;
+    transition: all 0.1s ease-in-out;
     p {
       display: inline-block;
     }
+  }
+  .option {
+    display: none;
+    background-color: var(--light-4);
+    color: var(--medium-dark);
   }
   .filter {
     background-color: var(--dark);
     border-radius: 5px;
     flex-direction: row;
+    padding: 10px;
     .filter-icon {
       width: 20px;
       margin-right: 5px;
     }
+  }
+  .clear-filter {
+    background-color: var(--danger-bg);
+    color: var(--danger);
+    position: relative;
+    span{
+      position: absolute;
+      font-size: 2rem;
+      top: 0;
+    }
+  }
+}
 
-    &:hover {
+@media (hover: hover) {
+  ul {
+    .option:hover {
+      background-color: var(--light-3);
+      transform: scale(1.05);
+    }
+    .filter:hover {
       background: linear-gradient(
-        to right,
+      135deg,
         var(--dark) 0%,
         var(--medium-dark) 100%
       );
     }
-  }
-  .clear-filter {
-    &:hover {
+    .clear-filter:hover {
       background-color: rgb(238, 149, 149);
     }
   }

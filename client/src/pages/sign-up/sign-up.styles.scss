@@ -1,6 +1,4 @@
 .signup-page {
-  background: url("../../../public/signup-bg.webp");
-  background-size: cover;
   width: 100%;
   // height: 725px;
   display: flex;
@@ -27,9 +25,9 @@
       font-size: 1.5rem;
       margin-bottom: 35px;
     }
-    .inputs-container{
+    .inputs-container {
       margin-bottom: 50px;
-      .input-box{
+      .input-box {
         margin-top: 40px;
       }
     }
@@ -52,12 +50,12 @@
   }
 }
 
-@media (hover: hover){
-  .signup-page{
-    h3{
-      span{
-        &:hover{
-          color: #00b894;
+@media (hover: hover) {
+  .signup-page {
+    h3 {
+      span {
+        &:hover {
+          color: var(--success);
           letter-spacing: 1px;
         }
       }
@@ -67,6 +65,8 @@
 
 @media (min-width: 800px) {
   .signup-page {
+    background: url("../../../public/signup-bg.webp");
+    background-size: cover;
     background-position-x: 200px;
     background-repeat: no-repeat;
     h3 {

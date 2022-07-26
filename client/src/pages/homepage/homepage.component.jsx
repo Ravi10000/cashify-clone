@@ -83,7 +83,6 @@ const Homepage = ({
         </HashLink>
       </div>
       <div className="search-container">
-        {/* <Select/> */}
         <Search />
       </div>
       <div className="device-list">

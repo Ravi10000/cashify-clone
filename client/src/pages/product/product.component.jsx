@@ -13,9 +13,8 @@ import { createStructuredSelector } from "reselect";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import ImagesCarousel from "../../components/carousel/carousel.component";
 import Loader from "../../components/loader/loader.component";
-import Table from '../../components/Table/table.component'
+import Table from "../../components/Table/table.component";
 import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
-
 
 // actions
 import { setFlash } from "../../redux/flash/flash.actions";
@@ -27,18 +26,55 @@ import { selectProducts } from "../../redux/shop/shop.selectors";
 const Productpage = ({ match, history, currentUser, flash }) => {
   const { id } = match.params;
 
+  // states and setState
   const [product, setProduct] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  // checking is product is available
   let isOutOfStock = false;
   if (product?.units === 0) isOutOfStock = true;
+
+  // keys for product description table
+  const keys = [
+    "Brand",
+    "Model",
+    "Color",
+    "RAM",
+    "Storage",
+    "Price",
+    "Operating System",
+    "Battery Capacity",
+    "Front Camera",
+    "Rear Camera",
+    "Chipset",
+    "CPU Info",
+    "GPU Info",
+  ];
+
+  // values for table description table
+  const values = [
+    product?.brand,
+    product?.model,
+    product?.color,
+    `${product?.ram} gb`,
+    `${product?.storage} gb`,
+    `rs ${product?.price}`,
+    product?.os,
+    `${product?.["battery capacity"]} mAh`,
+    `${product?.["front camera"]} megapixels`,
+    `${product?.["back camera"]} megapixels`,
+    product?.chipset,
+    product?.cpu,
+    product?.gpu,
+  ];
 
   useEffect(() => {
     (async function () {
       try {
         const { data } = await axios.get(`/api/products/${id}`);
         setIsFetching(false);
+
         if (data.error) {
           console.log(data.error);
           flash({
@@ -47,7 +83,9 @@ const Productpage = ({ match, history, currentUser, flash }) => {
           });
           return;
         }
+
         setProduct(data.product);
+
       } catch (error) {
         console.log(error);
         flash({
@@ -63,13 +101,12 @@ const Productpage = ({ match, history, currentUser, flash }) => {
     if (!currentUser) {
       flash({
         type: "info",
-        message: "You must be signned in to checkout",
+        message: "You must be signned in! to place any order.",
       });
       history.push("/signin");
       return;
     }
-    console.log({currentUser})
-    const {name, address} = currentUser;
+    const { name, address } = currentUser;
     if (!name || !address) {
       flash({
         type: "info",
@@ -93,7 +130,8 @@ const Productpage = ({ match, history, currentUser, flash }) => {
         <>
           <div className="container">
             <div className="image-container">
-              {product?.images.length > 1 ? (
+              {/* <img src={product?.images?.[0]?.url} alt="" /> */}
+              {product?.images?.length > 1 ? (
                 <ImagesCarousel images={product?.images} />
               ) : (
                 <img src={product?.images[0].url} alt="product" />
@@ -124,7 +162,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
               <p className="price">₹ {product?.price} only</p>
               <p className="units-left">
                 {isOutOfStock ? (
-                  <span style={{ color: "#ef233c" }}>Out of stock</span>
+                  <span style={{ color: "var(--danger)" }}>Out of stock</span>
                 ) : product?.units === 1 ? (
                   <span>last {product?.units} unit left at this price</span>
                 ) : (
@@ -150,39 +188,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
             </div>
           )}
           <div className="description">
-            <Table
-              title="Description"
-              keys={[
-                "Brand",
-                "Model",
-                "Color",
-                "RAM",
-                "Storage",
-                "Price",
-                "Operating System",
-                "Battery Capacity",
-                "Front Camera",
-                "Rear Camera",
-                "Chipset",
-                "CPU Info",
-                "GPU Info",
-              ]}
-              values={[
-                product?.brand,
-                product?.model,
-                product?.color,
-                `${product?.ram} gb`,
-                `${product?.storage} gb`,
-                `rs ${product?.price}`,
-                product?.os,
-                `${product?.["battery capacity"]} mAh`,
-                `${product?.["front camera"]} megapixels`,
-                `${product?.["back camera"]} megapixels`,
-                product?.chipset,
-                product?.cpu,
-                product?.gpu,
-              ]}
-            />
+            <Table title="Description" keys={keys} values={values} />
           </div>
         </>
       )}

@@ -52,7 +52,7 @@ const CustomButton = ({children, myStyles, secondary, handleClick, isLoading, ..
     className={`custom-button ${secondary && 'secondary-button'}`} 
     {...otherProps}>
         {children} 
-        <div className="loader" style={loaderStyles}></div>
+        <div className="button-loader" style={loaderStyles}></div>
         </button>
 )}
 

@@ -26,7 +26,7 @@ $height: 50px;
 
     .filter-type {
       position: absolute;
-      right: 105px;
+      right: 75px;
       height: $height;
       width: 50px;
       background-color: var(--light-1);
@@ -49,7 +49,7 @@ $height: 50px;
   }
 
   .search-icon {
-    width: 100px;
+    width: 70px;
     height: $height;
     background: var(--dark);
     display: flex;
@@ -60,7 +60,12 @@ $height: 50px;
       width: 30px;
       height: 30px;
     }
-    &:hover {
+  }
+}
+
+@media (hover:hover){
+  .search{
+    .search-icon:hover {
       background: linear-gradient(
         to right,
         var(--dark) 0%,

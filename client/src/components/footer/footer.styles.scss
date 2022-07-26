@@ -29,7 +29,7 @@ footer {
       }
       a {
         &:hover {
-          color: #00b894;
+          color: var(--success);
         }
       }
     }
@@ -39,7 +39,7 @@ footer {
       align-items: center;
       P {
         &:hover {
-          color: #00b894;
+          color: var(--success);
         }
       }
     }

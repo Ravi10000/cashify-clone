@@ -4,10 +4,12 @@ const express = require("express");
 const {
   index,
   fetchProductById,
+  searchAndSend
 } = require("../controllers/product.controllers");
 
 const router = express.Router();
 
+router.get('/query', searchAndSend)
 router.get("/:id", fetchProductById);
 router.get("/", index);
 

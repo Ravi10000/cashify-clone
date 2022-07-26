@@ -4,6 +4,12 @@
 @tailwind utilities; */ 
 
 :root {
+  --danger: #ef233c;
+  --danger-bg: #fec7cd;
+  --success: #00b894;
+  --success-bg: #d8fde9;
+  --info: #b8a300;
+  --info-bg: #fdfdd8;
   --dark: #223963;
   --medium-dark: #2A4E96;
   --light: #699EEE;

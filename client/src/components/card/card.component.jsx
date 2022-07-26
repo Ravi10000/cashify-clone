@@ -34,7 +34,7 @@ const CardItem = ({ product, history }) => {
           {units === 0 && (
             <p
               className="units-left"
-              style={{ color: "#ef233c", fontWeight: "600" }}
+              style={{ color: "var(--danger)", fontWeight: "600" }}
             >
               Out of stock
             </p>

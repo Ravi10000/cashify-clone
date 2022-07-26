@@ -36,7 +36,7 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
         return;
       }
       updateProducts([...products, ...response.data.products]);
-      if (products.length + response.data.products.length === productsCount) {
+      if (products?.length + response.data.products?.length === productsCount) {
         setHasMore(false);
         return;
       }

@@ -33,14 +33,14 @@ const Select = ({ passOption, options }) => {
               alt="filter-icon"
               className="filter-icon"
             />
-            <p>{selectedOption || '<Filter>'}</p>
+            <p>{selectedOption || 'Filter By'}</p>
       </li>
       <li
         className="clear-filter option"
         style={{ ...toogleClearFilterStyles }}
         onClick={clearFilter}
       >
-        <p>Clear Filter &times;</p>
+        <p>Clear Filter <span>&times;</span></p>
       </li>
       {options?.map((option) => {
         if(option === selectedOption){
@@ -48,6 +48,7 @@ const Select = ({ passOption, options }) => {
         }
         return <li
         className="option"
+        key={option}
         style={{ ...hideOptions }}
         onClick={() => selectOption(option)}
       >

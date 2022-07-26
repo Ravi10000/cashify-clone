@@ -7,7 +7,7 @@ export default function ImagesCarousel({images}) {
     {
         images?.map((image, index)=>
                 <div key={index}>
-                    <img src={image.url} alt={image.name}/>
+                    <img src={image?.url} alt='device'/>
                 </div>
     )   
 }       
