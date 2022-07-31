@@ -58,12 +58,17 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
       ) : (
         <div className="loader-card-list"></div>
       )}
-      {isFetching ? 
+      {isFetching ? (
         <div className="loader-card-list"></div>
-       : hasMore && products.length
-       ? <p className="more center-text" onClick={fetchMoreProducts}>show more</p>
-       : products.length && !isFetching && <p className="center-text">you've seen it all.</p>
-      }
+      ) : hasMore && products.length ? (
+        <p className="more center-text" onClick={fetchMoreProducts}>
+          show more
+        </p>
+      ) : products.length && !isFetching ? (
+        <p className="center-text">You've seen it all.</p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

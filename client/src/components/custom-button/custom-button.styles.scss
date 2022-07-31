@@ -18,8 +18,8 @@
         margin-bottom: -5px;
         margin-left: 5px;
         border-radius: 50%;
-        border: 3px solid var(--medium-dark);
-        border-top-color: #fff;
+        border: 3px solid #fff;
+        border-top-color: transparent;
         animation: spin .75s linear infinite;
         display: none;
     }
@@ -28,9 +28,17 @@
 
 @media (hover: hover){
     .custom-button{
+        .button-loader{
+            border-color: #fff;
+            border-top-color: transparent;
+        }
         &:hover{
             color: var(--medium-dark);
             background-color: var(--light-4);
+            .button-loader{
+                border-color: var(--medium-dark);
+                border-top-color: transparent;
+            }
         }
         &.secondary-button{
             &:hover{

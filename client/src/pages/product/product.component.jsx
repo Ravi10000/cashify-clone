@@ -85,7 +85,6 @@ const Productpage = ({ match, history, currentUser, flash }) => {
         }
 
         setProduct(data.product);
-
       } catch (error) {
         console.log(error);
         flash({
@@ -130,7 +129,6 @@ const Productpage = ({ match, history, currentUser, flash }) => {
         <>
           <div className="container">
             <div className="image-container">
-              {/* <img src={product?.images?.[0]?.url} alt="" /> */}
               {product?.images?.length > 1 ? (
                 <ImagesCarousel images={product?.images} />
               ) : (
@@ -146,7 +144,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
                 {product?.ram}Gb/{product?.storage}Gb
               </p>
               <p>
-                <div
+                <span
                   style={{
                     display: "inline-block",
                     backgroundColor: product?.color,
@@ -155,7 +153,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
                     borderRadius: "2px",
                     marginBottom: "-5px",
                   }}
-                ></div>{" "}
+                ></span>{" "}
                 {product?.color}{" "}
               </p>
               <p>{product?.quality} Quality</p>
@@ -187,6 +185,16 @@ const Productpage = ({ match, history, currentUser, flash }) => {
               <p>{product?.message}</p>
             </div>
           )}
+          <div className="delivery-options">
+            <div className="cod">
+              <img src="/icons/cod.png" alt="cod" />
+              <p>cash on delivery</p>
+            </div>
+            <div className="exchange">
+              <img src="/icons/exchange.png" alt="exchange" />
+              <p>30 day replacement</p>
+            </div>
+          </div>
           <div className="description">
             <Table title="Description" keys={keys} values={values} />
           </div>
