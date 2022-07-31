@@ -45,7 +45,8 @@
 @media (hover: hover){
   .card:hover{
       border-radius: 0;
-      outline: 1px solid grey;
+      transform: scale(1.025);
+      // outline: 1px solid whitesmoke;
 
   }
 }

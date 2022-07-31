@@ -132,7 +132,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
               {product?.images?.length > 1 ? (
                 <ImagesCarousel images={product?.images} />
               ) : (
-                <img src={product?.images[0].url} alt="product" />
+                <img src={product?.images[0]?.url} alt="product" />
               )}
             </div>
             <div className="info-container">

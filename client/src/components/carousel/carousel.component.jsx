@@ -8,6 +8,7 @@ export default function ImagesCarousel({ images }) {
       useKeyboardArrows
       showStatus={false}
       showArrows={false}
+      width='80%'
     >
       {images?.map((image, index) => (
         <img src={image?.url} alt="device" key={index} />
