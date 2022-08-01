@@ -4,6 +4,9 @@
   align-items: center;
   margin-bottom: 50px;
   position: relative;
+  .card-item-container{
+    width: 95%;
+  }
   .loader-card-list {
     position: absolute;
     bottom: -50px;
@@ -50,6 +53,14 @@
   }
 }
 
+
+@media (min-width: 500px) {
+  .card-list{
+    .card-item-container{
+      width: 60%;
+    }
+  }
+}
 @media (min-width: 800px) {
   .card-list {
     margin: 0 50px 25px 50px;
@@ -58,6 +69,9 @@
     row-gap: 10px;
     padding-bottom: 50px;
     place-items: center;
+    .card-item-container{
+      width: auto;
+    }
     .loader-card-list {
       bottom: -5px;
     }

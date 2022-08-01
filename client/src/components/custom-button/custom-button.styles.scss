@@ -1,55 +1,47 @@
-.custom-button{
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 2px;
-    font-weight: var(--semibold);
-    color: var(--light-4);
-    background-color: var(--medium-dark);
-    border: 2px solid var(--medium-dark);
-    transition: all .15s ease-out;
+.custom-button {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: var(--semibold);
+  color: var(--light-4);
+  background-color: var(--medium-dark);
+  border: 2px solid var(--medium-dark);
+  transition: all 0.15s ease-out;
 
-    &.secondary-button{
-        color: var(--medium-dark);
-        background-color: var(--light-4);
-    }
-    .button-loader{
-        height: 20px;
-        width: 20px;
-        margin-bottom: -5px;
-        margin-left: 5px;
-        border-radius: 50%;
-        border: 3px solid #fff;
-        border-top-color: transparent;
-        animation: spin .75s linear infinite;
-        display: none;
-    }
-
+  &.secondary-button {
+    color: var(--medium-dark);
+    background-color: var(--light-4);
+  }
+  .button-loader {
+    height: 20px;
+    width: 20px;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    border-top-color: transparent;
+    animation: spin 0.75s linear infinite;
+    display: none;
+  }
 }
 
-@media (hover: hover){
-    .custom-button{
-        .button-loader{
-            border-color: #fff;
-            border-top-color: transparent;
-        }
-        &:hover{
-            color: var(--medium-dark);
-            background-color: var(--light-4);
-            .button-loader{
-                border-color: var(--medium-dark);
-                border-top-color: transparent;
-            }
-        }
-        &.secondary-button{
-            &:hover{
-            color: var(--light-4);
-            background-color: var(--medium-dark);
-        }
-        }
+@media (hover: hover) {
+  .custom-button:hover {
+    color: var(--medium-dark);
+    background-color: var(--light-4);
+    .button-loader {
+      border-color: var(--medium-dark);
+      border-top-color: transparent;
     }
+    &.secondary-button:hover {
+        color: var(--light-4);
+        background-color: var(--medium-dark);
+
+    }
+  }
 }
 @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }

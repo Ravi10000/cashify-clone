@@ -53,7 +53,9 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
     <div className="card-list">
       {products.length ? (
         products.map((product) => (
-          <CardItem key={product._id} product={product} />
+          <div className="card-item-container">
+            <CardItem key={product._id} product={product} />
+          </div>
         ))
       ) : (
         <div className="loader-card-list"></div>
