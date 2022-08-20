@@ -7,45 +7,51 @@
   z-index: 10;
   top: 0;
   padding: 10px 10px;
-  background: linear-gradient(
-    89.95deg,
-    #98b2ff -3.22%,
-    #b1c6fe 66.1%,
-    var(--light)
-  );
+  background: linear-gradient(89.95deg,
+      #98b2ff -3.22%,
+      #b1c6fe 66.1%,
+      var(--light));
   align-items: center;
+
   .logo.link {
     display: flex;
     flex-direction: column;
+
     img {
       height: 50px;
     }
+
     span {
       margin-top: -5px;
       font-size: 0.5rem;
       margin-left: 2px;
       font-family: "Righteous";
       color: #646464;
+
       .color {
         color: var(--medium-dark);
       }
     }
   }
+
   .links {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    .right{
+
+    .right {
       height: 50px;
     }
   }
+
   .fetchingUser {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 70px;
+
     .loader {
       height: 30px;
       width: 30px;
@@ -55,6 +61,7 @@
       animation: spin 0.75s linear infinite;
     }
   }
+
   .link {
     width: 60px;
     display: flex;
@@ -62,6 +69,7 @@
     align-items: center;
     height: 100%;
     transition: all 0.2s ease-in-out;
+
     img {
       height: 30px;
     }
@@ -72,6 +80,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -81,6 +90,7 @@
   .header {
     .link {
       position: relative;
+
       &::after {
         content: "";
         position: absolute;
@@ -89,18 +99,18 @@
         width: 100%;
         bottom: -7px;
         left: 0;
-        background: linear-gradient(
-          270deg,
-          #1976d2 29.01%,
-          var(--light) 68.75%,
-          var(--medium-dark) 100%
-        );
+        background: linear-gradient(270deg,
+            #1976d2 29.01%,
+            var(--light) 68.75%,
+            var(--medium-dark) 100%);
         transform: scaleX(0);
         transform-origin: bottom right;
         transition: transform 0.3s ease-out;
       }
+
       &:hover {
         transform: scale(1.1);
+
         &::after {
           transform: scaleX(1);
           transform-origin: bottom left;
@@ -108,47 +118,47 @@
       }
     }
   }
+
   .ig.link {
     &::after {
-      background: linear-gradient(
-        270deg,
-        #d6249f 29.01%,
-        #fd5949 68.75%,
-        #f7d0a8 100%
-      );
+      background: linear-gradient(270deg,
+          #d6249f 29.01%,
+          #fd5949 68.75%,
+          #f7d0a8 100%);
     }
   }
+
   .fb.link {
-    &::after{
-      background: linear-gradient(
-          270deg,
+    &::after {
+      background: linear-gradient(270deg,
           #1976d2 29.01%,
           rgba(67, 140, 212, 0.78125) 68.75%,
-          rgba(0, 122, 242, 0.63) 100%
-        );
+          rgba(0, 122, 242, 0.63) 100%);
     }
   }
+
   .wa.link {
-    &::after{
-      background: linear-gradient(
-          89.96deg,
+    &::after {
+      background: linear-gradient(89.96deg,
           #00eb78 2.76%,
           #00d264 76.49%,
-          #00b950 98.91%
-        );
+          #00b950 98.91%);
     }
   }
 }
+
 @media (min-width: 800px) {
   .header {
     .logo.link {
       flex-direction: row;
       width: 150px;
+
       span {
         margin-top: 0px;
         font-size: 1rem;
       }
     }
+
     padding-left: 0px;
     padding-right: 25px;
   }

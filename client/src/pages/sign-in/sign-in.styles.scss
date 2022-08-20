@@ -5,27 +5,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   h3 {
     margin-top: 25px;
     padding-bottom: 25px;
     align-self: center;
+
     span {
       font-weight: var(--semibold);
       color: var(--medium-dark);
       transition: all 0.2s ease-out;
     }
   }
+
   .container {
     width: 90%;
     padding: 25px;
     padding-bottom: 40px;
     border-radius: 4px;
     margin-bottom: 50px;
-    background: linear-gradient(
-      135deg,
-      rgba(155, 209, 226, 0.528),
-      var(--light-3)
-    );
+    background: linear-gradient(135deg,
+        rgba(155, 209, 226, 0.528),
+        var(--light-3));
+
     form {
       .form-title {
         color: var(--dark);
@@ -33,17 +35,21 @@
         font-size: 1.5rem;
         margin-bottom: 35px;
       }
+
       .inputs-container {
         margin-bottom: 50px;
+
         .input-box {
           margin-top: 40px;
         }
       }
+
       .signin-button-container {
         width: 100%;
       }
     }
   }
+
   .errors {
     color: #ff3f56;
     font-weight: var(--thin);
@@ -66,7 +72,6 @@
 
 @media (min-width: 480px) {
   .signup-page {
-    background: url("../../../public/signin-bg.webp");
     .container {
       width: 50%;
     }
@@ -75,21 +80,26 @@
 
 @media (min-width: 800px) {
   .signin-page {
-    height: 80vh;
-    background-repeat: no-repeat;
+    background: url("../../../public/signin-bg.webp");
+    background-size: cover;
     background-position-x: -200px;
+    background-repeat: no-repeat;
+    height: 80vh;
     justify-content: center;
+
     h3 {
       width: 35%;
       align-self: flex-end;
       margin-right: 10%;
     }
+
     .container {
       align-self: flex-end;
       width: 400px;
       padding: 30px;
       padding-bottom: 50px;
       margin-right: 10%;
+
       .errors {
         font-weight: var(--normal);
       }

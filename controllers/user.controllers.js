@@ -5,14 +5,15 @@ const Order = require("../models/order.model");
 // sign up user and send user to client
 module.exports.signUpUser = async (req, res) => {
   try {
-    const { email, password } = req.body.user;
+    const { username, password } = req.body.user;
     const user = new User({
-      username: email,
+      username,
       "phone number": req.body.user["phone number"],
     });
-    const newUser = await User.register(user, password);
-    await req.login(newUser, (error) => {
-      res.send({ error });
+    const registeredUser = await User.register(user, password);
+    req.login(registeredUser, (error) => {
+      console.log({error})
+      error && res.send({ error });
     });
     res.send({ user: req.user });
   } catch (error) {

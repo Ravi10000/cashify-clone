@@ -15,12 +15,11 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import CustomInput from "../../components/custom-input/custom-input.component";
 import ScrollToTop from "../../components/scroll-to-top/scroll-to-top.component";
 
-
 // redux actions
-import { updateUser } from "../../redux/user/user.actions";
+import { signIn } from "../../redux/user/user.actions";
 import { setFlash } from "../../redux/flash/flash.actions";
 
-const SignUp = ({ history, updateUser, flash }) => {
+const SignUp = ({ history, signIn, flash }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -32,33 +31,39 @@ const SignUp = ({ history, updateUser, flash }) => {
       email: "",
       "phone number": "",
       password: "",
-      "confirm password":""
+      "confirm password": "",
     },
   });
 
   const submitForm = async (data) => {
+    // console.log({data})
+    // console.log(errors)
+    // if(data.password !== data['confirm password']){
+    //   console.log('passwords do not match')
+    // }
     try {
-        setIsLoading(true);
-      const { email, password } = data;
+      setIsLoading(true);
+      const { email: username, password } = data;
       console.log(data);
-      const res = await axios.post("/api/user/signup", {user:{
-        email,
-        password,
-        "phone number": data["phone number"],
-    }});
-      console.log(res.data.user);
-      if(res.data.error){
-        console.log(res.data.error.message);
+      const res = await axios.post("/api/user/signup", {
+        user: {
+          username,
+          password,
+          "phone number": data["phone number"],
+        },
+      });
+      if (res.data.error) {
+        console.error(res.data.error.message);
         flash({
-          type: 'error',
-          message: res.data.error.message
-        })
-        history.push('/signup');
+          type: "error",
+          message: res.data.error.message,
+        });
+        history.push("/signup");
         setIsLoading(false);
-        return
+        return;
       }
-      updateUser(res.data.user);
-      history.push('/profile');
+      signIn(res.data.user);
+      history.push("/profile");
     } catch (err) {
       console.log(err.message);
     }
@@ -170,7 +175,7 @@ const SignUp = ({ history, updateUser, flash }) => {
           </div>
           <div className="signup-button input-box">
             <CustomButton
-            isLoading={isLoading}
+              isLoading={isLoading}
               myStyles={{ color: "#97DAC8", backgroundColor: "#194656" }}
             >
               Sign Up
@@ -183,7 +188,7 @@ const SignUp = ({ history, updateUser, flash }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUser: (user) => dispatch(updateUser(user)),
+  signIn: (user) => dispatch(signIn(user)),
   flash: (flash) => dispatch(setFlash(flash)),
 });
 
