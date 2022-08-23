@@ -4,8 +4,8 @@
 @tailwind utilities; */ 
 
 :root {
-  --text: #8493B5;
-  --text-dark: #A8AEBB;
+  --text-dark: #8493B5;
+  --text: #A8AEBB;
   --text-heading: #457EFF;
   --serious: #8493B5;
   --danger: #ef233c;
