@@ -4,6 +4,10 @@
 @tailwind utilities; */ 
 
 :root {
+  --text: #8493B5;
+  --text-dark: #A8AEBB;
+  --text-heading: #457EFF;
+  --serious: #8493B5;
   --danger: #ef233c;
   --danger-bg: #fec7cd;
   --success: #00b894;

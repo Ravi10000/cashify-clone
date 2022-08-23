@@ -93,14 +93,14 @@
     margin-top: 50px;
 
     h3 {
-      color: #A8AEBB;
+      color: var(--text-dark);
       font-size: 2rem;
       font-weight: var(--semibold);
     }
 
     p:nth-child(2n-1) {
       font-size: 1.5rem;
-      color: #457EFF;
+      color: var(--text-heading);
       font-weight: var(--semibold);
     }
 
@@ -133,7 +133,7 @@
         grid-template-columns: 150px 1fr;
         align-items: baseline;
         p:nth-child(2n){
-          color: #8493B5;
+          color: var(--text);
         }
         // column-gap: 10px;
       }
