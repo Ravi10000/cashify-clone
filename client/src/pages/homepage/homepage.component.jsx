@@ -95,7 +95,17 @@ const Homepage = ({
         </div>
         <div className="quality-description">
           <h3>Quality Descriptions</h3>
-          <p>
+          <div className="qualities">
+            <p>Superb</p>
+            <p>Almost new devices with warrenty of 6 months from our side.</p>
+            <p>Best</p>
+            <p>Devices in great condition with warrenty of 3 months from our side.</p>
+            <p>Good</p>
+            <p>Devices in okay condition with warrenty of 1 and 1/2 months from our side.</p>
+            <p>Not Bad</p>
+            <p>Devices that have some issue with warrenty of 1 month from our side.</p>
+          </div>
+          {/* <p>
             <span>Superb: </span>Almost new devices with warrenty of 6 months
             from our side.
           </p>
@@ -110,7 +120,7 @@ const Homepage = ({
           <p>
             <span>Not Bad: </span>Devices that have some issue with warrenty of
             1 month from our side.
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

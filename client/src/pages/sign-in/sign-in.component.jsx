@@ -89,6 +89,12 @@ const SignIn = ({ flash, history, signIn }) => {
               <p className="errors">{errors?.password?.message}</p>
             </div>
           </div>
+          {/* <div className="next">
+          <CustomButton isLoading={isLoading}>
+            <img src="./icons/arrow.svg" alt="" />
+          </CustomButton>
+
+          </div> */}
           <div className="signin-button-container">
             <CustomButton isLoading={isLoading}>Sign In</CustomButton>
           </div>
