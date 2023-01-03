@@ -22,14 +22,14 @@ import {
 import CardItem from "../card/card.component";
 
 const CardList = ({ products, productsCount, flash, updateProducts }) => {
-  const [skip, setSkip] = useState(6);
+  const [skip, setSkip] = useState(10);
   const [hasMore, setHasMore] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
 
   async function fetchMoreProducts() {
     try {
       setIsFetching(true);
-      const response = await axios.get(`/api/products?skip=${skip}&limit=${6}`);
+      const response = await axios.get(`/api/products?skip=${skip}&limit=${10}`);
       setIsFetching(false);
       if (response.data.error) {
         setHasMore(false);
@@ -40,7 +40,7 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
         setHasMore(false);
         return;
       }
-      setSkip((skip) => skip + 6);
+      setSkip((skip) => skip + 10);
     } catch (error) {
       console.log(error);
       flash({

@@ -39,7 +39,7 @@ const Homepage = ({
   useEffect(() => {
     (async function () {
       try {
-        const response = await axios.get(`/api/products?limit=${6}`);
+        const response = await axios.get(`/api/products?limit=${10}`);
         if (response.data.error) {
           console.log(response.data.error);
           setFlash({

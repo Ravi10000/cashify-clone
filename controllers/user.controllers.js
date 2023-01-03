@@ -1,6 +1,7 @@
 // models
 const User = require("../models/user.model");
 const Order = require("../models/order.model");
+const sendEmail = require('../utils/emailer')
 
 // sign up user and send user to client
 module.exports.signUpUser = async (req, res) => {
@@ -11,6 +12,7 @@ module.exports.signUpUser = async (req, res) => {
       "phone number": req.body.user["phone number"],
     });
     const registeredUser = await User.register(user, password);
+    sendEmail(username, 'successfully registered', `You've been successfully registered with us. Thank you mr.phonex.com`)
     req.login(registeredUser, (error) => {
       console.log({error})
       error && res.send({ error });

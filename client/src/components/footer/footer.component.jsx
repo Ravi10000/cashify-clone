@@ -71,7 +71,7 @@ const Footer = () => (
             </a>
             </div>
     </div>
-    <p>©copyright | Mr.PhoneX</p>
+    <p>©copyright | www.mrphonex.com</p>
   </footer>
 );
 export default Footer;

@@ -1,6 +1,7 @@
 const Order = require("../models/order.model");
 const User = require("../models/user.model");
 const Product = require("../models/product.model");
+const sendEmail = require('../utils/emailer')
 
 module.exports.generateOrder = async (req, res) => {
   try {
@@ -10,6 +11,16 @@ module.exports.generateOrder = async (req, res) => {
     const newOrder = await Order.create({ user, product });
     user.orders.push(newOrder);
     await user.save();
+    sendEmail(user.username, 'Order placed successfully', 
+    `
+    Your order for ${product.brand} ${product.model} ${product.ram}gb + ${product.storage}gb
+    color ${product.color} is placed successfully.
+
+    Your order id is "${newOrder._id}"
+    Our executive will contact you shortly.
+    Thank you for using our service.
+    www.mrphonex.com
+    `)
     product.units -= 1;
     await product.save();
     res.send({ user });

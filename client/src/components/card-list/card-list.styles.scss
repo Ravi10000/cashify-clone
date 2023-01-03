@@ -16,8 +16,8 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 5px solid var(--medium-dark);
-    border-top-color: transparent;
+    border: 2px solid var(--medium-dark);
+    border-top-color: #fff;
     animation: spin-card-list-loader 0.75s infinite ease-out;
   }
   .center-text {
@@ -29,8 +29,9 @@
   }
   .more {
     color: var(--medium-dark);
-    font-weight: var(--semibold);
+    font-weight: var(--medium);
     cursor: pointer;
+    font-size: .9rem;
   }
 }
 @keyframes spin-card-list-loader {
