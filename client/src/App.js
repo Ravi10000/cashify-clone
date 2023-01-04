@@ -43,7 +43,7 @@ function App({ setFlash, flash, signIn, currentUser }) {
     (async () => {
       try {
         // fetch user
-        const { data } = await axios.get("/api/user");
+        const { data } = await axios.get("https://mrphonex-api.onrender.com/api/user");
 
         setFetchingUser(false);
         if (data.error) {
