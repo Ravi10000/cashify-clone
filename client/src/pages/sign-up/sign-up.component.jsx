@@ -45,7 +45,7 @@ const SignUp = ({ history, signIn, flash }) => {
       setIsLoading(true);
       const { email: username, password } = data;
       console.log(data);
-      const res = await axios.post("/api/user/signup", {
+      const res = await axios.post("https://mrphonex-api.onrender.com/api/user/signup", {
         user: {
           username,
           password,

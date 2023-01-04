@@ -29,7 +29,7 @@ const CardList = ({ products, productsCount, flash, updateProducts }) => {
   async function fetchMoreProducts() {
     try {
       setIsFetching(true);
-      const response = await axios.get(`/api/products?skip=${skip}&limit=${10}`);
+      const response = await axios.get(`https://mrphonex-api.onrender.com/api/products?skip=${skip}&limit=${10}`);
       setIsFetching(false);
       if (response.data.error) {
         setHasMore(false);

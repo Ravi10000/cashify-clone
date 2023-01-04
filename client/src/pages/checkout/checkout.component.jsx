@@ -28,7 +28,7 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
     (async function () {
       try {
         const { productid } = match.params;
-        const { data } = await axios.get(`/api/products/${productid}`);
+        const { data } = await axios.get(`https://mrphonex-api.onrender.com/api/products/${productid}`);
         if (data.error) {
           console.log(data.error)
           flash({
@@ -52,7 +52,7 @@ const CheckoutPage = ({ flash, history, match, updateUser }) => {
     try {
       setIsLoading(true);
       e.preventDefault();
-      const {data} = await axios.post(`/api/orders/new`, { id: checkoutItem._id });
+      const {data} = await axios.post(`https://mrphonex-api.onrender.com/api/orders/new`, { id: checkoutItem._id });
       if (data.error) {
         console.log(data.error)
         flash({

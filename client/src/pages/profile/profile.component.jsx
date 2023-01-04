@@ -19,7 +19,7 @@ const ProfilePage = ({flash, currentUser, signOut, history}) => {
     const signOutAndSetLoading = async() => {
         try{
             setIsLoading(true)
-        const {data} =await axios.post('/api/user/signout');
+        const {data} =await axios.post('https://mrphonex-api.onrender.com/api/user/signout');
         setIsLoading(false)
         if(data.error){
             console.error(data.error)

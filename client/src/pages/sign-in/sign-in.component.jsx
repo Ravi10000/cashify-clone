@@ -24,7 +24,7 @@ const SignIn = ({ flash, history, signIn }) => {
     try {
       setIsLoading(true);
       const { email: username, password } = data;
-      const res = await axios.post("/api/user/signin", { username, password });
+      const res = await axios.post("https://mrphonex-api.onrender.com/api/user/signin", { username, password });
 
       signIn(res.data.user);
       flash({

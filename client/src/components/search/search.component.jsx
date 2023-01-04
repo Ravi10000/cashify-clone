@@ -37,7 +37,7 @@ const Search = ({updateProducts}) => {
       const search = data.search.toLowerCase();
       console.log({ search }, { filter });
       const response = await axios.get(
-        `/api/products/query?search=${search}&filter=${filter}`
+        `https://mrphonex-api.onrender.com/api/products/query?search=${search}&filter=${filter}`
       );
       // updateProducts(response.data.products);
       console.log(response.data);

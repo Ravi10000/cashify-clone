@@ -60,7 +60,7 @@ useEffect(()=>{
         return;
       }
       //  update user in database
-      const res = await axios.put("/api/user", {userUpdates});
+      const res = await axios.put("https://mrphonex-api.onrender.com/api/user", {userUpdates});
 
       //   update user in redux
       updateUser(res.data.user);

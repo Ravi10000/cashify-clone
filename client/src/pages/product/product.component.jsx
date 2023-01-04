@@ -72,7 +72,7 @@ const Productpage = ({ match, history, currentUser, flash }) => {
   useEffect(() => {
     (async function () {
       try {
-        const { data } = await axios.get(`/api/products/${id}`);
+        const { data } = await axios.get(`https://mrphonex-api.onrender.com/api/products/${id}`);
         setIsFetching(false);
 
         if (data.error) {
