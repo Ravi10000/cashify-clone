@@ -9,7 +9,7 @@
     padding: 10px 40px 10px 40px;
     outline: none;
     caret-color: var(--medium-dark);
-    border-radius: 5px 5px 0 0;
+    border-radius: 2px;
     &:focus {
       + .label {
         transition: all 0.2s ease-in-out;

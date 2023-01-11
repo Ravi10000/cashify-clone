@@ -4,36 +4,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   h3 {
     margin-top: 25px;
+
     span {
       font-weight: var(--semibold);
       color: #194656;
       transition: all 0.2s ease-out;
     }
   }
+
   .container {
-    background: #60a99b74;
     border-radius: 4px;
     width: 90%;
     padding: 25px 25px 50px 25px;
     margin-top: 20px;
     margin-bottom: 50px;
+
     .form-title {
       color: #1b5144;
       font-weight: var(--semibold);
       font-size: 1.5rem;
       margin-bottom: 35px;
     }
+
     .inputs-container {
       margin-bottom: 50px;
+
       .input-box {
         margin-top: 40px;
       }
     }
+
     .signup-button-container {
       width: 100%;
     }
+
     .errors {
       color: #ff3f56;
       font-weight: var(--thin);
@@ -69,15 +76,19 @@
     background-size: cover;
     background-position-x: 200px;
     background-repeat: no-repeat;
+
     h3 {
       width: 35%;
       margin-left: 10%;
       align-self: flex-start;
     }
+
     .container {
+      background: #60a99b74;
       align-self: flex-start;
       width: 400px;
       margin-left: 10%;
+
       .errors {
         font-weight: var(--normal);
       }

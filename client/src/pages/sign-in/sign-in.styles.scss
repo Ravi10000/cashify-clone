@@ -24,9 +24,6 @@
     padding-bottom: 40px;
     border-radius: 4px;
     margin-bottom: 50px;
-    background: linear-gradient(135deg,
-        rgba(155, 209, 226, 0.528),
-        var(--light-3));
 
     form {
       .form-title {
@@ -99,6 +96,9 @@
       padding: 30px;
       padding-bottom: 50px;
       margin-right: 10%;
+      background: linear-gradient(135deg,
+          rgba(155, 209, 226, 0.528),
+          var(--light-3));
 
       .errors {
         font-weight: var(--normal);

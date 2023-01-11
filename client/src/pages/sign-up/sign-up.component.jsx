@@ -36,11 +36,7 @@ const SignUp = ({ history, signIn, flash }) => {
   });
 
   const submitForm = async (data) => {
-    // console.log({data})
-    // console.log(errors)
-    // if(data.password !== data['confirm password']){
-    //   console.log('passwords do not match')
-    // }
+
     try {
       setIsLoading(true);
       const { email: username, password } = data;

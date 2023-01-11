@@ -60,7 +60,8 @@ const SignIn = ({ flash, history, signIn }) => {
                 name="email"
                 type="email"
                 register={{
-                  ...register("email", {
+                  ...register("email", 
+                  {
                     required: "email is required!",
                     pattern: {
                       value:
